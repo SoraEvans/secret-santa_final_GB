@@ -25,7 +25,6 @@ const MyBoxes = () => {
           <BoxItem>{tabIdx === 0 && <PrivateBox />}</BoxItem>
           <BoxItem>{tabIdx === 1 && <PublicBox />}</BoxItem>
         </BoxWrapper>
-
       </Container>
 
       <Footer />
