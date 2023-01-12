@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../style_cont'
 import logo from '../../assets/images/logo.svg'
-import { AuthorisedWrapper, BoxesAndProfileLink, HeaderEl, Logo, NotificationsLink, SignUpLink, Wrapper } from './style'
-
+import {
+  AuthorisedWrapper,
+  BoxesAndProfileLink,
+  HeaderEl,
+  Logo,
+  NotificationsLink,
+  SignUpLink,
+  Wrapper
+} from './style'
+import UserNotification from '../UserNotification/UserNotification'
 
 function Header() {
-  const isLogged = localStorage.getItem('isLoggedIn');
+  const isLogged = localStorage.getItem('isLoggedIn')
+  const [showNotification, setShowNotification] = useState(false)
+  const handlerNotification = () => {
+    setShowNotification(prevState => !prevState)
+  }
 
-  if (isLogged === "true") {
+  if (isLogged === 'true') {
     return (
       <HeaderEl>
         <Container>
@@ -16,15 +28,12 @@ function Header() {
               <img alt="logo" src={logo} />
             </Logo>
             <AuthorisedWrapper>
-              <BoxesAndProfileLink to="/boxes">
-                Коробки
-              </BoxesAndProfileLink>
-              <NotificationsLink to="#">
+              <BoxesAndProfileLink to="/boxes">Коробки</BoxesAndProfileLink>
+              <NotificationsLink to="#" onClick={handlerNotification}>
                 Уведомления
               </NotificationsLink>
-              <BoxesAndProfileLink to="/profile">
-                Профиль
-              </BoxesAndProfileLink>
+              <UserNotification active={showNotification} />
+              <BoxesAndProfileLink to="/profile">Профиль</BoxesAndProfileLink>
             </AuthorisedWrapper>
           </Wrapper>
         </Container>
@@ -39,9 +48,7 @@ function Header() {
           <Logo>
             <img alt="logo" src={logo} />
           </Logo>
-          <SignUpLink to="/register">
-            Вход и регистрация
-          </SignUpLink>
+          <SignUpLink to="/register">Вход и регистрация</SignUpLink>
         </Wrapper>
       </Container>
     </HeaderEl>

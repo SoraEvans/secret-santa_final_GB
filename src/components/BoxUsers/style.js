@@ -4,8 +4,8 @@ export const BoxUsersWrapper = styled.div`
   padding: 12px;
   margin: 70px 0 0 0;
 
-  h1 {
-    text-align: center;
+  h2 {
+    margin: 0 0 24px 0;
   }
 `
 
@@ -17,9 +17,9 @@ export const UsersList = styled.div`
 `
 
 export const UserItem = styled.div`
-  padding: 12px 28px;
+  padding: 12px;
   box-shadow: 0 5px 11px 2px rgba(34, 60, 80, 0.2);
   margin: 0 24px 12px 0;
   width: 150px;
-  flex: 0 0 12.333333%;
+  flex: 0 0 16.3333%;
 `
