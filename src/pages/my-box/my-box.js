@@ -3,11 +3,13 @@ import { BoxTitleInner, BoxTitleText, MyBoxMain } from './style'
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import MyBoxTabs from '../../components/MyBoxTabs/MyBoxTabs'
+import MyBoxSettings from '../../components/MyBoxSettings/MyBoxSettings'
 import DB from '../../constants/db'
 
 const MyBox = () => <>
   <Header />
   <MyBoxMain>
+    <MyBoxSettings />
     <BoxTitleInner>
       <img src={DB.boxes[0].cover} alt="" />
       <BoxTitleText>
