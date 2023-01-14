@@ -6,8 +6,11 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 87px;
   width: 100%;
   margin: auto;
+  padding-bottom: 80px;
+  padding-top: 100px;
 `
 
 export const Head = styled.div`
@@ -15,11 +18,10 @@ export const Head = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 87px;
 `
 
 export const Title = styled.h1`
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -43,11 +45,11 @@ export const Div = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 633px;
-  height: 94px;
+  min-height: 94px;
   background: #f7f3f3;
   border: 2px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 85px;
-  padding: 0 20px 0 20px;
+  padding: 20px;
 `
 
 export const Input = styled.input`
@@ -133,7 +135,7 @@ export const ButtonsDiv = styled.div`
 
 export const Select = styled.select`
   width: 304px;
-  height: 61px;
+  height: 55px;
   background: #f7f3f3;
   border: 2px solid rgba(0, 0, 0, 0.2);
   font-style: normal;
@@ -148,6 +150,7 @@ export const CostDiv = styled(ButtonsDiv)`
 `
 
 export const CostInput = styled.input`
+  text-align: center;
   width: 304px;
   height: 55px;
   background: #f7f3f3;
@@ -167,7 +170,7 @@ export const Button = styled.button`
   font-family: Raleway;
   width: 291px;
   height: 81px;
-  background: #FF5539;
+  background: #ff5539;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -222,11 +225,21 @@ export const ContainerBoxCreated = styled.div`
 `
 
 export const TitleBoxCreated = styled.h1`
-  font-family: "Amatic SC bold";
+  font-family: 'Amatic SC bold';
   font-style: normal;
   font-weight: 600;
   font-size: 58px;
   margin: 0 0 12px;
   line-height: 77px;
   color: #000000;
+`
+export const SubTitleBoxCreated = styled.p`
+  max-width: 463px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: justify;
+  color: #a2a2a2;
 `
