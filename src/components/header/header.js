@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../style_cont'
 import logo from '../../assets/images/logo.svg'
 import {
@@ -15,15 +15,28 @@ import UserNotification from '../UserNotification/UserNotification'
 function Header() {
   const isLogged = localStorage.getItem('isLoggedIn')
   const [showNotification, setShowNotification] = useState(false)
+  const [color, setColor] = useState('transparent')
   const handlerNotification = () => {
     setShowNotification(prevState => !prevState)
   }
+
+  const listenScrollEvent = () => {
+    if (window.scrollY > 400) {
+      setColor('white')
+    } else {
+      setColor('transparent')
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('scroll', listenScrollEvent)
+  }, [])
 
   if (isLogged === 'true') {
     return (
       <HeaderEl>
         <Container>
-          <Wrapper>
+          <Wrapper color={color}>
             <Logo>
               <img alt="logo" src={logo} />
             </Logo>
@@ -44,7 +57,7 @@ function Header() {
   return (
     <HeaderEl>
       <Container>
-        <Wrapper>
+        <Wrapper color={color}>
           <Logo>
             <img alt="logo" src={logo} />
           </Logo>

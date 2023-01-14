@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { AccordionDetails } from '@mui/material'
+import { AccordionDetails, Accordion } from '@mui/material'
 
 export const AccordionSection = styled.section`
   background: linear-gradient(180deg, #D7D0CB 1.04%, #D7D0CB 21.35%,
@@ -31,13 +31,23 @@ export const AccordionWrapper = styled.div`
   gap: 32px;
 `
 
+export const StyledAccordion = styled(Accordion)`
+  background-color: transparent !important;
+  &::before {
+    background-color: transparent !important;
+  }
+`
+
 export const StyledAccordionDetails = styled(AccordionDetails)`
-  font-family: "Raleway ExtraLight";
+  font-family: "Raleway Light";
+  border-radius: 4px;
+  border: 1px solid rgba(215, 208, 203, 0.44);
   font-size: 14px;
   font-weight: 300;
   line-height: 16.44px;
-  background: rgba(0, 0, 0, .1);
-  padding: 15px 23px 23px !important; 
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px 23px 23px !important;
+  white-space: pre-wrap;
 `
 
 export const QuestionText = styled.div`

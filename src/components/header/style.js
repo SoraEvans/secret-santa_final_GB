@@ -15,7 +15,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 27px 20px 0;
+  padding: 19px 56px;
+  background: ${props => {
+    console.log(props)
+    return props.color
+  }};
 `
 
 export const AuthorisedWrapper = styled.div`

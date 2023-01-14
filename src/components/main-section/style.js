@@ -62,7 +62,7 @@ export const SantaBtn = styled.button`
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1;
   transition: all 0.3s ease-in-out;
 
   &:hover {

@@ -4,37 +4,40 @@ const DATA_FAQ = [
     id: 1,
     question: 'Что это такое вообще – «Тайный Санта»?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      'Тайный Санта — это популярная новогодняя активность с простыми правилами: каждый участник примеряет на себя роль “Тайного Санты” и анонимно готовит подарок для другого, случайно выбранного участника.'
   },
   {
     id: 2,
     question: 'Как организовать «Тайного Санту» с помощью этого сайта?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      '1. Создайте коробку для жеребьевки, настройте её по желанию и пригласите своих друзей.\n' +
+      '2. Когда все участники будут в сборе, проведите тайную жеребьевку, чтобы распределить Сант.\n' +
+      '3. Составьте список желаний для своего Санты, ознакомьтесь с пожеланиями своего Подопечного и отправляйте подарки.'
   },
   {
     id: 3,
     question: 'Сколько участников минимально необходимо для проведения жеребьевки?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      'Для того чтобы жеребьевка была хоть немного секретной, необходимо, как минимум, три участника.'
   },
   {
     id: 4,
     question: 'Можно ли быть организатором в одной коробке, и участником в другой?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      'Да, вы можете организовать одну игру сами, а принимать участие в другой игре. Также вы можете быть одновременно и участником и организатором игры.'
   },
   {
     id: 5,
     question: 'Что такое «коробка»?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      'Обычно для жеребьёвки на «Тайного Санту» используют какую-нибудь шляпу, мешочек или коробку, в которую участники кладут бумажки со своими именами.\n' +
+      'Коробка на этом сайте представляет собой место, куда участники игры складывают свои карточки с именами для участия и где происходит жеребьевка.'
   },
   {
     id: 6,
     question: 'Может ли участник узнать, кто его Тайный Санта?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Morbi tristique senectus et netus et malesuada fames. Adipiscing tristique risus nec feugiat in fermentum '
+      'Участник может узнать, кто его Тайный Санта, только в двух случаях: если организатор сообщит ему об этом или если Тайный Санта сам выдаст себя через чат (сообщит свое имя намеренно) или иным образом.'
   },
   {
     id: 7,

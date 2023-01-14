@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const InstrSec = styled.section`
   max-width: 1200px;
-  margin: 0 auto 120px;
+  margin: 84px auto 120px;
 `
 
 export const InstrHeader = styled.p`
@@ -20,21 +20,22 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `
 
 export const InstrList = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 60%;
+  width: 50%;
+  margin-left: 120px;
   margin-top: 35px;
 `
 
 export const InstrNum = styled.li`
   margin: 10px 40px 70px 0;
-  padding: 0 20px;
   width: 100%;
   text-align: center;
-  max-width: 81px;
+  max-width: 82px;
   list-style-type: none;
 `
 
@@ -48,6 +49,7 @@ export const InstrTextLine = styled.li`
 `
 
 export const InstrIllustr = styled.div`
-  margin-top: 190px;
-  min-height: 586px;
+  position: absolute;
+  right: -110px;
+  bottom: 20px;
 `

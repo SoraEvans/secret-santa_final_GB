@@ -13,6 +13,21 @@
     src: url(assets/fonts/Raleway-VariableFont_wght.ttf);
 }
 
+@font-face {
+    font-family: 'Raleway ExtraLight';
+    src: url(assets/fonts/Raleway-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: 'Raleway Light';
+    src: url(assets/fonts/Raleway-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Raleway Medium';
+    src: url(assets/fonts/Raleway-Medium.ttf);
+}
+
 .App-logo {
     height: 40vmin;
     pointer-events: none;
