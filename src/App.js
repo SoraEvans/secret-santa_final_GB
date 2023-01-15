@@ -10,12 +10,17 @@ import BoxDone from './pages/box-create/box-done'
 import MyBox from './pages/my-box/my-box'
 import MyBoxes from './pages/my-boxes/MyBoxes'
 import Profile from './pages/profile/Profile'
+import Header from './components/header/header'
+import Footer from './components/footer/footer'
 
 function App() {
+  const location = document.location.pathname
+  const showHeadFoot = location !== '/register' && location !== '/login' && location !== '/password-reset'
+
   return (
     <>
       <nav />
-
+      {showHeadFoot ? <Header /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -43,6 +48,7 @@ function App() {
 
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
+      {showHeadFoot ? <Footer /> : null}
     </>
   )
 }

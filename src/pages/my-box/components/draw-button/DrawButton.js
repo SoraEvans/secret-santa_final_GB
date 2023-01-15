@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ButtonBlock, ButtonText, StartDrawButton } from './style'
-import DB from '../../constants/db'
+import DB from '../../../../constants/db'
 
 const DrawButton = ({ onClick }) => {
   const participantsCount = DB.users.length; // Здесь будет подсчёт пользователей

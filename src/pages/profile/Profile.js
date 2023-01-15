@@ -1,10 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Checkbox, Divider, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Header from "../../components/header/header";
-
-import Footer from "../../components/footer/footer";
+import { Checkbox, Divider, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
+import { Visibility, VisibilityOff } from '@mui/icons-material'
 import Container from '../../components/style_cont'
 import {
   PageBackground,
@@ -20,35 +17,25 @@ import {
   ProfileTop,
   SwitchSection,
   SwitchText
-} from "./styles";
-
+} from './styles'
 
 function Profile() {
-
   const [showPassword, setShowPassword] = React.useState(false);
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
   return (
-    <>
-
-      <Header />
-
-      <PageBackground>
-        <Container>
+    <PageBackground>
+      <Container>
         <ProfileTop>
           <h2>Профиль</h2>
           <Button type='button'>Кнопка</Button>
         </ProfileTop>
-
         <ProfileForm>
           <InputSectionTitle>Lorem ipsum dolor</InputSectionTitle>
           <InputSection>
-
             <InputBlock>
               <Input id="first" type="text" placeholder="Первый" />
               <Label for="first">Первый</Label>
@@ -64,10 +51,8 @@ function Profile() {
                           },
                         }} />
             </InputBlock>
-
           </InputSection>
           <InputSection>
-
             <InputBlock>
               <Input id="second" type="text" />
               <Label for="second">Второй</Label>
@@ -83,7 +68,6 @@ function Profile() {
                           },
                         }} />
             </InputBlock>
-
           </InputSection>
           <Divider />
           <InputSectionTitle>Lorem ipsum dolor</InputSectionTitle>
@@ -95,15 +79,11 @@ function Profile() {
                 explicabo ipsa ipsam iure maiores maxime nam nostrum odio officia officiis optio quia recusandae
                 repudiandae.</p>
             </SwitchText>
-            <ProfileSwitch
-
-            />
+            <ProfileSwitch />
           </SwitchSection>
           <Divider />
           <InputSectionTitle>Lorem ipsum dolor</InputSectionTitle>
           <InputSection>
-
-
             <InputBlock>
               <FormControl id="password" sx={{
                 m: 1,
@@ -189,22 +169,13 @@ function Profile() {
                             },
                           }} />
               </FormControl>
-
-
             </InputBlock>
-
           </InputSection>
           <Divider />
           <InputSectionTitle>Lorem ipsum dolor</InputSectionTitle>
         </ProfileForm>
-
         <ProfileButton type="submit">Сохранить</ProfileButton>
-
-
       </Container></PageBackground>
-
-      <Footer />
-    </>
   )
 }
 

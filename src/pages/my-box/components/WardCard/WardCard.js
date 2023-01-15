@@ -1,5 +1,5 @@
 import React from 'react'
-import { CarouselButton } from '../carousel/style'
+import { CarouselButton } from '../../../home/components/carousel/style'
 import { ButtonBlock, TextBlock } from '../MyCard/style'
 
 const WardCard = () => (

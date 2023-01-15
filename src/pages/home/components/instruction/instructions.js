@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@mui/material/Unstable_Grid2'
-import Container from '../style_cont'
+import Container from '../../../../components/style_cont'
 import {
   InstrHeader,
   InstrIllustr,
@@ -10,11 +10,11 @@ import {
   InstrTextLine,
   Wrapper
 } from './style'
-import Santa from '../../assets/images/santa.svg'
-import Leaves from '../../assets/images/leaves.svg'
-import oneIcon from '../../assets/images/ONE.svg'
-import twoIcon from '../../assets/images/TWO.svg'
-import threeIcon from '../../assets/images/THREE.svg'
+import Santa from '../../../../assets/images/santa.svg'
+import Leaves from '../../../../assets/images/leaves.svg'
+import oneIcon from '../../../../assets/images/ONE.svg'
+import twoIcon from '../../../../assets/images/TWO.svg'
+import threeIcon from '../../../../assets/images/THREE.svg'
 
 const arr = [
   { text: "Создайте коробку для жеребьевки, настройте её по желанию и пригласите своих друзей.", icon: oneIcon },

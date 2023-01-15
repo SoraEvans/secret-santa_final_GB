@@ -7,15 +7,15 @@ import {
   CarouselElement,
   CarouselWrapper
 } from './style'
-import Leaves from '../../assets/images/leaves2.svg'
-import ArrowLeft from '../../assets/images/arrow_left.svg'
-import ArrowRight from '../../assets/images/arrow_right.svg'
+import Leaves from '../../../../assets/images/leaves2.svg'
+import ArrowLeft from '../../../../assets/images/arrow_left.svg'
+import ArrowRight from '../../../../assets/images/arrow_right.svg'
 
-import daniaItem from '../../assets/images/carouselBlocks/dania.svg'
-import estoniaItem from '../../assets/images/carouselBlocks/estonia.svg'
-import italyItem from '../../assets/images/carouselBlocks/Italy.svg'
-import shwedenItem from '../../assets/images/carouselBlocks/shweden.svg'
-import tailandItem from '../../assets/images/carouselBlocks/Tailand.svg'
+import daniaItem from '../../../../assets/images/carouselBlocks/dania.svg'
+import estoniaItem from '../../../../assets/images/carouselBlocks/estonia.svg'
+import italyItem from '../../../../assets/images/carouselBlocks/Italy.svg'
+import shwedenItem from '../../../../assets/images/carouselBlocks/shweden.svg'
+import tailandItem from '../../../../assets/images/carouselBlocks/Tailand.svg'
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ item }) => (
@@ -30,7 +30,7 @@ const slides = [
 ]
 
 const Carousel = () => {
-  const isLogged = localStorage.getItem('isLoggedIn');
+  const isLogged = localStorage.getItem('isLoggedIn')
 
   return (
     <CarouselSection>

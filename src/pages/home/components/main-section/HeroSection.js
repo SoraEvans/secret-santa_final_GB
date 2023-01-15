@@ -1,15 +1,13 @@
 import React from 'react'
-import Container from '../style_cont'
+import Container from '../../../../components/style_cont'
 import CountdownTimer from '../timer/CountdownTimer'
 import HeroSectionBtn from './HeroSectionBtn'
-import Header from '../header/header'
-import Snow from '../animation/SnowFall'
+import Snow from '../../../../components/animation/SnowFall'
 import { Hero, LeftTextBlock, Paragraph, RightTextBlock, Text, Timer, Wrapper } from './style'
 
 const HeroSection = () => (
   <Hero>
     <Snow />
-    <Header />
     <Container>
       <Timer>
         <CountdownTimer />

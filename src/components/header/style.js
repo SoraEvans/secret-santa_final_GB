@@ -16,10 +16,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 19px 56px;
-  background: ${props => {
-    console.log(props)
-    return props.color
-  }};
+  background: ${props => props.color};
 `
 
 export const AuthorisedWrapper = styled.div`

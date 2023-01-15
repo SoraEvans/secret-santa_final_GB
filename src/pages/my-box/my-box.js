@@ -1,13 +1,10 @@
 import React from 'react'
 import { BoxTitleInner, BoxTitleText, MyBoxMain } from './style'
-import Header from '../../components/header/header'
-import Footer from '../../components/footer/footer'
-import MyBoxTabs from '../../components/MyBoxTabs/MyBoxTabs'
-import MyBoxSettings from '../../components/MyBoxSettings/MyBoxSettings'
+import MyBoxTabs from './components/MyBoxTabs/MyBoxTabs'
+import MyBoxSettings from './components/MyBoxSettings/MyBoxSettings'
 import DB from '../../constants/db'
 
-const MyBox = () => <>
-  <Header />
+const MyBox = () => (
   <MyBoxMain>
     <MyBoxSettings />
     <BoxTitleInner>
@@ -19,7 +16,6 @@ const MyBox = () => <>
     </BoxTitleInner>
     <MyBoxTabs />
   </MyBoxMain>
-  <Footer />
-</>
+)
 
 export default MyBox

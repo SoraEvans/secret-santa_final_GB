@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import DB from '../../constants/db'
+import DB from '../../../../constants/db'
 import { BoxUsersWrapper, UserItem, UsersList } from './style'
 import DrawButton from '../draw-button/DrawButton'
-import Modal from '../modal/modal'
+import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from "../no-box-users/NoBoxUsers";
 
 const BoxUsers = () => {
