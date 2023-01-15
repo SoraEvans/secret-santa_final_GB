@@ -1,16 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SettingsContainer = styled.div`
-  position: relative;
   width: 300px;
-  top: 0px;
-  left: 1380px;
+  display: grid;
+  place-items: center;
+  background-color: antiquewhite;
 `
 
 export const SettingsTrigger = styled.div`
-  position: absolute;
-  top: 20px;
-  right: -18px;
   display: grid;
   place-content: center;
   height: 40px;
@@ -18,61 +15,67 @@ export const SettingsTrigger = styled.div`
   border-radius: 0 6px 6px 0;
   overflow: hidden;
   cursor: pointer;
-  background-color: #F2EEEE;
+  background-color: #f2eeee;
+  margin: 0 0 12px 0;
 `
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 20px;
-  right: 45px;
+  top: 0;
+  right: 58px;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 12px;
-  background-color: #F2EEEE;
-  width: 200px;
-  padding: 5px 12px;
+  background-color: #f2eeee;
+  width: ${({ openMenu }) => (openMenu ? '200px' : '0')};
+  padding: 14px;
+  height: 120px;
   border-radius: 6px;
-  opacity: ${({ openMenu }) => openMenu ? 1 : 0};
-  transition: all 0.3s ease-in-out;
+  visibility: ${({ openMenu }) => (openMenu ? 'visible' : 'hidden')};
+  transition: all 0.1s ease-in-out;
 
-  &::before{
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     right: -15px;
     width: 20px;
     height: 40px;
-    background-color: #F2EEEE;
-
-
-
+    background-color: #f2eeee;
   }
 
-  h4{
+  div {
+    opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
+    text-align: center;
+  }
+
+  h4 {
     text-align: center;
     margin: 0;
   }
 
-  ul{
+  ul {
     list-style: none;
     margin: 0;
     padding: 0;
 
-    li{
+    li {
       margin: 0 0 12px 0;
     }
-
   }
 
+  a {
+    text-decoration: none;
+    color: red;
+  }
+`
   button{
     border: none;
     color: #E48383;
     cursor: pointer;
   }
-
-`
-
+  
 export const ModalButtons = styled.div`
 display: flex;
 `

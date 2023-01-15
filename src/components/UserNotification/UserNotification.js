@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NotificationBox, NotifiactioList } from './style'
+import { NotificationBox, NotificationList } from './style'
 
 const UserNotification = ({ active }) => (
   <NotificationBox active={active}>
-    <NotifiactioList>
+    <NotificationList>
       <span>У вас нет новых уведомлений</span>
-    </NotifiactioList>
+    </NotificationList>
   </NotificationBox>
 )
 
