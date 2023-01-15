@@ -70,3 +70,31 @@ export const DropdownMenu = styled.div`
     color: red;
   }
 `
+  button{
+    border: none;
+    color: #E48383;
+    cursor: pointer;
+  }
+  
+export const ModalButtons = styled.div`
+display: flex;
+`
+
+export const CancelButton = styled.button`
+  width: 155px;
+  height: 44px;
+  margin: 30px 13px;
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  font-size: 24px;
+  color: #9B9B9B;
+  background-color: #E2E2E2;
+  border: none;
+  cursor: pointer;
+`
+
+export const DeleteButton = styled(CancelButton)`
+background-color: #FFA5A5;
+color: #000000;
+`
