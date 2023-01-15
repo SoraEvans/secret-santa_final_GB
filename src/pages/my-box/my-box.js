@@ -1,12 +1,10 @@
 import React from 'react'
 import { BoxTitleInner, BoxTitleText, MyBoxMain } from './style'
 import MyBoxTabs from './components/MyBoxTabs/MyBoxTabs'
-import MyBoxSettings from './components/MyBoxSettings/MyBoxSettings'
 import DB from '../../constants/db'
 
 const MyBox = () => (
   <MyBoxMain>
-    <MyBoxSettings />
     <BoxTitleInner>
       <img src={DB.boxes[0].cover} alt="" />
       <BoxTitleText>

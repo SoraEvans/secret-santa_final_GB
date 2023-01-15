@@ -3,7 +3,7 @@ import { TabsWrapper, TabsInner, TabItem, TabBody } from './style'
 import BoxUsers from '../BoxUsers/BoxUsers'
 import MyCard from '../MyCard/MyCard'
 import WardCard from '../WardCard/WardCard'
-
+import MyBoxSettings from '../MyBoxSettings/MyBoxSettings'
 
 const MyBoxTabs = () => {
   const [activeIdx, setActiveIdx] = useState(0)
@@ -15,6 +15,7 @@ const MyBoxTabs = () => {
   return (
     <>
       <TabsWrapper>
+        <MyBoxSettings />
         <TabsInner
           orientation="vertical"
           value={activeIdx}
