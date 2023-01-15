@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import { styled as st } from "@mui/material/styles";
-import { Switch } from "@mui/material";
+import { styled as st } from '@mui/material/styles'
+import { Link, Switch } from '@mui/material'
 
 export const PageBackground = styled.div`
-padding-bottom: 80px;
-   background-image: url("img/Snowflake-Background-PNG.svg");
-   background-position: bottom -250px right 0;
-   background-repeat: no-repeat; 
+  padding-bottom: 80px;
+  background-image: url("img/Snowflake-Background-PNG.svg");
+  background-position: bottom -250px right 0;
+  background-repeat: no-repeat;
 `
+
 export const ProfileTop = styled.div`
   display: flex;
   flex-direction: row;
@@ -16,35 +17,25 @@ export const ProfileTop = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 140px;
-  `
+`
 
-export const Button = styled.button`
+export const StyledLink = styled(Link)`
   display: block;
-  text-align: center;
-  color: white;
   font-weight: 400;
   font-size: 20px;
-  height: 29px;
-  width: 220px;
-  background-color: #fd9797;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff5539;
-  }
+  color: #FF8787 !important;
+  text-decoration-color: inherit !important;
 `
+
 export const ProfileForm = styled.form`
-  
   width: 100%;
   margin: 0 auto;
   padding-top: 114px;
-  `
+`
 
 export const InputSection = styled.div`
-display: flex;
-
+  display: flex;
   justify-content: center;
-
 `
 
 export const InputSectionTitle = styled.h3`
@@ -52,11 +43,12 @@ export const InputSectionTitle = styled.h3`
 `
 
 export const InputBlock = styled.div`
-position: relative;
-justify-self: center;
-display: inline-block;
-margin-bottom: 40px;
+  position: relative;
+  justify-self: center;
+  display: inline-block;
+  margin-bottom: 40px;
 `
+
 export const Input = styled.input`
   width: 622px;
   height: 62px;
@@ -65,29 +57,19 @@ export const Input = styled.input`
   font-size: 28px;
   padding: 10px;
 `
-export const Label = styled.label`
-  position: absolute;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  color: #000000;
-  top: -30px;
-  left: 0;
-`
 
 export const SwitchSection = styled.div`
-background-color: #F6F3F3;
-border: 2px solid #CDCCCC;
-width: 642px;
-display: flex;
-align-items: center;
-margin: 0 auto;
-margin-bottom: 40px;
+  background-color: #F6F3F3;
+  border: 2px solid #CDCCCC;
+  width: 642px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
 `
+
 export const SwitchText = styled.div`
- padding: 15px;
+  padding: 15px;
 `
 
 export const ProfileSwitch = st(Switch)(() => ({
@@ -128,7 +110,7 @@ export const ProfileSwitch = st(Switch)(() => ({
   }
 }))
 
-export const ProfileButton = styled.button `
+export const ProfileButton = styled.button`
   display: block;
   text-align: center;
   color: white;
@@ -140,6 +122,7 @@ export const ProfileButton = styled.button `
   background-color: #fd9797;
   border: none;
   cursor: pointer;
+
   &:hover {
     background-color: #ff5539;
   }

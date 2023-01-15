@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import RegisterPage from './pages/auth/register'
 import LoginPage from './pages/auth/login'
@@ -13,9 +13,13 @@ import Profile from './pages/profile/Profile'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 
-function App() {
-  const location = document.location.pathname
-  const showHeadFoot = location !== '/register' && location !== '/login' && location !== '/password-reset'
+const App = () => {
+  const [showHeadFoot, setShowHeadFoot] = useState(true)
+  const location = useLocation()
+
+  useEffect(() => {
+    setShowHeadFoot(location.pathname !== '/register' && location.pathname !== '/login' && location.pathname !== '/password-reset')
+  }, [location])
 
   return (
     <>

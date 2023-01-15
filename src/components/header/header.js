@@ -21,7 +21,7 @@ function Header() {
   }
 
   const listenScrollEvent = () => {
-    if (window.scrollY > 400) {
+    if (window.scrollY > 400 || document.location.pathname !== '/') {
       setColor('white')
     } else {
       setColor('transparent')

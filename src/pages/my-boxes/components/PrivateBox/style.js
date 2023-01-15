@@ -8,16 +8,14 @@ export const PrivateWrapper = styled.div`
   column-gap: 30px;
   row-gap: 30px;
 `
-export const BtnAdd = styled.button`
-  width: 140px;
-  height: 140px;
-  background-color: #ffbfbf;
-  border: none;
-  cursor: pointer;
-`
 
 export const BoxInner = styled.button`
   width: 140px;
   height: 140px;
   background-color: #ffbfbf;
+`
+
+export const BtnAdd = styled(BoxInner)`
+  border: none;
+  cursor: pointer;
 `

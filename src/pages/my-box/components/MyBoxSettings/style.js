@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const SettingsContainer = styled.div`
-  position: relative;
   width: 300px;
-  top: 0px;
-  left: 1380px;
+  position: absolute;
+  top: 170px;
+  right: 0;
 `
 
 export const SettingsTrigger = styled.div`
   position: absolute;
-  top: 20px;
-  right: -18px;
+  top: -45px;
+  right: 0;
   display: grid;
   place-content: center;
   height: 40px;
@@ -23,8 +23,8 @@ export const SettingsTrigger = styled.div`
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 20px;
-  right: 45px;
+  top: -45px;
+  right: 58px;
   display: flex;
   flex-direction: column;
   align-items: center;
