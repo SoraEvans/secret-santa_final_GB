@@ -11,7 +11,7 @@ export const TabsInner = styled(Tabs)`
   border-radius: 4px;
 
   .MuiTabs-indicator {
-    background-color: #FF5539;
+    background-color: #ff5539;
   }
 
   button:hover,
@@ -21,7 +21,7 @@ export const TabsInner = styled(Tabs)`
 
   button.Mui-selected {
     color: #000;
-    background-color: #FF7D68;
+    background-color: #ff7d68;
   }
 `
 
@@ -38,5 +38,4 @@ export const TabItem = styled(Tab)`
   }
 `
 
-export const TabBody = styled(Box)`
-`
+export const TabBody = styled(Box)``
