@@ -4,13 +4,10 @@ import {
   ModalBackground,
   ModalCloseButton,
   ModalContent,
-  ModalSubTitle,
-  ModalTitle,
   ModalForm,
-  ModalLink
 } from './style'
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, children }) => {
   const modalRef = useRef()
 
   const closeModal = event => {
@@ -38,15 +35,8 @@ const Modal = ({ showModal, setShowModal }) => {
       <ModalBackground onClick={closeModal} ref={modalRef}>
         <ModalForm>
           <ModalContent showModal={showModal}>
-            <ModalTitle>Жеребьевка проведена!</ModalTitle>
-            <ModalSubTitle>
-              Проведена круговая жеребьевка, которая исключает ситуации,
-              <br /> когда два участника дарят подарки друг другу.
-              <br /> Теперь вы можете посмотреть{' '}
-              <ModalLink to="/boxes">Кто чей Санта.</ModalLink>
-              <br /> Или <ModalLink to="/boxes">сбросить</ModalLink> результаты
-              жеребьевки.
-            </ModalSubTitle>
+            {children}
+
             <ModalCloseButton
               src="/img/ModalCloseButton.svg"
               alt="Закрыть"
@@ -61,12 +51,14 @@ const Modal = ({ showModal, setShowModal }) => {
 }
 
 Modal.defaultProps = {
-  showModal: false
+  showModal: false,
+  children: ""
 }
 
 Modal.propTypes = {
   showModal: PropTypes.bool,
-  setShowModal: PropTypes.func.isRequired
+  setShowModal: PropTypes.func.isRequired,
+  children: PropTypes.any
 }
 
 export default Modal

@@ -4,6 +4,7 @@ import { BoxUsersWrapper, UserItem, UsersList } from './style'
 import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from "../no-box-users/NoBoxUsers";
+import { ModalLink, ModalSubTitle, ModalTitle } from "../../../../components/modal/style";
 
 const BoxUsers = () => {
   const [showModal, setShowModal] = useState(false)
@@ -29,10 +30,20 @@ const BoxUsers = () => {
           )}
         </UsersList>
       ) : (
-        <NoBoxUsers/>
+        <NoBoxUsers />
       )}
       {drawDone ? null : <DrawButton onClick={draw} />}
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} setShowModal={setShowModal}>
+        <ModalTitle>Жеребьевка проведена!</ModalTitle>
+        <ModalSubTitle>
+          Проведена круговая жеребьевка, которая исключает ситуации,
+          <br /> когда два участника дарят подарки друг другу.
+          <br /> Теперь вы можете посмотреть{' '}
+          <ModalLink to="/boxes">Кто чей Санта.</ModalLink>
+          <br /> Или <ModalLink to="/boxes">сбросить</ModalLink> результаты
+          жеребьевки.
+        </ModalSubTitle>
+      </Modal>
     </BoxUsersWrapper>
   )
 }
