@@ -23,3 +23,19 @@ export const UserItem = styled.div`
   width: 150px;
   flex: 0 0 16.3333%;
 `
+
+export const AddUsersBtn = styled(UserItem)`
+  cursor: pointer;
+  box-shadow: none;
+  background-color: rgba(163, 163, 163, 0.47);
+  text-align: center;
+  transition: background-color 0.2s ease-in, scale 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(163, 163, 163, 0.35);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+  
+`

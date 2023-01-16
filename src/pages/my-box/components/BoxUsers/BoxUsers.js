@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import DB from '../../../../constants/db'
-import { BoxUsersWrapper, UserItem, UsersList } from './style'
+import { BoxUsersWrapper, UserItem, UsersList, AddUsersBtn } from './style'
 import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from "../no-box-users/NoBoxUsers";
 import { ModalLink, ModalSubTitle, ModalTitle } from "../../../../components/modal/style";
+import InviteUsers from "../invite-users/InviteUsers";
 
 const BoxUsers = () => {
   const [showModal, setShowModal] = useState(false)
@@ -24,14 +25,15 @@ const BoxUsers = () => {
         <UsersList>
           {userItem}
           {drawDone ? null : (
-            <UserItem style={{ background: 'rgba(163,163,163,0.47)' }}>
-              + Добавить участника
-            </UserItem>
+            <AddUsersBtn type="submit">
+              + Добавить участников
+            </AddUsersBtn>
           )}
         </UsersList>
       ) : (
         <NoBoxUsers />
       )}
+      <InviteUsers/>
       {drawDone ? null : <DrawButton onClick={draw} />}
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ModalTitle>Жеребьевка проведена!</ModalTitle>
