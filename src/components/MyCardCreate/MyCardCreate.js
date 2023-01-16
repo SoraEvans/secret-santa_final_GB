@@ -40,7 +40,7 @@ const MyCardCreate = () => {
             onClick={() => fileRef.current?.click()}
           >+ </AddAvatarButton>
         </AvatarList>
-        <CarouselButton style={{ margin: 0 }}>Создать карточку</CarouselButton>
+        <CarouselButton style={{ margin: 0, width: 150, height: 45, fontSize: 13 }}>Создать карточку</CarouselButton>
       </form>
     </CreateCardWrapper>
   )

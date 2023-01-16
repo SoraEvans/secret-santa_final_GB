@@ -2,14 +2,15 @@ import React from 'react'
 import { CarouselButton } from '../../../home/components/carousel/style'
 import { ButtonBlock, TextBlock } from './style'
 
-const MyCard = () => (
+// eslint-disable-next-line react/prop-types
+const MyCard = ({ setActiveIdx }) => (
   <TextBlock>
     <ButtonBlock>
       Упс! У вас еще нет карточки участника.
       Создайте свою карточку участника,
       если вы хотите принимать участие в игре.
     </ButtonBlock>
-    <CarouselButton>Создать карточку</CarouselButton>
+    <CarouselButton onClick={() => setActiveIdx(3)}>Создать карточку</CarouselButton>
   </TextBlock>
 )
 

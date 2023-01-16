@@ -29,6 +29,7 @@ export const AccordionWrapper = styled.div`
   flex-direction: column;
   padding: 0 124px;
   gap: 32px;
+  position: relative;
 `
 
 export const StyledAccordion = styled(Accordion)`
@@ -53,4 +54,11 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
 export const QuestionText = styled.div`
   font-family: Raleway;
   font-size: 22px;
+`
+
+export const CandyImg = styled.img`
+  width: 110px;
+  position: absolute;
+  bottom: -90px;
+  right: -60px;
 `

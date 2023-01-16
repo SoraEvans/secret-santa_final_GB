@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { AccordionSummary } from '@mui/material'
-import DATA_FAQ from '../../constants'
+import DATA_FAQ from '../../../../constants'
 import {
   AccordionSection,
-  AccordionWrapper,
+  AccordionWrapper, CandyImg,
   Container,
   QuestionText,
   StyledAccordion,
   StyledAccordionDetails,
   Title
 } from './style'
-import arrowColor from '../../assets/images/accord_arrow_color.svg'
-import arrowGray from '../../assets/images/accord_arrow_gray.svg'
+import arrowColor from '../../../../assets/images/accord_arrow_color.svg'
+import arrowGray from '../../../../assets/images/accord_arrow_gray.svg'
+import candy from '../../../../assets/images/candy.svg'
 
 const AccordionFaq = () => {
   const [expanded, setExpanded] = useState(false)
@@ -41,6 +42,7 @@ const AccordionFaq = () => {
               <StyledAccordionDetails>{item.answer}</StyledAccordionDetails>
             </StyledAccordion>
           ))}
+          <CandyImg src={candy} alt='' />
         </AccordionWrapper>
       </Container>
     </AccordionSection>

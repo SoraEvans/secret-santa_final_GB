@@ -4,6 +4,7 @@ import BoxUsers from '../BoxUsers/BoxUsers'
 import MyCard from '../MyCard/MyCard'
 import WardCard from '../WardCard/WardCard'
 import MyBoxSettings from '../MyBoxSettings/MyBoxSettings'
+import MembersAdding from '../MembersAdding/MembersAdding'
 
 const MyBoxTabs = () => {
   const [activeIdx, setActiveIdx] = useState(0)
@@ -26,9 +27,10 @@ const MyBoxTabs = () => {
           <TabItem label={<div>Мой подопечный</div>} />
         </TabsInner>
       </TabsWrapper>
-      <TabBody>{activeIdx === 0 && <BoxUsers />}</TabBody>
-      <TabBody>{activeIdx === 1 && <MyCard />}</TabBody>
-      <TabBody>{activeIdx === 2 && <WardCard />}</TabBody>
+      <TabBody>{activeIdx === 0 && <BoxUsers setActiveIdx={setActiveIdx} />}</TabBody>
+      <TabBody>{activeIdx === 1 && <MyCard setActiveIdx={setActiveIdx} />}</TabBody>
+      <TabBody>{activeIdx === 2 && <WardCard setActiveIdx={setActiveIdx} />}</TabBody>
+      <TabBody>{activeIdx === 3 && <MembersAdding />}</TabBody>
     </>
   )
 }

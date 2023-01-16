@@ -3,7 +3,8 @@ import { Link } from "@mui/material";
 import { CarouselButton } from '../../../home/components/carousel/style'
 import { ButtonBlock, TextBlock } from '../MyCard/style'
 
-const WardCard = () => {
+// eslint-disable-next-line react/prop-types
+const WardCard = ({ setActiveIdx }) => {
 
   const myWard = null;
   const myCard = null;
@@ -40,7 +41,7 @@ const WardCard = () => {
         чтобы принимать участие в игре
       </ButtonBlock>
       <Link to="/box" style={{ textDecoration: 'none' }}>
-        <CarouselButton>Создать карточку</CarouselButton>
+        <CarouselButton onClick={() => setActiveIdx(3)}>Создать карточку</CarouselButton>
       </Link>
     </TextBlock>
   )

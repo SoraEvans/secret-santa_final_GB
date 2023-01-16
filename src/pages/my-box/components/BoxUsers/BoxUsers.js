@@ -5,9 +5,9 @@ import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from "../no-box-users/NoBoxUsers";
 import { ModalLink, ModalSubTitle, ModalTitle } from "../../../../components/modal/style";
-import InviteUsers from "../invite-users/InviteUsers";
 
-const BoxUsers = () => {
+// eslint-disable-next-line react/prop-types
+const BoxUsers = ({setActiveIdx}) => {
   const [showModal, setShowModal] = useState(false)
   const [drawDone, setDrawDone] = useState(false)
   const userItem = DB.users.map(user => (
@@ -25,7 +25,7 @@ const BoxUsers = () => {
         <UsersList>
           {userItem}
           {drawDone ? null : (
-            <AddUsersBtn type="submit">
+            <AddUsersBtn type="submit" onClick={() => setActiveIdx(3)}>
               + Добавить участников
             </AddUsersBtn>
           )}
@@ -33,7 +33,6 @@ const BoxUsers = () => {
       ) : (
         <NoBoxUsers />
       )}
-      <InviteUsers/>
       {drawDone ? null : <DrawButton onClick={draw} />}
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ModalTitle>Жеребьевка проведена!</ModalTitle>
