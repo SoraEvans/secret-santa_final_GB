@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { Divider } from "@mui/material";
-import { CarouselButton } from "../carousel/style";
 import {
   AddAvatarButton,
   AvatarImg,
@@ -10,6 +9,7 @@ import {
   Input,
   InputSection,
 } from "../WardCard/style";
+import { CarouselButton } from '../../pages/home/components/carousel/style'
 
 
 const MyCardCreate = () => {

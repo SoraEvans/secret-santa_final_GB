@@ -15,18 +15,20 @@ const CountdownTimer = () => {
     setDuration(moment.duration(diffTime - interval))
   }, interval)
 
+  const days = duration.asDays && duration?.asDays().toFixed(0)
+
   return (
     <Box>
       <TimerTitle>До нового года осталось:</TimerTitle>
       <TimerWrapper>
         <BoxWrapper>
           <CircularProgressStyle
-            value={(duration.days() * 100) / (31)}
+            value={(days * 100) / (365)}
             variant="determinate"
             size={158}
           />
           <BoxInner>
-            <TimerItem>{duration.asDays && duration?.asDays().toFixed(0)}</TimerItem>
+            <TimerItem>{days}</TimerItem>
             <span>Дней</span>
           </BoxInner>
         </BoxWrapper>

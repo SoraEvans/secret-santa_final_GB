@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 
 export const SettingsContainer = styled.div`
-  width: 300px;
   display: grid;
   place-items: center;
-  background-color: antiquewhite;
 `
 
 export const SettingsTrigger = styled.div`
@@ -70,12 +68,7 @@ export const DropdownMenu = styled.div`
     color: red;
   }
 `
-  button{
-    border: none;
-    color: #E48383;
-    cursor: pointer;
-  }
-  
+
 export const ModalButtons = styled.div`
 display: flex;
 `
