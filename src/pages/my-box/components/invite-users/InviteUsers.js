@@ -68,7 +68,7 @@ const InviteUsers = () => {
             onChange={handleChange}
             id={item.id}
           />
-          <Button type="submit" sx={{ minWidth: "40px", height: "40px" }} onClick={handleAddInputs}>
+          <Button sx={{ minWidth: "40px", height: "40px" }} onClick={handleAddInputs}>
             <AddSharp />
           </Button>
         </Box>
