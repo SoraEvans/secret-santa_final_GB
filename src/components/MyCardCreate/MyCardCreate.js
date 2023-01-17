@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Divider } from "@mui/material";
+import React, { useRef } from 'react'
+import { Divider } from '@mui/material'
 import {
   AddAvatarButton,
   AvatarImg,
@@ -7,19 +7,20 @@ import {
   CreateCardWrapper,
   FormLabel,
   Input,
-  InputSection,
-} from "../WardCard/style";
+  InputSection
+} from '../WardCard/style'
 import { CarouselButton } from '../../pages/home/components/carousel/style'
 
-
 const MyCardCreate = () => {
-  const fileRef = useRef(null);
-
+  const fileRef = useRef(null)
 
   return (
     <CreateCardWrapper>
       <Divider />
-      <FormLabel>Создайте карточку участника для себя, если хотите принимать участие в жеребьевке</FormLabel>
+      <FormLabel>
+        Создайте карточку участника для себя, если хотите принимать участие в
+        жеребьевке
+      </FormLabel>
       <form>
         <InputSection>
           <Input type="text" placeholder="Ваше имя или никнейм" />
@@ -36,14 +37,18 @@ const MyCardCreate = () => {
             style={{ display: 'none' }}
             ref={fileRef}
           />
-          <AddAvatarButton
-            onClick={() => fileRef.current?.click()}
-          >+ </AddAvatarButton>
+          <AddAvatarButton onClick={() => fileRef.current?.click()}>
+            +{' '}
+          </AddAvatarButton>
         </AvatarList>
-        <CarouselButton style={{ margin: 0, width: 150, height: 45, fontSize: 13 }}>Создать карточку</CarouselButton>
+        <CarouselButton
+          style={{ margin: 0, width: 150, height: 45, fontSize: 13 }}
+        >
+          Создать карточку
+        </CarouselButton>
       </form>
     </CreateCardWrapper>
   )
 }
 
-export default MyCardCreate;
+export default MyCardCreate

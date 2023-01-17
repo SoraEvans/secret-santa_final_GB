@@ -1,12 +1,12 @@
 import React from 'react'
-import InviteUsers from "../invite-users/InviteUsers";
-import MyCardCreate from "../../../../components/MyCardCreate/MyCardCreate";
+import InviteUsers from '../invite-users/InviteUsers'
+import MyCardCreate from '../../../../components/MyCardCreate/MyCardCreate'
 
 const MembersAdding = () => (
-    <>
-      <InviteUsers />
-      <MyCardCreate />
-    </>
-  )
+  <>
+    <InviteUsers />
+    <MyCardCreate />
+  </>
+)
 
 export default MembersAdding
