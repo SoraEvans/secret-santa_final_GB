@@ -7,10 +7,10 @@ import { ButtonBlock, TextBlock } from '../MyCard/style'
 const WardCard = ({ setActiveIdx }) => {
 
   const myWard = null;
-  const myCard = null;
+  const cardCreated = null;
 
 
-  if (myCard) {
+  if (cardCreated) {
     return (
       <TextBlock>
         {myWard
