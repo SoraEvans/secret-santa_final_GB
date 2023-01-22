@@ -82,5 +82,5 @@ export const TextBlock = styled.div`
 `
 
 export const Input = st(TextField)(() => ({
-background: '#F7F3F3',
+  background: '#F7F3F3',
 }))

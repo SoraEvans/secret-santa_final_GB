@@ -16,7 +16,7 @@ const WardCard = ({ setActiveIdx }) => {
       <div>
         {myWard
           ?
-          <div><MyWardDetails/></div>
+          <div><MyWardDetails /></div>
           :
           <TextBlock>
             <ButtonBlock>
