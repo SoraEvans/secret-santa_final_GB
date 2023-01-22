@@ -1,10 +1,10 @@
 import React from 'react'
-import { Divider, TextField } from '@mui/material'
+import { Divider } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import Container from '../../components/style_cont'
 import {
   PageBackground,
   StyledLink,
-  InputBlock,
   InputSection,
   InputSectionTitle,
   ProfileButton,
@@ -12,32 +12,31 @@ import {
   ProfileSwitch,
   ProfileTop,
   SwitchSection,
-  SwitchText
+  SwitchText, RemoveDesc
 } from './styles'
+import { CustomInput } from '../../components/Inputs/Inputs'
 
 function Profile() {
+  const navigate = useNavigate()
+  const logOut = () => {
+    localStorage.clear()
+    navigate('/')
+  }
 
   return (
     <PageBackground>
       <Container>
-        <div style={{ padding: 57 }}>
+        <div style={{ padding: '57px 220px 0' }}>
           <ProfileTop>
             <h2>Настройки профиля</h2>
-            <StyledLink type='button' href="/">Выйти с сайта</StyledLink>
+            <StyledLink onClick={() => logOut()}>Выйти с сайта</StyledLink>
           </ProfileTop>
           <ProfileForm>
+            <Divider />
             <InputSectionTitle>Личные данные</InputSectionTitle>
             <InputSection>
-              <InputBlock>
-                <TextField id="first" type="text" placeholder="Name" label="Ваше имя или никнейм" />
-
-              </InputBlock>
-            </InputSection>
-            <InputSection>
-              <InputBlock>
-                <TextField id="second" type="text" label="Ваш e-mail" />
-
-              </InputBlock>
+              <CustomInput id="first" type="text" placeholder="Name" label="Ваше имя или никнейм" />
+              <CustomInput id="second" type="text" label="Ваш e-mail" />
             </InputSection>
             <Divider />
             <InputSectionTitle>Уведомления</InputSectionTitle>
@@ -52,15 +51,13 @@ function Profile() {
             <Divider />
             <InputSectionTitle>Смена пароля</InputSectionTitle>
             <InputSection>
-              <InputBlock>
-                <TextField id="pass" type="text" placeholder="new password" label="Новый пароль" />
-              </InputBlock>
-              <InputBlock>
-                <TextField id="confirm" type="text" placeholder="confirm password" label="Подтвердите пароль" />
-              </InputBlock>
+              <CustomInput id="pass" type="text" placeholder="new password" label="Новый пароль" />
+              <CustomInput id="confirm" type="text" placeholder="confirm password" label="Подтвердите пароль" />
             </InputSection>
+            <ProfileButton type="submit">Сохранить изменения</ProfileButton>
             <Divider />
             <InputSectionTitle>Удаление профиля</InputSectionTitle>
+            <RemoveDesc>ВАЖНО: После удаления профиля, ваши карточки во всех коробках будут удалены</RemoveDesc>
           </ProfileForm>
           <ProfileButton type="submit">Удалить профиль</ProfileButton>
         </div>
