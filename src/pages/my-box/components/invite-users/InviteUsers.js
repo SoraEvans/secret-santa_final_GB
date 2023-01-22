@@ -43,11 +43,21 @@ const InviteUsers = () => {
     setFormDetails(newFormDetails)
   }
 
-  const onSubmitHandle = e => {
+  const onSubmitHandle = async e => {
     e.preventDefault()
-    setFormDetails([{ name: '', email: '', id: 1 }])
-    handleClick()
-    console.log(formDetails)
+    await fetch('https://backsecsanta.alwaysdata.net/api/box/sendInvites', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        emails: formDetails.map(item => ({ ...item, id: 1 }))
+      })
+    })
+      .then(() => {
+        setFormDetails([{ name: '', email: '', id: 1 }])
+        handleClick()
+      })
   }
 
   return (
@@ -68,8 +78,6 @@ const InviteUsers = () => {
             name="name"
             placeholder="Имя участника"
             value={item.name || ''}
-            // size="small"
-            // sx={{ marginRight: '12px' }}
             onChange={handleChange}
             id={item.id}
           />
@@ -77,7 +85,6 @@ const InviteUsers = () => {
             name="email"
             placeholder="Email"
             value={item.email || ''}
-            // size="small"
             type="email"
             onChange={handleChange}
             id={item.id}
