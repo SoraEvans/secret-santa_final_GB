@@ -49,25 +49,23 @@ export const Text = styled.span`
 export const SantaBoxBtn = styled.div`
   display: grid;
   place-items: center;
-  margin-top: -65px;
+  width: max-content;
+  margin: -65px;
 `
 
-export const SantaBtn = styled.button`
-  font-family: "Amatic SC bold";
-  font-size: 24px;
-  background-color: #ff5539;
-  border: none;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  color: #fff;
-  cursor: pointer;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
+export const SantaBoxText = styled.img`
+  animation-name: rotation;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 
-  &:hover {
-    background-color: #fc482c;
-    outline: 5px solid #fc482c;
-    outline-offset: 5px;
+  @keyframes rotation {
+    0% {
+      transform:rotate(0deg);
+    }
+    100% {
+      transform:rotate(360deg);
+    }
   }
 `
+

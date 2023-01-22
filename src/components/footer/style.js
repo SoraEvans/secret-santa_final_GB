@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const FooterEl = styled.footer`
-  background: #000000;
+  background: #212121;
   font-family: Raleway;
   flex-shrink: 0;
 `;

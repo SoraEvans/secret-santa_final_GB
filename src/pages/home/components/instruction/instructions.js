@@ -10,7 +10,7 @@ import {
   InstrTextLine,
   Wrapper
 } from './style'
-import Santa from '../../../../assets/images/santa.svg'
+import Santa from '../../../../assets/images/santaTube.svg'
 import Leaves from '../../../../assets/images/leaves.svg'
 import oneIcon from '../../../../assets/images/ONE.svg'
 import twoIcon from '../../../../assets/images/TWO.svg'

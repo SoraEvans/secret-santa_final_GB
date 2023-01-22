@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const InstrSec = styled.section`
   max-width: 1200px;
-  margin: 84px auto 120px;
+  margin: 112px auto 120px;
+  border-top: 1px solid #E2E2E2;
 `
 
 export const InstrHeader = styled.p`
@@ -11,7 +12,7 @@ export const InstrHeader = styled.p`
   font-size: 56px;
   line-height: 44px;
   text-align: center;
-  margin-bottom: 0;
+  margin: 94px 0 0;
   display: flex;
   align-items: center;
 `
@@ -50,6 +51,10 @@ export const InstrTextLine = styled.li`
 
 export const InstrIllustr = styled.div`
   position: absolute;
-  right: -110px;
-  bottom: 20px;
+  left: 730px;
+  bottom: 70px;
+
+  img {
+    width: 38vw;
+  }
 `
