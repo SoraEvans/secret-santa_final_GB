@@ -2,22 +2,23 @@ import React from 'react'
 import { Link } from "@mui/material";
 import { CarouselButton } from '../../../home/components/carousel/style'
 import { ButtonBlock, TextBlock } from '../MyCard/style'
+import MyWardDetails from "../MyWardDetails/MyWardDetails";
 
 // eslint-disable-next-line react/prop-types
 const WardCard = ({ setActiveIdx }) => {
 
-  const myWard = null;
-  const myCard = null;
+  const myWard = true;
+  const cardCreated = true;
 
 
-  if (myCard) {
+  if (cardCreated) {
     return (
-      <TextBlock>
+      <div>
         {myWard
           ?
-          <div>{myWard}</div>
+          <div><MyWardDetails/></div>
           :
-          <div>
+          <TextBlock>
             <ButtonBlock>
               Вам еще не назначен Подопечный(
             </ButtonBlock>
@@ -25,10 +26,10 @@ const WardCard = ({ setActiveIdx }) => {
               Дождитесь проведения жеребьевки, чтобы узнать,
               кому вы будете дарить подарок
             </ButtonBlock>
-          </div>
+          </TextBlock>
         }
 
-      </TextBlock>
+      </div>
     )
   }
   return (
