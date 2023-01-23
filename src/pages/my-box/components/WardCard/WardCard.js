@@ -10,7 +10,6 @@ const WardCard = ({ setActiveIdx }) => {
   const myWard = true;
   const cardCreated = true;
 
-
   if (cardCreated) {
     return (
       <div>

@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Container from '../style_cont'
 import logo from '../../assets/images/logo.svg'
 import {
   AuthorisedWrapper,
-  BoxesAndProfileLink,
   HeaderEl,
   Logo,
-  NotificationsLink,
-  SignUpLink,
+  StyledLink,
   Wrapper
 } from './style'
 import UserNotification from '../UserNotification/UserNotification'
 
 function Header() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const isLogged = localStorage.getItem('isLoggedIn')
   const [showNotification, setShowNotification] = useState(false)
   const [color, setColor] = useState('transparent')
@@ -29,8 +30,9 @@ function Header() {
   }
 
   useEffect(() => {
+    listenScrollEvent()
     document.addEventListener('scroll', listenScrollEvent)
-  }, [])
+  }, [location])
 
   if (isLogged === 'true') {
     return (
@@ -41,12 +43,12 @@ function Header() {
               <img alt="logo" src={logo} />
             </Logo>
             <AuthorisedWrapper>
-              <BoxesAndProfileLink to="/boxes">Коробки</BoxesAndProfileLink>
-              <NotificationsLink to="#" onClick={handlerNotification}>
+              <StyledLink colorState={color} onClick={() => navigate('/boxes')}><div>Коробки</div></StyledLink>
+              <StyledLink margin="0 0 0 15px" colorState={color} onClick={handlerNotification}>
                 Уведомления
-              </NotificationsLink>
+              </StyledLink>
               <UserNotification active={showNotification} />
-              <BoxesAndProfileLink to="/profile">Профиль</BoxesAndProfileLink>
+              <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/profile')}>Профиль</StyledLink>
             </AuthorisedWrapper>
           </Wrapper>
         </Container>
@@ -61,7 +63,7 @@ function Header() {
           <Logo>
             <img alt="logo" src={logo} />
           </Logo>
-          <SignUpLink to="/register">Вход и регистрация</SignUpLink>
+          <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/login')}>Вход и регистрация</StyledLink>
         </Wrapper>
       </Container>
     </HeaderEl>

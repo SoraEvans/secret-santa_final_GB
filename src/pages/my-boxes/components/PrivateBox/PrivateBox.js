@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { PrivateWrapper, BtnAdd, BoxInner } from './style'
+import { PrivateWrapper, BtnAdd, BoxInner, StyledName } from './style'
+import tree from '../../../../assets/images/elTree.svg'
 
 const PrivateBox = ({ boxes }) => {
   const navigate = useNavigate()
@@ -9,11 +10,14 @@ const PrivateBox = ({ boxes }) => {
   return (
     <PrivateWrapper>
       {boxes.map(box => (
-        <BoxInner url={box.cover} onClick={() => navigate('/box')}>
-          <img style={{ width: '120px' }} src={box.cover} alt="Обложка" />
-        </BoxInner>
+        <div style={{ textAlign: 'center' }}>
+          <BoxInner url={box.cover} onClick={() => navigate('/box')}>
+            <img src={tree} alt="Обложка" />
+          </BoxInner>
+          <StyledName>{box.title}</StyledName>
+        </div>
       ))}
-      <BtnAdd onClick={() => navigate('/create-box')}>+</BtnAdd>
+      <BtnAdd onClick={() => navigate('/create-box')}>Добавить коробку</BtnAdd>
     </PrivateWrapper>
   )
 }

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { styled as st } from '@mui/material/styles'
-import { Link, Switch } from '@mui/material'
+import { Button, Switch } from '@mui/material'
 
 export const PageBackground = styled.div`
-  padding-bottom: 80px;
   background-image: url("img/Snowflake-Background-PNG.svg");
   background-position: bottom -250px right 0;
   background-repeat: no-repeat;
+  font-family: Raleway !important
 `
 
 export const ProfileTop = styled.div`
@@ -15,61 +15,52 @@ export const ProfileTop = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 0 35px;
   padding-top: 140px;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Button)`
   display: block;
-  font-weight: 400;
   font-size: 20px;
-  color: #FF8787 !important;
-  text-decoration-color: inherit !important;
+  color: #FF5539 !important;
+  text-decoration: underline !important;
+  font-weight: bold !important;
 `
 
 export const ProfileForm = styled.form`
   width: 100%;
   margin: 0 auto;
-  padding-top: 114px;
 `
 
 export const InputSection = styled.div`
-  display: flex;
-  justify-content: center;
+  margin: 0 auto 29px;
+  width: 642px;
 `
 
 export const InputSectionTitle = styled.h3`
-
-`
-
-export const InputBlock = styled.div`
-  position: relative;
-  justify-self: center;
-  display: inline-block;
-  margin-bottom: 40px;
-`
-
-export const Input = styled.input`
-  width: 622px;
-  height: 62px;
-  background-color: #F6F3F3;
-  border: 2px solid #CDCCCC;
-  font-size: 28px;
-  padding: 10px;
+  margin: 35px 0 19px;
 `
 
 export const SwitchSection = styled.div`
   background-color: #F6F3F3;
   border: 2px solid #CDCCCC;
+  border-radius: 3px;
   width: 642px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
-  margin-bottom: 40px;
+  margin: 0 auto 53px;
 `
 
 export const SwitchText = styled.div`
   padding: 15px;
+
+  h4 {
+    margin-bottom: 9px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 `
 
 export const ProfileSwitch = st(Switch)(() => ({
@@ -90,10 +81,16 @@ export const ProfileSwitch = st(Switch)(() => ({
     padding: 3,
     '&.Mui-checked': {
       transform: 'translateX(43px)',
-      color: '#FD9797',
+      '& .MuiSwitch-thumb': {
+        opacity: 1,
+        width: 30,
+        height: 30,
+        backgroundColor: '#FF5539',
+        boxShadow: 'none'
+      },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#FFBFBF'
+        backgroundColor: '#FF917E'
       }
     }
   },
@@ -101,30 +98,41 @@ export const ProfileSwitch = st(Switch)(() => ({
     width: 30,
     height: 30,
     borderRadius: 15,
+    backgroundColor: '#C6BBB9',
+    boxShadow: 'none'
   },
   '& .MuiSwitch-track': {
     borderRadius: 38 / 2,
     opacity: 1,
     boxSizing: 'border-box',
-    backgroundColor: '#D9D9D9',
+    backgroundColor: '#D6CCCA',
   }
 }))
 
+export const RemoveDesc = styled.div`
+  font-family: Raleway;
+  text-align: center;
+  color: #7C7C7C;
+  font-size: 20px;
+`
+
 export const ProfileButton = styled.button`
+  font-family: Raleway;
   display: block;
   text-align: center;
   color: white;
   font-weight: 400;
   font-size: 20px;
-  margin: 0 auto;
+  margin: 40px auto 71px;
   height: 81px;
+  border-radius: 4px;
   width: 291px;
-  background-color: #fd9797;
+  background-color: #FF5539;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: #ff5539;
+    background-color: #ff4f32;
   }
 `
 

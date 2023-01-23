@@ -244,9 +244,7 @@ const BoxCreate = () => {
           </CancellButton>
           <CreateButton
             type="button"
-            onClick={() => {
-              onSubmit(state)
-            }}
+            onClick={() => onSubmit(state)}
           >
             Создать коробку
           </CreateButton>

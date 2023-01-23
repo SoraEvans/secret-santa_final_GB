@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Button } from "@mui/material";
+import { styled as st } from '@mui/material/styles'
 
 export const HeaderEl = styled.header`
   position: fixed;
@@ -31,36 +32,21 @@ export const Logo = styled.a.attrs({
   height: 65px;
 `
 
-export const SignUpLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-  background-color: #FF7D68;
-  width: 205px;
-  border-radius: 4px;
-  padding: 15px 0;
-  text-align: center;
-`
-
-export const BoxesAndProfileLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-  background-color: #FF7D68;
-  width: 131px;
-  padding: 15px 0;
-  text-align: center;
-  margin-left: 15px;
-  display: block;
-  border-radius: 4px;
-`
-
-export const NotificationsLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-  background-color: #FF7D68;
-  width: 181px;
-  padding: 15px 0;
-  text-align: center;
-  margin-left: 15px;
-  display: block;
-  border-radius: 4px;
-`
+export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, width }) => ({
+  'font-family': 'Raleway',
+  textTransform: 'capitalize',
+  color: colorState === 'white' ? '#FF5539' : 'black',
+  outline: colorState === 'white' ? '1px solid #FF5539' : 'none',
+  textDecoration: 'none',
+  display: 'block',
+  borderRadius: '4px',
+  textAlign: 'center',
+  'font-size': fontsize ? `${fontsize} !important` : '16px',
+  padding: padding ? `${padding} !important` : '8px 30px !important',
+  width: width || 'auto',
+  margin: margin || '',
+  background: colorState === 'white' ? colorState : '#FF7D68',
+  '& div': {
+    'font-family': 'Raleway',
+  }
+}))

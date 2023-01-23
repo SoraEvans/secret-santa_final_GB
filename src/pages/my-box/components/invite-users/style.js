@@ -5,7 +5,7 @@ import { styled as st } from '@mui/material/styles'
 export const Form = styled.form`
   padding: 30px 4px;
   max-height: 300px;
-  overflow: scroll;
+  overflow: auto;
   scroll-behavior: smooth;
 `
 export const InputWrapper = st(Box)({
