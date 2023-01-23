@@ -56,5 +56,6 @@ export const InstrIllustr = styled.div`
 
   img {
     width: 38vw;
+    max-width: 700px;
   }
 `

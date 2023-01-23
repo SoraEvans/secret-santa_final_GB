@@ -34,7 +34,7 @@ export const Logo = styled.a.attrs({
 
 export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, width }) => ({
   'font-family': 'Raleway',
-  textTransform: 'capitalize',
+  textTransform: 'inherit',
   color: colorState === 'white' ? '#FF5539' : 'black',
   outline: colorState === 'white' ? '1px solid #FF5539' : 'none',
   textDecoration: 'none',
