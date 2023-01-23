@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import { Button } from '@mui/material'
-import { AuthForm, Input, Div, Label } from './auth-styles'
+import { AuthForm, Credits, StyledRegBtn } from './auth-styles'
+import { AuthInput } from '../../components/Inputs/Inputs'
+import TextIcon from '../../assets/images/textHead.svg'
+import btnBranch from '../../assets/images/regBranch.svg'
+import mail from '../../assets/images/mail.svg'
 
 // const onSubmit = (form) => {
 
@@ -20,26 +23,33 @@ const PasswordResetPage = () => {
 
   return (
     <AuthForm>
-      <h1>Восстановление доступа</h1>
-      <Div>
-        <Input
-          required
+      <div style={{ position: 'relative' }}>
+        <img className="reset-hat" src={TextIcon} alt="" />
+        <h1>Восстановление доступа</h1>
+      </div>
+      <div style={{ width: 642 }}>
+        <AuthInput
           id="email"
-          type="email"
+          label="Введите ваш e-mail"
           value={form.email}
-          data-name="email"
           onChange={handleChangeForm}
         />
-        <Label for="email">Почта</Label>
-      </Div>
-      <Button
-        variant="outlined"
-        // onClick={() => {
-        //   onSubmit(form)
-        // }}
-      >
-        Восстановить пароль
-      </Button>
+      </div>
+      <Credits>
+        На указанный e-mail будет отправлено письмо с временным паролем для входа на сайт.
+      </Credits>
+      <img className="mail-icon" src={mail} alt=''/>
+      <div style={{ position: 'relative' }}>
+        <img className="reg-branch" src={btnBranch} alt="" />
+        <StyledRegBtn
+          variant="outlined"
+          // onClick={() => {
+          //   onSubmit(form)
+          // }}
+        >
+          Отправить
+        </StyledRegBtn>
+      </div>
     </AuthForm>
   )
 }

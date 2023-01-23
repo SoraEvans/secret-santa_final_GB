@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '@mui/material'
-import { AuthForm, Input, Div, Label, Title } from './auth-styles'
+import { AuthForm, Credits, StyledRegBtn, Title } from './auth-styles'
+import { AuthInput } from '../../components/Inputs/Inputs'
+import TextIcon from '../../assets/images/textHead.svg'
+import btnBranch from '../../assets/images/regBranch.svg'
 
 const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' })
@@ -37,57 +39,55 @@ const RegisterPage = () => {
 
   return (
     <AuthForm>
-      <h1>Регистрация</h1>
+      <div style={{ position: 'relative' }}>
+        <img className="register-hat" src={TextIcon} alt="" />
+        <h1>Регистрация</h1>
+      </div>
       <Title>
         Уже зарегистрированы?&nbsp;
         <Link to="/login" underline="always">
           Войти на сайт
         </Link>
       </Title>
-      <Div>
-        <Input
-          required
+      <div style={{ width: 642 }}>
+        <AuthInput
           id="name"
-          value={form.name}
-          data-name="name"
-          onChange={handleChangeForm}
-        />
-        <Label for="name">Имя</Label>
-      </Div>
-      <Div>
-        <Input
-          required
-          id="email"
-          type="email"
+          label="Name"
           value={form.email}
-          data-name="email"
           onChange={handleChangeForm}
         />
-        <Label for="email">Почта</Label>
-      </Div>
-      <Div>
-        <Input
-          required
+      </div>
+      <div style={{ width: 642 }}>
+        <AuthInput
+          id="email"
+          label="E-mail"
+          value={form.email}
+          onChange={handleChangeForm}
+        />
+      </div>
+      <div style={{ width: 642 }}>
+        <AuthInput
           id="password"
-          type="password"
-          value={form.password}
-          data-name="password"
+          label="Password"
+          value={form.email}
           onChange={handleChangeForm}
         />
-        <Label for="password">Пароль</Label>
-      </Div>
-      <Button
-        variant="outlined"
-        onClick={() => {
-          onSubmit(form)
-        }}
-      >
-        Зарегистрироваться
-      </Button>
-      <p>
+      </div>
+      <div style={{ position: 'relative' }}>
+        <img className="reg-branch" src={btnBranch} alt="" />
+        <StyledRegBtn
+          variant="outlined"
+          onClick={() => {
+            onSubmit(form)
+          }}
+        >
+          Зарегистрироваться
+        </StyledRegBtn>
+      </div>
+      <Credits>
         Регистрируясь, вы даете согласие на&nbsp;
         <Link to="/www">обработку персональных данных.</Link>
-      </p>
+      </Credits>
     </AuthForm>
   )
 }

@@ -3,30 +3,24 @@ import PropTypes from 'prop-types'
 import AvailableBoxes from '../AvailableBoxes/AvailableBoxes'
 import {
   PublicWrapper,
-  PublicLeftItem,
   PublicLeftTitle,
   PublicRightBox,
   PublicRightTitle,
-  BoxInner
+  PublicBoxList,
 } from './style'
 
 const PublicBox = ({ boxes }) => (
   <PublicWrapper>
     <div>
       <PublicLeftTitle>Мои публичные коробки</PublicLeftTitle>
-      <PublicLeftItem>
-        {boxes.map(box => (
-          <BoxInner url={box.cover}>
-            <img style={{ width: '120px' }} src={box.cover} alt="Обложка" />
-          </BoxInner>
-        ))}
-      </PublicLeftItem>
     </div>
     <PublicRightBox>
       <PublicRightTitle>Доступные публичные коробки</PublicRightTitle>
-      <div>
-        <AvailableBoxes />
-      </div>
+      <PublicBoxList>
+        {boxes.map(({ title, draw_starts_at, max_people_in_box, email }) => (
+          <AvailableBoxes title={title} start={draw_starts_at} max_people={max_people_in_box} now_people={email} />
+        ))}
+      </PublicBoxList>
     </PublicRightBox>
   </PublicWrapper>
 )

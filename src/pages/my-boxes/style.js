@@ -1,22 +1,34 @@
 import { Tabs, Tab, Box, styled } from '@mui/material'
 
 export const BoxWrapper = styled(Box)`
-  padding: 180px 0 0 220px;
+  padding: 190px 0 0 220px;
 `
 
 export const TabBox = styled(Tabs)`
-  width: 100%;
-  max-width: 360px;
   height: 50px;
-  margin: 0 0 88px 0;
+  margin: 0 0 48px 0;
+  border: 1px solid #FF5539;
+  border-radius: 3px;
+  width: max-content;
+  .MuiTabs-indicator {
+    display: none;
+  }
 `
 
 export const TabItem = styled(Tab)`
+  font-family: Raleway;
   text-transform: none;
-  background-color: #f2eeee;
-  &:active,
+  background-color: white;
+  color: #FF5539;
+ 
+  &.Mui-selected {
+    color: white;
+    background-color: #FF5539;
+  }
+  
   &:hover {
-    background-color: #ffbfbf;
+    //color: white;
+    //background-color: #ffbfbf;
   }
 `
 

@@ -1,23 +1,29 @@
 import React from 'react'
+import moment from 'moment'
 import {
   BoxItem,
   BoxItemText,
   BoxTextDate,
-  BoxTextHeading,
-  JoinBtn
+  BoxTextHeading
 } from './style'
+import { StyledLink } from '../../../../components/header/style'
+import tree from '../../../../assets/images/elTree.svg'
+import { StyledIcon } from '../PublicBox/style'
 
-const AvailableBoxes = () => (
+// eslint-disable-next-line react/prop-types
+const AvailableBoxes = ({ title, start, max_people, now_people }) => (
   <BoxItem>
     <BoxItemText>
-      <BoxTextHeading>Название коробки</BoxTextHeading>
-      <p>Колличиство участников: 25/30</p>
-      <BoxTextDate>Дата жеребьевки: 23.12.22</BoxTextDate>
-      <JoinBtn type="submit">Присоединиться</JoinBtn>
+      <div>
+        <BoxTextHeading>{title}</BoxTextHeading>
+        <p>Колличиство участников: {now_people}/{max_people}</p>
+        <BoxTextDate>Дата жеребьевки: {moment(start).format('DD.MM.YY')}</BoxTextDate>
+      </div>
+      <StyledLink padding="4px" width="118px" colorState="white" type="submit" fontsize="11px">Присоединиться</StyledLink>
     </BoxItemText>
-    <div>
-      <img src="https://place-hold.it/100x100/666" alt="" />
-    </div>
+    <StyledIcon>
+      <img src={tree} alt="Обложка" />
+    </StyledIcon>
   </BoxItem>
 )
 

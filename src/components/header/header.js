@@ -44,11 +44,11 @@ function Header() {
             </Logo>
             <AuthorisedWrapper>
               <StyledLink colorState={color} onClick={() => navigate('/boxes')}><div>Коробки</div></StyledLink>
-              <StyledLink colorState={color} onClick={handlerNotification}>
+              <StyledLink margin="0 0 0 15px" colorState={color} onClick={handlerNotification}>
                 Уведомления
               </StyledLink>
               <UserNotification active={showNotification} />
-              <StyledLink colorState={color} onClick={() => navigate('/profile')}>Профиль</StyledLink>
+              <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/profile')}>Профиль</StyledLink>
             </AuthorisedWrapper>
           </Wrapper>
         </Container>
@@ -63,7 +63,7 @@ function Header() {
           <Logo>
             <img alt="logo" src={logo} />
           </Logo>
-          <StyledLink colorState={color} onClick={() => navigate('/login')}>Вход и регистрация</StyledLink>
+          <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/login')}>Вход и регистрация</StyledLink>
         </Wrapper>
       </Container>
     </HeaderEl>

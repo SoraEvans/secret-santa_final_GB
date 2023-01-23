@@ -32,7 +32,7 @@ export const Logo = styled.a.attrs({
   height: 65px;
 `
 
-export const StyledLink = st(Button)(({ colorState }) => ({
+export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, width }) => ({
   'font-family': 'Raleway',
   textTransform: 'capitalize',
   color: colorState === 'white' ? '#FF5539' : 'black',
@@ -41,8 +41,10 @@ export const StyledLink = st(Button)(({ colorState }) => ({
   display: 'block',
   borderRadius: '4px',
   textAlign: 'center',
-  padding: '8px 30px !important',
-  marginLeft: '15px',
+  'font-size': fontsize ? `${fontsize} !important` : '16px',
+  padding: padding ? `${padding} !important` : '8px 30px !important',
+  width: width || 'auto',
+  margin: margin || '',
   background: colorState === 'white' ? colorState : '#FF7D68',
   '& div': {
     'font-family': 'Raleway',

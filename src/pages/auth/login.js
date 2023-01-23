@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '@mui/material'
-import { AuthForm, Input, Div, Label, LabelLink, Title } from './auth-styles'
+import { AuthForm, Credits, LabelLink, StyledLoginBtn, Title } from './auth-styles'
+import TextIcon from '../../assets/images/textHead.svg'
+import btnBranch from '../../assets/images/btnBranch.svg'
+import { AuthInput } from '../../components/Inputs/Inputs'
 
 const LoginPage = () => {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -18,10 +20,6 @@ const LoginPage = () => {
         password: form.password
       })
     })
-      // .then(response => response.text())
-      // .then(response => {
-      //   console.log(response)
-      // })
       .then(response => response.json())
       .then(response => {
         if (response.status === 'success') {
@@ -34,62 +32,60 @@ const LoginPage = () => {
   }
 
   const handleChangeForm = e => {
-    const field = e.target.getAttribute('data-name')
+    const field = e.target.getAttribute('id')
     setForm({
       ...form,
       [field]: e.target.value
     })
   }
-  // if (isRedirect) {
-  //   return <redirect to="/create-box" />
-  // }
 
   return (
     <AuthForm>
-      <h1>Войти на сайт</h1>
+      <div style={{ position: 'relative' }}>
+        <img className="login-hat" src={TextIcon} alt="" />
+        <h1>Войти на сайт</h1>
+      </div>
       <Title>
         Ещё не зарегистрированы?&nbsp;
         <Link to="/register" underline="always">
           Зарегистрироваться
         </Link>
       </Title>
-      <Div>
-        <Input
-          required
+      <div style={{ width: 642 }}>
+        <AuthInput
           id="email"
-          type="email"
+          label="E-mail"
           value={form.email}
-          data-name="email"
           onChange={handleChangeForm}
         />
-        <Label for="email">Почта</Label>
-      </Div>
-      <Div>
-        <Input
-          required
+      </div>
+      <div style={{ width: 642, position: 'relative' }}>
+        <AuthInput
           id="password"
+          label="Password"
           type="password"
           value={form.password}
-          data-name="password"
           onChange={handleChangeForm}
         />
-        <Label for="password">Пароль</Label>
         <LabelLink for="password">
           <Link to="/password-reset">Забыли пароль?</Link>
         </LabelLink>
-      </Div>
-      <Button
-        variant="outlined"
-        onClick={() => {
-          onSubmit(form)
-        }}
-      >
-        Войти
-      </Button>
-      <p>
+      </div>
+      <div style={{ position: 'relative' }}>
+        <img className="login-branch" src={btnBranch} alt="" />
+        <StyledLoginBtn
+          variant="outlined"
+          onClick={() => {
+            onSubmit(form)
+          }}
+        >
+          Войти
+        </StyledLoginBtn>
+      </div>
+      <Credits>
         Входя на сайт, вы даете согласие на&nbsp;
         <Link to="/www">обработку персональных данных.</Link>
-      </p>
+      </Credits>
     </AuthForm>
   )
 }
