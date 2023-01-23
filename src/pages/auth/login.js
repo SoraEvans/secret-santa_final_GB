@@ -62,7 +62,7 @@ const LoginPage = () => {
       <div style={{ width: 642, position: 'relative' }}>
         <AuthInput
           id="password"
-          label="Password"
+          label="Пароль"
           type="password"
           value={form.password}
           onChange={handleChangeForm}

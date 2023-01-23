@@ -29,7 +29,7 @@ const RegisterPage = () => {
   }
 
   const handleChangeForm = event => {
-    const field = event.target.getAttribute('data-name')
+    const field = event.target.getAttribute('id')
 
     setForm({
       ...form,
@@ -52,8 +52,8 @@ const RegisterPage = () => {
       <div style={{ width: 642 }}>
         <AuthInput
           id="name"
-          label="Name"
-          value={form.email}
+          label="Имя"
+          value={form.name}
           onChange={handleChangeForm}
         />
       </div>
@@ -68,8 +68,8 @@ const RegisterPage = () => {
       <div style={{ width: 642 }}>
         <AuthInput
           id="password"
-          label="Password"
-          value={form.email}
+          label="Пароль"
+          value={form.password}
           onChange={handleChangeForm}
         />
       </div>
