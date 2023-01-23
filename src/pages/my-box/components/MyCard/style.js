@@ -13,7 +13,7 @@ export const MyCardPage = styled.div`
 `
 
 export const CardInfo = styled.div`
-  width: 450px;
+  width: 50%;
 `
 
 export const UserInfoBlock = styled.div`
@@ -82,5 +82,5 @@ export const TextBlock = styled.div`
 `
 
 export const Input = st(TextField)(() => ({
-background: '#F7F3F3',
+  background: '#F7F3F3',
 }))

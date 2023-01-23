@@ -1,4 +1,4 @@
-import { Tabs, Tab, Box, styled } from '@mui/material'
+import { Box, styled, Tab, Tabs } from '@mui/material'
 
 export const TabsWrapper = styled(Box)`
   position: absolute;
