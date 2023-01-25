@@ -9,8 +9,10 @@ import {
   CancelButton,
   DeleteButton
 } from './style'
+import boxImg from '../../../../assets/images/box.svg'
 import Modal from '../../../../components/modal/modal'
 import { ModalTitle } from '../../../../components/modal/style'
+
 
 const MyBoxSettings = () => {
   const [openMenu, setOpenMenu] = useState(false)
@@ -21,7 +23,6 @@ const MyBoxSettings = () => {
   }
 
   const { id } = useParams()
-  console.log(id)
 
   const deleteBox = async id => {
     await fetch(`https://backsecsanta.alwaysdata.net/api/box/delete/${id}`, {
@@ -48,7 +49,7 @@ const MyBoxSettings = () => {
             <span>Кто чей санта?</span>
           </li>
           <li>
-            <button type="button" onClick={() => deleteBox(id)}>
+            <button type="button" onClick={openModal}>
               Удалить коробку
             </button>
           </li>
@@ -56,7 +57,7 @@ const MyBoxSettings = () => {
       </DropdownMenu>
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ModalTitle>
-          Вы уверены, что хотите удалить свою карточку участника?
+          Вы уверены, что хотите удалить текущую коробку?
         </ModalTitle>
         <ModalButtons>
           <CancelButton onClick={() => setShowModal(prev => !prev)}>
@@ -64,6 +65,7 @@ const MyBoxSettings = () => {
           </CancelButton>
           <DeleteButton onClick={() => deleteBox(id)}>Удалить</DeleteButton>
         </ModalButtons>
+        <img src={boxImg} alt='box' />
       </Modal>
     </SettingsContainer>
   )
