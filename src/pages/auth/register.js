@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthForm, Credits, StyledRegBtn, Title } from './auth-styles'
 import { AuthInput } from '../../components/Inputs/Inputs'
 import TextIcon from '../../assets/images/textHead.svg'
@@ -7,7 +7,7 @@ import btnBranch from '../../assets/images/regBranch.svg'
 
 const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' })
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const onSubmit = async form => {
     await fetch('https://backsecsanta.alwaysdata.net/api/user/register', {
@@ -24,7 +24,7 @@ const RegisterPage = () => {
       .then(response => response.text())
       .then(response => {
         console.log(response)
-        // navigate('/')
+        navigate('/boxes')
       })
   }
 
