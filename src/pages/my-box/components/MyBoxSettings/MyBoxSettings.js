@@ -48,7 +48,7 @@ const MyBoxSettings = () => {
             <span>Кто чей санта?</span>
           </li>
           <li>
-            <button type="button" onClick={() => deleteBox(id)}>
+            <button type="button" onClick={openModal}>
               Удалить коробку
             </button>
           </li>
