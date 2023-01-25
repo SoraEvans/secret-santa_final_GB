@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   SettingsContainer,
   SettingsTrigger,
@@ -9,21 +9,28 @@ import {
   CancelButton,
   DeleteButton
 } from './style'
-import Modal from "../../../../components/modal/modal";
-import { ModalTitle } from "../../../../components/modal/style";
+import Modal from '../../../../components/modal/modal'
+import { ModalTitle } from '../../../../components/modal/style'
 
 const MyBoxSettings = () => {
-  const [openMenu, setOpenMenu] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
   const openModal = () => {
-    setShowModal(prev => !prev);
-  }
-  const deleteBox = () => {
-    alert("коробка удалена"); // тут удаление коробки
-    navigate(`/boxes`)
+    setShowModal(prev => !prev)
   }
 
+  const { id } = useParams()
+  console.log(id)
+
+  const deleteBox = async id => {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/box/delete/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+    openModal()
+    navigate(`/boxes`)
+  }
 
   return (
     <SettingsContainer>
@@ -41,15 +48,21 @@ const MyBoxSettings = () => {
             <span>Кто чей санта?</span>
           </li>
           <li>
-            <button type="button" onClick={openModal}>Удалить коробку</button>
+            <button type="button" onClick={() => deleteBox(id)}>
+              Удалить коробку
+            </button>
           </li>
         </ul>
       </DropdownMenu>
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <ModalTitle>Вы уверены, что хотите удалить свою карточку участника?</ModalTitle>
+        <ModalTitle>
+          Вы уверены, что хотите удалить свою карточку участника?
+        </ModalTitle>
         <ModalButtons>
-          <CancelButton onClick={() => setShowModal(prev => !prev)}>Отмена</CancelButton>
-          <DeleteButton onClick={deleteBox}>Удалить</DeleteButton>
+          <CancelButton onClick={() => setShowModal(prev => !prev)}>
+            Отмена
+          </CancelButton>
+          <DeleteButton onClick={() => deleteBox(id)}>Удалить</DeleteButton>
         </ModalButtons>
       </Modal>
     </SettingsContainer>

@@ -11,7 +11,7 @@ const PrivateBox = ({ boxes }) => {
     <PrivateWrapper>
       {boxes.map(box => (
         <div style={{ textAlign: 'center' }}>
-          <BoxInner url={box.cover} onClick={() => navigate('/box')}>
+          <BoxInner url={box.cover} onClick={() => navigate(`/box/${box.id}`)}>
             <img src={tree} alt="Обложка" />
           </BoxInner>
           <StyledName>{box.title}</StyledName>

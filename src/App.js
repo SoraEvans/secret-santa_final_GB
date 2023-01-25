@@ -18,7 +18,11 @@ const App = () => {
   const location = useLocation()
 
   useEffect(() => {
-    setShowHeadFoot(location.pathname !== '/register' && location.pathname !== '/login' && location.pathname !== '/password-reset')
+    setShowHeadFoot(
+      location.pathname !== '/register' &&
+        location.pathname !== '/login' &&
+        location.pathname !== '/password-reset'
+    )
   }, [location])
 
   return (
@@ -33,7 +37,7 @@ const App = () => {
         <Route path="/create-box" element={<BoxCreate />} />
         <Route path="/box-created" element={<BoxDone />} />
 
-        <Route path="/box">
+        <Route path="/box/:id">
           <Route index element={<MyBox />} />
           <Route path="settings" element={<h1>Настройки коробки</h1>} />
           <Route path="participants" element={<h1>Участники</h1>} />
