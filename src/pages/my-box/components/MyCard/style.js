@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import { TextField } from "@mui/material";
+import { TextField } from '@mui/material'
 import { styled as st } from '@mui/material/styles'
-
 
 export const MyCardPage = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding: 46px;
   margin: 40px 0;
   max-width: 1056px;
@@ -43,7 +42,7 @@ export const Price = styled.div`
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  color: #C1C1C1;
+  color: #c1c1c1;
   white-space: nowrap;
 `
 
@@ -60,10 +59,9 @@ export const CardFormLabel = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0 6px 0;
-  
-  a {
 
-color: #FD9797;
+  a {
+    color: #fd9797;
   }
 `
 
@@ -82,5 +80,40 @@ export const TextBlock = styled.div`
 `
 
 export const Input = st(TextField)(() => ({
-  background: '#F7F3F3',
+  background: '#F7F3F3'
 }))
+
+export const ChatBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 25px;
+  width: 50%;
+`
+export const ChatHead = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+export const ChatTitle = styled.h3`
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  line-height: 19px;
+  color: #000000;
+  margin-bottom: 15px;
+`
+export const ChatSubTitle = styled.p`
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 108.02%;
+  text-align: center;
+  color: #a19593;
+  max-width: 322px;
+  margin-bottom: 30px;
+`
