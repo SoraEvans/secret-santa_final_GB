@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ButtonBlock, ButtonText, StartDrawButton } from './style'
-import DB from '../../../../constants/db'
 
-const DrawButton = ({ onClick }) => {
-  const participantsCount = DB.users.length; // Здесь будет подсчёт пользователей
-
-  if (participantsCount < 3) {
+const DrawButton = ({ onClick, userCount }) => {
+  console.log(userCount)
+  if (userCount < 3) {
     return (
       <ButtonBlock>
         <StartDrawButton disabled>Провести жеребьёвку</StartDrawButton>
-        <ButtonText>Сейчас нельзя провести жеребьевку. Для проведения жеребьевки в коробке должно быть как минимум три
-          участника</ButtonText>
+        <ButtonText>
+          Сейчас нельзя провести жеребьевку. Для проведения жеребьевки в коробке
+          должно быть как минимум три участника
+        </ButtonText>
       </ButtonBlock>
     )
   }
@@ -19,18 +19,23 @@ const DrawButton = ({ onClick }) => {
   return (
     <ButtonBlock>
       <StartDrawButton onClick={onClick}>Провести жеребьёвку</StartDrawButton>
-      <ButtonText> Можно провести жеребьевку. Обратите внимание, что после проведения жеребьевки добавить новых
-        участников будет нельзя.</ButtonText>
+      <ButtonText>
+        {' '}
+        Можно провести жеребьевку. Обратите внимание, что после проведения
+        жеребьевки добавить новых участников будет нельзя.
+      </ButtonText>
     </ButtonBlock>
   )
 }
 
 DrawButton.defaultProps = {
-  onClick: () => { }
+  onClick: () => {},
+  userCount: 0
 }
 
 DrawButton.propTypes = {
   onClick: PropTypes.func,
+  userCount: PropTypes.number
 }
 
 export default DrawButton

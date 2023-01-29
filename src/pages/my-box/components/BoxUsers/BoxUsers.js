@@ -25,22 +25,32 @@ const BoxUsers = ({ setActiveIdx }) => {
   const { id } = useParams()
 
   useEffect(() => {
-    fetch('https://backsecsanta.alwaysdata.net/api/box/info', {
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify({
-        box_id: id,
-        user_id: localStorage.getItem('userId')
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.status === 'success') {
-          setUserData(response)
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://backsecsanta.alwaysdata.net/api/box/info',
+          {
+            method: 'POST',
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify({
+              box_id: id,
+              user_id: localStorage.getItem('userId')
+            })
+          }
+        )
+        const data = await response.json()
+
+        if (data.status === 'success') {
+          setUserData(data)
         }
-      })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchData()
   }, [])
 
   const userItem =
@@ -72,7 +82,16 @@ const BoxUsers = ({ setActiveIdx }) => {
       ) : (
         <NoBoxUsers />
       )}
-      {drawDone ? null : <DrawButton onClick={draw} />}
+      {drawDone ? null : (
+        <DrawButton
+          onClick={draw}
+          userCount={
+            userData.secret_santas && userData.secret_santas.length
+              ? userData.secret_santas.length
+              : 0
+          }
+        />
+      )}
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ModalTitle>Жеребьевка проведена!</ModalTitle>
         <ModalSubTitle>
