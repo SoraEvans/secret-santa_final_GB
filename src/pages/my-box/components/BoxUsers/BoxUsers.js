@@ -15,6 +15,7 @@ import {
   ModalSubTitle,
   ModalTitle
 } from '../../../../components/modal/style'
+import BoxInfo from '../box-info/BoxInfo'
 
 // eslint-disable-next-line react/prop-types
 const BoxUsers = ({ setActiveIdx }) => {
@@ -61,7 +62,7 @@ const BoxUsers = ({ setActiveIdx }) => {
         <span>{user.name}</span>
       </UserItem>
     ))
-
+  console.log(userData)
   const draw = () => {
     setDrawDone(true)
     setShowModal(prev => !prev)
@@ -69,6 +70,15 @@ const BoxUsers = ({ setActiveIdx }) => {
 
   return (
     <BoxUsersWrapper>
+      {userData && userData.box && userData.box.title ? (
+        <BoxInfo
+          title={userData.box.title}
+          cover={userData.box.cover}
+          userCount={userData.secret_santas.length}
+        />
+      ) : (
+        <p>Моя коробка</p>
+      )}
       <h2>Участники</h2>
       {userData ? (
         <UsersList>
