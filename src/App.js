@@ -12,6 +12,7 @@ import MyBoxes from './pages/my-boxes/MyBoxes'
 import Profile from './pages/profile/Profile'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
+import Settings from './pages/settings/settings'
 
 const App = () => {
   const [showHeadFoot, setShowHeadFoot] = useState(true)
@@ -39,7 +40,7 @@ const App = () => {
 
         <Route path="/box/:id">
           <Route index element={<MyBox />} />
-          <Route path="settings" element={<h1>Настройки коробки</h1>} />
+          <Route path="settings" element={<Settings />} />
           <Route path="participants" element={<h1>Участники</h1>} />
           <Route path="my-card" element={<h1>Моя карточка</h1>} />
           <Route path="my-giftee" element={<h1>Мой подопечный</h1>} />

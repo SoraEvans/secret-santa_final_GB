@@ -13,7 +13,6 @@ import boxImg from '../../../../assets/images/box.svg'
 import Modal from '../../../../components/modal/modal'
 import { ModalTitle } from '../../../../components/modal/style'
 
-
 const MyBoxSettings = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -45,8 +44,18 @@ const MyBoxSettings = () => {
       <DropdownMenu openMenu={openMenu}>
         <h4>Настройки коробки</h4>
         <ul>
-          <li>
+          {/* <li>
             <span>Кто чей санта?</span>
+          </li> */}
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                navigate(`/box/${id}/settings`)
+              }}
+            >
+              Настройки коробки
+            </button>
           </li>
           <li>
             <button type="button" onClick={openModal}>
@@ -56,16 +65,14 @@ const MyBoxSettings = () => {
         </ul>
       </DropdownMenu>
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <ModalTitle>
-          Вы уверены, что хотите удалить текущую коробку?
-        </ModalTitle>
+        <ModalTitle>Вы уверены, что хотите удалить текущую коробку?</ModalTitle>
         <ModalButtons>
           <CancelButton onClick={() => setShowModal(prev => !prev)}>
             Отмена
           </CancelButton>
           <DeleteButton onClick={() => deleteBox(id)}>Удалить</DeleteButton>
         </ModalButtons>
-        <img src={boxImg} alt='box' />
+        <img src={boxImg} alt="box" />
       </Modal>
     </SettingsContainer>
   )
