@@ -26,7 +26,7 @@ const LoginPage = () => {
           localStorage.setItem('isLoggedIn', true)
           localStorage.setItem('token', response.authorisation.token)
           localStorage.setItem('userId', response.user.id)
-          navigate('/')
+          navigate('/boxes')
         }
       })
   }
