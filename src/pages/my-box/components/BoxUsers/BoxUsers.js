@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
-import DB from '../../../../constants/db'
-import { BoxUsersWrapper, UserItem, UsersList, AddUsersBtn } from './style'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from '../no-box-users/NoBoxUsers'
+import {
+  BoxUsersWrapper,
+  UserItem,
+  UsersList,
+  UserCover,
+  AddUsersBtn
+} from './style'
 import {
   ModalLink,
   ModalSubTitle,
@@ -14,9 +20,37 @@ import {
 const BoxUsers = ({ setActiveIdx }) => {
   const [showModal, setShowModal] = useState(false)
   const [drawDone, setDrawDone] = useState(false)
-  const userItem = DB.users.map(user => (
-    <UserItem key={user.id}>{user.name}</UserItem>
-  ))
+  const [userData, setUserData] = useState({})
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    fetch('https://backsecsanta.alwaysdata.net/api/box/info', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        box_id: id,
+        user_id: localStorage.getItem('userId')
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success') {
+          setUserData(response)
+        }
+      })
+  }, [])
+
+  const userItem =
+    userData.secret_santas &&
+    userData.secret_santas.map(user => (
+      <UserItem key={user.id}>
+        <UserCover>{user.name.charAt(0)}</UserCover>
+        <span>{user.name}</span>
+      </UserItem>
+    ))
 
   const draw = () => {
     setDrawDone(true)
@@ -26,12 +60,12 @@ const BoxUsers = ({ setActiveIdx }) => {
   return (
     <BoxUsersWrapper>
       <h2>Участники</h2>
-      {DB.users.length ? (
+      {userData ? (
         <UsersList>
           {userItem}
           {drawDone ? null : (
             <AddUsersBtn type="submit" onClick={() => setActiveIdx(3)}>
-              + Добавить участников
+              Добавить участников
             </AddUsersBtn>
           )}
         </UsersList>
