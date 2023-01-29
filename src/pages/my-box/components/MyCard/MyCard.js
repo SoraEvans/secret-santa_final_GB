@@ -1,7 +1,7 @@
 import React from 'react'
 import { InputAdornment } from '@mui/material'
 import { CarouselButton } from '../../../home/components/carousel/style'
-import Chat from '../Chat/Chat'
+import Chat from '../ChatBox/Chat'
 import {
   ButtonBlock,
   CardForm,

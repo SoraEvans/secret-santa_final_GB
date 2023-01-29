@@ -21,7 +21,7 @@ import {
   TabsWrapper
 } from './style'
 import ContactDetails from '../ContactDetails/ContactDetails'
-import Chat from '../Chat/Chat'
+import Chat from '../ChatBox/Chat'
 
 const MyWardDetails = () => {
   const price = 1000
