@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ChatDiv = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 434px;
+  max-width: 435px;
   width: 100%;
   height: 399px;
   background-color: #f6f3f3;
@@ -12,6 +12,7 @@ export const ChatDiv = styled.div`
   border: 1px solid #d6ccca;
   border-radius: 3px;
 `
+
 export const ChatInput = styled.div`
   display: flex;
   justify-content: center;
@@ -19,6 +20,7 @@ export const ChatInput = styled.div`
   max-width: 434px;
   width: 100%;
 `
+
 export const MessageDiv = styled.div`
   max-width: 70%;
   width: fit-content;
@@ -29,6 +31,7 @@ export const MessageDiv = styled.div`
   padding: 10px;
   margin-bottom: 20px;
   position: relative;
+
   &:before {
     top: 100%;
     ${({ props }) => (props ? 'right: 0' : 'left: auto;')};
@@ -47,6 +50,7 @@ export const MessageDiv = styled.div`
     margin-left: -10px;
   }
 `
+
 export const MessageText = styled.h3`
   font-family: 'Raleway';
   font-style: normal;
