@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { ButtonBlock, ButtonText, StartDrawButton } from './style'
 
 const DrawButton = ({ onClick, userCount }) => {
-  console.log(userCount)
   if (userCount < 3) {
     return (
       <ButtonBlock>

@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { BoxTitleInner, BoxTitleText } from './style'
 import tree from '../../../../assets/images/elTree.svg'
 
-const BoxInfo = ({ title, cover }) => {
+const BoxInfo = ({ title, cover, userCount }) => {
   // eslint-disable-next-line array-callback-return
-  console.log(title)
+  console.log(userCount)
 
   return (
     <BoxTitleInner>
-      <img src={cover} alt="" />
+      <img src={cover && tree} alt="" width={70} height={70} />
       <BoxTitleText>
-        <h4>{title}</h4>
+        <h4>Коробка: {title}</h4>
+        <p>Участников: {userCount} </p>
       </BoxTitleText>
     </BoxTitleInner>
   )
@@ -19,11 +20,13 @@ const BoxInfo = ({ title, cover }) => {
 
 BoxInfo.defaultProps = {
   title: '',
-  cover: tree
+  cover: tree,
+  userCount: 0
 }
 
 BoxInfo.propTypes = {
   title: PropTypes.string,
-  cover: PropTypes.string
+  cover: PropTypes.string,
+  userCount: PropTypes.number
 }
 export default BoxInfo
