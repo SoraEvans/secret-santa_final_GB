@@ -35,19 +35,52 @@ export const AvatarList = styled.div`
   margin: 10px 0 40px 0;
 `
 
-export const AvatarImg = styled.div`
+export const AvatarImg = styled.button`
   width: 59px;
   height: 59px;
-  background: #FFBFBF;
-  border-radius: 3px;
+  border: none;
+  background-color: #FFFFFF;
+  cursor: pointer;
 `
 
 export const AddAvatarButton = styled.button`
   width: 59px;
   height: 59px;
-  background: #ffd5d5;
-  font-size: 28px;
-  border-radius: 3px;
   border: none;
+  background-color: #FFFFFF;
   cursor: pointer;
 `
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const ErrorText = styled.div`
+  width: 623px;
+  font-size: 22px;
+  line-height: 29px;
+  text-align: center;
+  color: #C6BBB9;
+`
+
+export const ErrorImg = styled.div`
+  margin-top: 48px;
+`
+export const DeleteCardBtn = styled.button`
+  border: none;
+  margin: 20px 0;
+  background: none;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #FF5539;
+  cursor: pointer;
+`
+
+
+

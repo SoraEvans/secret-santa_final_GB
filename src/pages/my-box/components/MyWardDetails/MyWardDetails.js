@@ -8,7 +8,7 @@ import {
   UserInfoBlock,
   UserName
 } from '../MyCard/style'
-import { AvatarImg } from '../../../../components/WardCard/style'
+import { AvatarImg } from '../../../../components/MyCardCreate/style'
 import {
   BodyInner,
   BodyWrapper,

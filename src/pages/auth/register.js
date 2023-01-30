@@ -21,10 +21,14 @@ const RegisterPage = () => {
         password: form.password
       })
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(response => {
-        console.log(response)
-        navigate('/boxes')
+        if (response.status === 'success') {
+          localStorage.setItem('isLoggedIn', true)
+          localStorage.setItem('token', response.authorisation.token)
+          localStorage.setItem('userId', response.user.id)
+          navigate('/boxes')
+        }
       })
   }
 
