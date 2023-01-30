@@ -18,7 +18,8 @@ import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
 import { BtnAdd } from "../../../my-boxes/components/PrivateBox/style";
 
-const BoxUsers = () => {
+// eslint-disable-next-line react/prop-types
+const BoxUsers = ({ setActiveIdx }) => {
   const [showModal, setShowModal] = useState(false)
   const [showModalUsers, setShowModalUsers] = useState(false)
   const [drawDone, setDrawDone] = useState(false)
@@ -58,7 +59,7 @@ const BoxUsers = () => {
   const userItem =
     userData.secret_santas &&
     userData.secret_santas.map(user => (
-      <UserBox>
+      <UserBox onClick={() => setActiveIdx(3)}>
         <UserItem key={user.id}>{user.name[0]}</UserItem>
         {user.name}
       </UserBox>
