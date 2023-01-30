@@ -3,12 +3,14 @@ import { Box, styled, Tab, Tabs } from '@mui/material'
 export const TabsWrapper = styled(Box)`
   position: absolute;
   top: 170px;
-  right: 0;
+  right: -4px;
 `
 
 export const TabsInner = styled(Tabs)`
-  width: 50px;
+  width: 57px;
   border-radius: 4px;
+  border: 1px solid #FF5539;
+  background-color: white;
 
   .MuiTabs-indicator {
     background-color: #ff5539;
@@ -20,16 +22,17 @@ export const TabsInner = styled(Tabs)`
   }
 
   button.Mui-selected {
-    color: #000;
-    background-color: #ff7d68;
+    color: white;
+    background-color: #FF5539;
   }
 `
 
 export const TabItem = styled(Tab)`
   writing-mode: vertical-lr;
-  font-size: 16px;
+  font-family: Raleway;
+  color: #FF5539;
+  font-size: 18px;
   align-self: center;
-  background-color: #f2eeee;
   text-transform: none;
   height: 181px;
 

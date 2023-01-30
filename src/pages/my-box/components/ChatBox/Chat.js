@@ -9,7 +9,8 @@ const Chat = ({ receiverId, cardId }) => {
   const userId = parseInt(localStorage.getItem('userId'), 10)
   const [messages, setMessages] = useState([])
   const [value, setValue] = useState('')
-  async function getMessages() {
+
+  const getMessages = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/chat/get', {
       method: 'POST',
       header: {
@@ -27,6 +28,13 @@ const Chat = ({ receiverId, cardId }) => {
           setMessages(response.message)
         }
       })
+  }
+
+  const intervalMessage = () => {
+    setTimeout(function go() {
+      getMessages()
+      setTimeout(go, 9000);
+    }, 9000);
   }
 
   const sendMessage = async msg => {
@@ -50,9 +58,10 @@ const Chat = ({ receiverId, cardId }) => {
       })
   }
 
-  // setInterval(() => {
-  //   getMessages()
-  // }, 9000)
+  useEffect(() => {
+    getMessages()
+    intervalMessage()
+  }, [])
 
   const handleScrollBottom = useCallback(() => {
     if (ref.current) {
@@ -62,14 +71,14 @@ const Chat = ({ receiverId, cardId }) => {
 
   const handleSendMessage = () => {
     getMessages()
-    sendMessage(value)
+      .then(() => sendMessage(value))
     setValue('')
   }
 
   const handlePressInput = ({ code }) => {
     if (code === 'Enter' && value !== '') {
       sendMessage(value)
-      setValue('')
+        .then(() => setValue(''))
     }
   }
 

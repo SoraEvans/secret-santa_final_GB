@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { BtnAdd } from '../PrivateBox/style'
 
 export const PublicWrapper = styled.div`
   font-family: Raleway;
@@ -9,6 +10,9 @@ export const PublicWrapper = styled.div`
 export const PublicLeftItem = styled.div`
   display: flex;
   column-gap: 30px;
+  flex-flow: wrap;
+  max-height: 440px;
+  overflow: auto;
 `
 
 export const PublicLeftTitle = styled.h4`
@@ -39,4 +43,25 @@ export const StyledIcon = styled.button`
   background-color: #FF5539;
   border-radius: 4px;
   border: none;
+`
+
+export const StyledBoxItem = styled(StyledIcon)`
+  width: 112px;
+  height: 112px;
+
+  transition: background-color 0.2s ease-in, scale 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #de4832;
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`
+
+export const AddPrBox = styled(BtnAdd)`
+  width: 112px;
+  height: 112px;
 `

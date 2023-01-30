@@ -35,8 +35,8 @@ function Profile() {
             <Divider />
             <InputSectionTitle>Личные данные</InputSectionTitle>
             <InputSection>
-              <CustomInput id="first" type="text" placeholder="Name" label="Ваше имя или никнейм" />
-              <CustomInput id="second" type="text" label="Ваш e-mail" />
+              <CustomInput id="first" type="text" label="Ваше имя или никнейм" margin="0 0 24px" />
+              <CustomInput id="second" type="text" label="Ваш e-mail" margin="0 0 24px" />
             </InputSection>
             <Divider />
             <InputSectionTitle>Уведомления</InputSectionTitle>
@@ -51,8 +51,8 @@ function Profile() {
             <Divider />
             <InputSectionTitle>Смена пароля</InputSectionTitle>
             <InputSection>
-              <CustomInput id="pass" type="text" placeholder="new password" label="Новый пароль" />
-              <CustomInput id="confirm" type="text" placeholder="confirm password" label="Подтвердите пароль" />
+              <CustomInput id="pass" type="text" label="Новый пароль" margin="0 0 24px" />
+              <CustomInput id="confirm" type="text" label="Подтвердите пароль" margin="0 0 24px" />
             </InputSection>
             <ProfileButton type="submit">Сохранить изменения</ProfileButton>
             <Divider />

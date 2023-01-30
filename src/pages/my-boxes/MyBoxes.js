@@ -8,7 +8,7 @@ import CustomBoxesHook from '../../helpers/CustomBoxesHook'
 
 const MyBoxes = () => {
   const [tabIdx, setTabIdx] = useState(0)
-  const boxes = CustomBoxesHook()
+  const { boxes, publicBoxes } = CustomBoxesHook()
 
   const handlerChangeTab = (event, newTabIdx) => {
     setTabIdx(newTabIdx)
@@ -22,7 +22,7 @@ const MyBoxes = () => {
           <TabItem label="Публичные коробки" />
         </TabBox>
         <BoxItem>{tabIdx === 0 && <PrivateBox boxes={boxes.privateBoxes} />}</BoxItem>
-        <BoxItem>{tabIdx === 1 && <PublicBox boxes={boxes.publicBoxes} />}</BoxItem>
+        <BoxItem>{tabIdx === 1 && <PublicBox boxes={boxes.publicBoxes} publicBoxes={publicBoxes} />}</BoxItem>
       </BoxWrapper>
     </Container>
   )
