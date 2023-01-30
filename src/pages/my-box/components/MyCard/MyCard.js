@@ -19,7 +19,7 @@ import {
   UserInfoBlock,
   UserName
 } from './style'
-import { AvatarImg } from '../../../../components/WardCard/style'
+import { AvatarImg } from '../../../../components/MyCardCreate/style'
 
 // eslint-disable-next-line react/prop-types
 const MyCard = ({ setActiveIdx }) => {
