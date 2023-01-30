@@ -7,8 +7,7 @@ export const MyCardPage = styled.div`
   justify-content: space-between;
   background-color: #f5f5f5;
   padding: 46px;
-  margin: 40px 0;
-  max-width: 1056px;
+  max-width: 1186px;
 `
 
 export const CardInfo = styled.div`

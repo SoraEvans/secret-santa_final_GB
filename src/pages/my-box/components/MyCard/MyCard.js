@@ -78,7 +78,7 @@ const MyCard = ({ setActiveIdx }) => {
               </CarouselButton>
             </CardForm>
           </CardInfo>
-          <hr width="1" size="100%" />
+          <hr width="1" size="100%" style={{margin: '0 24px'}}/>
           <ChatBlock>
             <div>
               <ChatTitle>Чат с Сантой</ChatTitle>

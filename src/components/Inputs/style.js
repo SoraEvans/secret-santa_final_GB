@@ -29,6 +29,8 @@ export const StyledAuthInput = styled(TextField)`
 `
 
 export const StyledInput = styled(StyledAuthInput)`
+  margin: ${({ margin }) => (margin || "0")};
+
   .MuiOutlinedInput-notchedOutline {
     border: 2px solid #D6CCCA;
     border-radius: 3px;

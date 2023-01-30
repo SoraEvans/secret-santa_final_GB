@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 19px 56px;
+  padding: 19px 295px;
   background: ${props => props.color};
 `
 

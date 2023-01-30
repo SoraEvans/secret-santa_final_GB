@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { StyledIcon } from '../../../my-boxes/components/PublicBox/style'
 
 export const BoxTitleInner = styled.div`
   display: flex;
@@ -17,19 +18,23 @@ export const BoxTitleText = styled.div`
   display: flex;
   flex-direction: column;
   align-self: baseline;
-  row-gap: 5px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway;
+  font-size: 15px;
+  height: 73px;
+  justify-content: space-between;
 
-  h4 {
-    font-weight: 600;
+  h3 {
     font-size: 15px;
-    line-height: 18px;
-    color: #000000;
+    margin-bottom: 3px;
+    font-weight: bold;
   }
-
+  
   p {
-    font-size: 15px;
-    line-height: 18px;
-    color: #c1c1c1;
+    color: #C1C1C1;
   }
+`
+
+export const StyledBoxIcon = styled(StyledIcon)`
+  width: 73px;
+  height: 73px;
 `

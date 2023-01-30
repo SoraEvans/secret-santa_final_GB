@@ -8,69 +8,37 @@ export const SettingsContainer = styled.div`
 export const SettingsTrigger = styled.div`
   display: grid;
   place-content: center;
-  height: 40px;
-  width: 48px;
-  border-radius: 0 6px 6px 0;
+  height: 57px;
+  width: 57px;
+  border-radius: ${({ active }) => (active ? "0" : "3px 0 0 3px")};
   overflow: hidden;
   cursor: pointer;
-  background-color: #f2eeee;
+  background-color: ${({ active }) => (active ? "#F6F3F3" : "#D6CCCA")};
   margin: 0 0 12px 0;
 `
 
 export const DropdownMenu = styled.div`
-  position: absolute;
-  top: 0;
-  right: 58px;
+  font-family: Raleway;
   display: flex;
   flex-direction: column;
-  align-items: center;
   row-gap: 12px;
-  background-color: #f2eeee;
-  width: ${({ openMenu }) => (openMenu ? '200px' : '0')};
-  padding: 14px;
-  height: 120px;
-  border-radius: 6px;
-  visibility: ${({ openMenu }) => (openMenu ? 'visible' : 'hidden')};
-  transition: all 0.1s ease-in-out;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -15px;
-    width: 20px;
-    height: 40px;
-    background-color: #f2eeee;
-  }
-
-  div {
-    opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
-    text-align: center;
-  }
-
-  h4 {
-    text-align: center;
-    margin: 0;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      margin: 0 0 12px 0;
+  background-color: #F6F3F3;
+  padding: 20px 26px;
+  height: 177px;
+  justify-content: space-between;
+  
+  p {
+    cursor: pointer;
+    font-size: 14px;
+    
+    &:last-child {
+      color: #FF5539;
     }
-  }
-
-  a {
-    text-decoration: none;
-    color: red;
   }
 `
 
 export const ModalButtons = styled.div`
-display: flex;
+  display: flex;
 `
 
 export const CancelButton = styled.button`
@@ -81,13 +49,14 @@ export const CancelButton = styled.button`
   text-align: center;
   font-weight: 400;
   font-size: 24px;
-  color: #9B9B9B;
-  background-color: #E2E2E2;
-  border: none;
+  color: #FF5539;
+  background-color: white;
+  border: 1px solid #FF5539;
   cursor: pointer;
+  border-radius: 3px;
 `
 
 export const DeleteButton = styled(CancelButton)`
-background-color: #FFA5A5;
-color: #000000;
+  background-color: #FF5539;
+  color: white;
 `

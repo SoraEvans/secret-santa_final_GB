@@ -55,7 +55,7 @@ export const SantaBoxBtn = styled.div`
 
 export const SantaBoxText = styled.img`
   animation-name: rotation;
-  animation-duration: 7s;
+  animation-duration: 9s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 

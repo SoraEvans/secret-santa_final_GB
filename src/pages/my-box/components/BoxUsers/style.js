@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const BoxUsersWrapper = styled.div`
-  padding: 12px;
   margin: 70px 0 0 0;
 
   h2 {
@@ -17,27 +16,31 @@ export const UsersList = styled.ul`
   list-style: none;
 `
 
-export const UserItem = styled.li`
-  border: 2px solid #ff5539;
-  border-radius: 4px;
-  margin: 0 24px 12px 0;
-  width: 142px;
+export const UserItem = styled.div`
+  margin-bottom: 7px;
+  padding: 12px;
   height: 142px;
-  text-align: center;
+  background-color: white;
+  border-radius: 4px;
+  border: 2px solid #FF5539;
+  color: #FF5539;
+  font-family: "Amatic SC bold";
+  font-size: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 16.3333%;
+  cursor: pointer;
 `
 
-export const UserCover = styled.div`
-  height: inherit;
-  display: grid;
-  place-content: center;
-  margin: 0 0 7px 0;
-  font-family: 'Amatic SC', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 96px;
-  line-height: 121px;
-  color: #ff5539;
-  cursor: pointer;
+export const UserBox = styled.div`
+  max-width: 142px;
+  width: 100%;
+  text-align: center;
+  margin: 0 58px 44px 0;
+  font-size: 13px;
+  color: #8F8F8F;
+  font-family: Raleway;
 `
 
 export const AddUsersBtn = styled(UserItem)`
@@ -53,6 +56,7 @@ export const AddUsersBtn = styled(UserItem)`
   font-size: 14px;
   line-height: 16px;
   color: #ff5539;
+  padding: 20px;
   transition: background-color 0.2s ease-in, scale 0.2s ease-in-out;
 
   &:hover {
