@@ -17,7 +17,8 @@ function BoxDone() {
           <SubTitle style={{ marginBottom: '125px' }}>
             Теперь можно заглянуть внутрь и добавить новых участников, чтобы провести жеребьевку и распределить Сант.
           </SubTitle>
-          <Link to="/box" style={{ textDecoration: 'none' }}>
+          {/* todo сделать навигацию в созданную коробку */}
+          <Link to="/boxes" style={{ textDecoration: 'none' }}>
             <Button type="button">Заглянуть в коробку</Button>
           </Link>
         </div>

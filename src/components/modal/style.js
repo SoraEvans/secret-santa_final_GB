@@ -17,7 +17,7 @@ export const ModalBackground = styled.div`
 export const ModalForm = styled.div`
   padding: ${({ padding }) => (padding || "85px 113px 90px 103px")};
   max-width: 841px;
-  background-color: #f5f5f5;
+  background-color: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   justify-content: center;
