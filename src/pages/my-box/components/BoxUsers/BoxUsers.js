@@ -7,8 +7,7 @@ import {
   BoxUsersWrapper,
   UserItem,
   UsersList,
-  UserCover,
-  AddUsersBtn
+  UserBox
 } from './style'
 import {
   ModalLink,
@@ -16,10 +15,12 @@ import {
   ModalTitle
 } from '../../../../components/modal/style'
 import BoxInfo from '../box-info/BoxInfo'
+import InviteUsers from '../invite-users/InviteUsers'
+import { BtnAdd } from "../../../my-boxes/components/PrivateBox/style";
 
-// eslint-disable-next-line react/prop-types
-const BoxUsers = ({ setActiveIdx }) => {
+const BoxUsers = () => {
   const [showModal, setShowModal] = useState(false)
+  const [showModalUsers, setShowModalUsers] = useState(false)
   const [drawDone, setDrawDone] = useState(false)
   const [userData, setUserData] = useState({})
 
@@ -57,10 +58,10 @@ const BoxUsers = ({ setActiveIdx }) => {
   const userItem =
     userData.secret_santas &&
     userData.secret_santas.map(user => (
-      <UserItem key={user.id}>
-        <UserCover>{user.name.charAt(0)}</UserCover>
-        <span>{user.name}</span>
-      </UserItem>
+      <UserBox>
+        <UserItem key={user.id}>{user.name[0]}</UserItem>
+        {user.name}
+      </UserBox>
     ))
   console.log(userData)
   const draw = () => {
@@ -79,14 +80,13 @@ const BoxUsers = ({ setActiveIdx }) => {
       ) : (
         <p>Моя коробка</p>
       )}
-      <h2>Участники</h2>
       {userData ? (
         <UsersList>
           {userItem}
           {drawDone ? null : (
-            <AddUsersBtn type="submit" onClick={() => setActiveIdx(3)}>
-              Добавить участников
-            </AddUsersBtn>
+            <BtnAdd type="submit" onClick={() => setShowModalUsers(prevState => !prevState)}>
+              Добавить участника
+            </BtnAdd>
           )}
         </UsersList>
       ) : (
@@ -112,6 +112,9 @@ const BoxUsers = ({ setActiveIdx }) => {
           <br /> Или <ModalLink to="/boxes">сбросить</ModalLink> результаты
           жеребьевки.
         </ModalSubTitle>
+      </Modal>
+      <Modal padding="85px 60px 90px 103px" showModal={showModalUsers} setShowModal={setShowModalUsers}>
+        <InviteUsers />
       </Modal>
     </BoxUsersWrapper>
   )

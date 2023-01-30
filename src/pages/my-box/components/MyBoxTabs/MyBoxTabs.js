@@ -16,7 +16,7 @@ const MyBoxTabs = () => {
   return (
     <>
       <TabsWrapper>
-        <MyBoxSettings />
+        <MyBoxSettings setActiveIdx={setActiveIdx} />
         <TabsInner
           orientation="vertical"
           value={activeIdx}
@@ -27,7 +27,7 @@ const MyBoxTabs = () => {
           <TabItem label={<div>Мой подопечный</div>} />
         </TabsInner>
       </TabsWrapper>
-      <TabBody>{activeIdx === 0 && <BoxUsers setActiveIdx={setActiveIdx} />}</TabBody>
+      <TabBody>{activeIdx === 0 && <BoxUsers />}</TabBody>
       <TabBody>{activeIdx === 1 && <MyCard setActiveIdx={setActiveIdx} />}</TabBody>
       <TabBody>{activeIdx === 2 && <WardCard setActiveIdx={setActiveIdx} />}</TabBody>
       <TabBody>{activeIdx === 3 && <MembersAdding />}</TabBody>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BoxTitleInner, BoxTitleText } from './style'
+import { BoxTitleInner, BoxTitleText, StyledBoxIcon } from './style'
 import tree from '../../../../assets/images/elTree.svg'
 
 const BoxInfo = ({ title, cover, userCount }) => {
@@ -9,10 +9,15 @@ const BoxInfo = ({ title, cover, userCount }) => {
 
   return (
     <BoxTitleInner>
-      <img src={cover && tree} alt="" width={70} height={70} />
+      <StyledBoxIcon>
+        <img src={cover && tree} alt={tree} style={{ width: 34 }} width={70} height={70} />
+      </StyledBoxIcon>
       <BoxTitleText>
-        <h4>Коробка: {title}</h4>
-        <p>Участников: {userCount} </p>
+        <div>
+          <h3>Коробка: {title}</h3>
+          <p>Участников: {userCount}</p>
+        </div>
+        <p>Вы организатор</p>
       </BoxTitleText>
     </BoxTitleInner>
   )

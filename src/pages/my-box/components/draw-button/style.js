@@ -12,9 +12,9 @@ export const StartDrawButton = st(Button)({
   textAlign: 'center',
   fontWeight: '400',
   fontSize: '20px',
-  margin: '47px 0 17px 0',
-  height: '81px',
-  width: '291px',
+  margin: '0 0 17px 0',
+  height: '68px',
+  width: '280px',
   backgroundColor: '#FF5539',
   border: 'none',
   color: '#fff',
@@ -32,6 +32,8 @@ export const StartDrawButton = st(Button)({
 })
 
 export const ButtonText = styled.div`
+  font-family: Raleway;
+  font-size: 13px;
   width: 291px;
   color: #979797;
 `

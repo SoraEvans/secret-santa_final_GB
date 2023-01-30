@@ -3,35 +3,38 @@ import styled from 'styled-components'
 import { styled as st } from '@mui/material/styles'
 
 export const Form = styled.form`
-  padding: 30px 4px;
   max-height: 300px;
-  overflow: auto;
+  overflow-y: auto;
   scroll-behavior: smooth;
+  padding-right: 80px;
 `
+
 export const InputWrapper = st(Box)({
+  position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  rowGap: '8px',
-  padding: '8px 0'
+  width: '600px'
 })
 
-export const Input = styled.input`
-  width: 299px;
-  height: 44px;
-  background-color: #f6f3f3;
-  border: 2px solid #cdcccc;
-  font-size: 15px;
-  color: #979797;
-  padding: 10px;
-  margin: 0 8px 0 0;
-`
 export const AddBtn = st(Button)({
-  minWidth: '40px',
-  height: '40px'
+  border: '1px solid #FF5539',
+  color: '#FF5539',
+  fontSize: 32,
+  position: 'absolute',
+  right: '-78px',
+  top: 0,
+  minWidth: '56px',
+  height: '56px',
+  margin: '0 0 6px'
 })
 
 export const RemoveBtn = st(Button)({
-  minWidth: '40px',
-  height: '40px',
-  color: 'red'
+  border: '1px solid #D6CCCA',
+  color: '#D6CCCA',
+  position: 'absolute',
+  right: '-78px',
+  top: 0,
+  minWidth: '56px',
+  height: '56px',
+  margin: '0 0 6px'
 })

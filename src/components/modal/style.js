@@ -13,9 +13,10 @@ export const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 export const ModalForm = styled.div`
-  width: 750px;
-  height: 522px;
+  padding: ${({ padding }) => (padding || "85px 113px 90px 103px")};
+  max-width: 841px;
   background-color: #f5f5f5;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
@@ -25,12 +26,14 @@ export const ModalForm = styled.div`
   border-radius: 10px;
   z-index: 10;
 `
+
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `
+
 export const ModalCloseButton = styled.img`
   width: 33.5px;
   height: 33.5px;
@@ -38,25 +41,29 @@ export const ModalCloseButton = styled.img`
   top: 5px;
   right: 5px;
 `
+
 export const ModalTitle = styled.h1`
-  font-family: 'Inter';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 29px;
   text-align: center;
   color: #000000;
+  margin-bottom: 9px;
 `
+
 export const ModalSubTitle = styled.p`
-  font-family: 'Inter';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 150.02%;
   text-align: center;
   color: #979797;
-  max-width: 478px;
+  margin-bottom: 14px;
 `
+
 export const ModalLink = styled(Link)`
   font-family: 'Inter';
   font-style: normal;

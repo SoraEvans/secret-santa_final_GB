@@ -14,7 +14,7 @@ const PrivateBox = ({ boxes }) => {
           <BoxInner url={box.cover} onClick={() => navigate(`/box/${box.id}`)}>
             <img src={tree} alt="Обложка" />
           </BoxInner>
-          <StyledName>{box.title}</StyledName>
+          <StyledName size={13}>{box.title}</StyledName>
         </div>
       ))}
       <BtnAdd onClick={() => navigate('/create-box')}>Добавить коробку</BtnAdd>

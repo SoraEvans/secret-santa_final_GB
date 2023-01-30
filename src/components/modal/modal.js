@@ -6,8 +6,9 @@ import {
   ModalContent,
   ModalForm,
 } from './style'
+import closeIcon from '../../assets/images/ModalCloseButton.svg'
 
-const Modal = ({ showModal, setShowModal, children }) => {
+const Modal = ({ showModal, setShowModal, children, padding }) => {
   const modalRef = useRef()
 
   const closeModal = event => {
@@ -33,12 +34,12 @@ const Modal = ({ showModal, setShowModal, children }) => {
   if (showModal === true) {
     return (
       <ModalBackground onClick={closeModal} ref={modalRef}>
-        <ModalForm>
+        <ModalForm padding={padding}>
           <ModalContent showModal={showModal}>
             {children}
 
             <ModalCloseButton
-              src="/img/ModalCloseButton.svg"
+              src={closeIcon}
               alt="Закрыть"
               onClick={() => setShowModal(prev => !prev)}
             />
@@ -52,13 +53,15 @@ const Modal = ({ showModal, setShowModal, children }) => {
 
 Modal.defaultProps = {
   showModal: false,
-  children: ""
+  children: "",
+  padding: ''
 }
 
 Modal.propTypes = {
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func.isRequired,
-  children: PropTypes.any
+  children: PropTypes.any,
+  padding: PropTypes.string
 }
 
 export default Modal
