@@ -32,23 +32,56 @@ const MyCardCreate = () => {
   const [cardCreated, setCardCreated] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
+  const { id } = useParams()
+  const boxInfo = BoxInfoHook(id)
+  let adminId
+  let isAdmin = true
+  if(boxInfo.box && boxInfo.box.creator_id){
+     adminId = boxInfo.box.creator_id
+    isAdmin = Boolean(adminId.toString()===localStorage.getItem('userId'))
+  }
+
   const createCard = () => {
     setCardCreated(true)
+    console.log(isAdmin)
   }
   const deleteCard = () => {
     setCardCreated(false)
   }
+
+  const updateCard = async () => {
+    console.log('Данные обновлены')
+  }
+
+/*
+  const updateCard = async () => {
+    await fetch('https://backsecsanta.alwaysdata.net/card/update', {
+      method: 'PATCH',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        name: 'Test',
+        email: 'test@test.com',
+        image: 'random.image.ru',
+        user_id: 20,
+        box_id: 92,
+      })
+    })
+  }
+*/
+
+
   const openModal = () => {
     setShowModal(prev => !prev)
   }
 
-  const { id } = useParams()
-  const boxInfo = BoxInfoHook(id)
+
   const fileRef = useRef(null);
   const secretSantasWards = boxInfo.secret_santas_ward
   const drawDone = Object.keys(secretSantasWards || {}).length;
 
-  const isAdmin = true;
+
   const user = {
     "name": "Имя",
     "email": "blabla@mail.ru"
@@ -108,7 +141,7 @@ const MyCardCreate = () => {
         {cardCreated
           ?
           <div>
-            <CarouselButton type='button' onClick={createCard}
+            <CarouselButton type='button' onClick={updateCard}
                             style={{ margin: 0, width: 150, height: 45, fontSize: 13 }}
             >
               Сохранить изменения
