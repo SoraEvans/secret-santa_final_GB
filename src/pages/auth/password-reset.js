@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthForm, Credits, StyledRegBtn } from './auth-styles'
@@ -14,18 +15,31 @@ import SchemaValidation from '../../helpers/schemas/SchemaValidation'
 
 const PasswordResetPage = () => {
   const [form, setForm] = useState({ email: '' })
-
+  const navigate = useNavigate()
   const handleChangeForm = e => {
     const field = e.target.getAttribute('id')
     setForm({
       ...form,
       [field]: e.target.value
     })
-
-    console.log(field)
   }
-  const onSubmit = form => {
-    console.log(form)
+  const onSubmit = async form => {
+    await fetch('https://backsecsanta.alwaysdata.net/api/user/restore', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        email: form.email
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success') {
+          navigate('/login')
+        }
+        console.log(response)
+      })
   }
 
   const {
@@ -64,9 +78,9 @@ const PasswordResetPage = () => {
         <img className="reg-branch" src={btnBranch} alt="" />
         <StyledRegBtn
           variant="outlined"
-          // onClick={() => {
-          //   onSubmit(form)
-          // }}
+          onClick={() => {
+            onSubmit(form)
+          }}
         >
           Отправить
         </StyledRegBtn>
