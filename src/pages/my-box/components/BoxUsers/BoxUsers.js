@@ -60,9 +60,19 @@ const BoxUsers = ({ setActiveIdx }) => {
       </UserBox>
     ))
 
-  const draw = () => {
-    setDrawDone(true)
-    setShowModal(prev => !prev)
+  const draw = async () => {
+    await fetch('https://backsecsanta.alwaysdata.net/api/box/draw', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        box_id: id
+      })
+    }).then(() => {
+      setDrawDone(true)
+      setShowModal(prev => !prev)
+    })
   }
 
   return (
