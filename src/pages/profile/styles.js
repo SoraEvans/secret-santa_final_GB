@@ -3,7 +3,7 @@ import { styled as st } from '@mui/material/styles'
 import { Button, Switch } from '@mui/material'
 
 export const PageBackground = styled.div`
-  background-image: url("img/Snowflake-Background-PNG.svg");
+  background-image: url("/img/Snowflake-Background-PNG.svg");
   background-position: bottom -250px right 0;
   background-repeat: no-repeat;
   font-family: Raleway !important

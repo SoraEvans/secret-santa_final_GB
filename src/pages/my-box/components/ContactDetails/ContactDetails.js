@@ -1,5 +1,5 @@
 import React from 'react'
-import { InfoBox, InfoLabel, NoInfoText } from "./style";
+import { Details, InfoBox, InfoLabel, NoInfoText } from "./style";
 
 const ContactDetails = () => {
 
@@ -10,12 +10,12 @@ const ContactDetails = () => {
     <div>
       {cardCreated
         ?
-        <div>
+        <Details>
           <InfoLabel>Адрес, на который присылать подарок</InfoLabel>
           <InfoBox>МО, г. Иваново, ул. Новосельская, 34. Индекс 412902</InfoBox>
           <InfoLabel>Номер телефона </InfoLabel>
           <InfoBox>+79008070601</InfoBox>
-        </div>
+        </Details>
         :
         <NoInfoText>
           Ваш подопечный не указал контактные данные.

@@ -3,12 +3,11 @@ import React, { useState } from 'react'
 import santa from '../../../../assets/images/santa.svg'
 import {
   Price,
-  PriceAmount,
+  PriceAmount, StyledHr,
   UserInfo,
   UserInfoBlock,
   UserName
 } from '../MyCard/style'
-import { AvatarImg } from '../../../../components/MyCardCreate/style'
 import {
   BodyInner,
   BodyWrapper,
@@ -22,6 +21,7 @@ import {
 } from './style'
 import ContactDetails from '../ContactDetails/ContactDetails'
 import Chat from '../ChatBox/Chat'
+import { UserItem } from "../BoxUsers/style";
 
 const MyWardDetails = () => {
   const price = 1000
@@ -36,7 +36,15 @@ const MyWardDetails = () => {
     <MyWardPage>
       <MyWardInfo>
         <UserInfoBlock>
-          <AvatarImg style={{ width: '70px', height: '70px' }} />
+          <UserItem style={{
+            flex: '1 0 auto',
+            aspectRatio: '1 / 1',
+            fontSize: '48px',
+            maxWidth:'70px',
+            maxHeight:'70px',
+            cursor: 'default' }}>
+            И
+          </UserItem>
           <UserInfo>
             <UserName>Имя Участника</UserName>
             <Price>Ваш подопечный</Price>
@@ -49,16 +57,17 @@ const MyWardDetails = () => {
         <BodyInner>
           <TabsWrapper>
             <TabsInner
+
               orientation="vertical"
               value={activeIndex}
               onChange={handlerChangeTab}
             >
-              <TabItem label={<div>Чат с подопечным</div>} />
-              <TabItem label={<div>Контакты подопечного</div>} />
+              <TabItem style={{minHeight:"233px", alignSelf: "flex-start"}} label={<div>Чат с подопечным</div>} />
+              <TabItem style={{minHeight:"233px", alignSelf: "flex-start"}} label={<div>Контакты подопечного</div>} />
             </TabsInner>
           </TabsWrapper>
           <BodyWrapper>
-            <TabBody style={{ width: '380px' }}>
+            <TabBody style={{ margin: 0 }}>
               {/* убрать хардкод */}
               {activeIndex === 0 && (
                 <Chat
@@ -76,7 +85,7 @@ const MyWardDetails = () => {
           </BodyWrapper>
         </BodyInner>
       </MyWardInfo>
-      <hr width="1" size="100%" />
+      <StyledHr width="1" size="100%"/>
       <SantaImg>
         <img alt="santa" src={santa} width="100%" />
       </SantaImg>

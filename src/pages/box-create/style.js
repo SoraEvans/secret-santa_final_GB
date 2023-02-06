@@ -162,8 +162,8 @@ export const CostInput = styled.input`
   color: #000000;
 `
 
-export const Img = styled.img`
-  margin-left: 320px;
+export const Img = styled.div`
+
 `
 
 export const Button = styled.button`
@@ -219,18 +219,24 @@ export const AntSwitch = st(Switch)(() => ({
 
 export const ContainerBoxCreated = styled.div`
   display: flex;
-  max-width: 750px;
-  justify-content: space-around;
-  margin: 0 auto;
+  justify-content: space-between;
+  row-gap: 87px;
+  width: 100%;
+  margin: auto;
+  padding: 100px 385px 80px;
+
+`
+export const BoxCreated = styled.div`
+  max-width: 535px;
 `
 
 export const TitleBoxCreated = styled.h1`
-  font-family: 'Amatic SC bold';
+  font-family: 'Amatic SC';
   font-style: normal;
-  font-weight: 600;
-  font-size: 58px;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 121px;
   margin: 0 0 12px;
-  line-height: 77px;
   color: #000000;
 `
 export const SubTitleBoxCreated = styled.p`
