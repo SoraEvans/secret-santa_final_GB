@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Divider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import Container from '../../components/style_cont'
 import {
   PageBackground,
@@ -16,6 +18,7 @@ import {
   RemoveDesc
 } from './styles'
 import { CustomInput } from '../../components/Inputs/Inputs'
+import SchemaValidation from '../../helpers/schemas/SchemaValidation'
 
 function Profile() {
   const [state, setState] = useState({
@@ -95,7 +98,7 @@ function Profile() {
             <h2>Настройки профиля</h2>
             <StyledLink onClick={() => logOut()}>Выйти с сайта</StyledLink>
           </ProfileTop>
-          <ProfileForm>
+          <ProfileForm onSubmit={handleSubmit(onSubmit)}>
             <Divider />
             <InputSectionTitle>Личные данные</InputSectionTitle>
             <InputSection>
@@ -178,7 +181,6 @@ function Profile() {
                 Сохранить изменения
               </ProfileButton>
             )}
-
             <Divider />
             <InputSectionTitle>Удаление профиля</InputSectionTitle>
             <RemoveDesc>

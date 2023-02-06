@@ -1,24 +1,31 @@
 import styled from 'styled-components'
 
+
+export const ChatWrapper = styled.div`
+background-color: #f6f3f3;
+  border: 1px solid #d6ccca;
+  border-radius: 3px;
+  width: 100%;
+  height: 450px;
+`
 export const ChatDiv = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 435px;
+  height: 360px;
   width: 100%;
-  height: 399px;
-  background-color: #f6f3f3;
   overflow-y: auto;
-  padding: 20px;
-  border: 1px solid #d6ccca;
-  border-radius: 3px;
+  padding: 20px 20px 20px 34px;
 `
 
 export const ChatInput = styled.div`
   display: flex;
   justify-content: center;
-  background-color: #f6f3f3;
-  max-width: 434px;
-  width: 100%;
+  padding: 0 8px;
+  background: #FFFFFF;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  margin: 16px 34px 22px;
+  min-height: 49px;
 `
 
 export const MessageDiv = styled.div`

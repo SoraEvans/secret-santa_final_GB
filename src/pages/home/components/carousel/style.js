@@ -40,7 +40,7 @@ export const CarouselButton = styled.button`
   border-radius: 4px;
 
   &:hover {
-    background-color: #ff4f32;
+    background-color: #FF5539;
   }
 `
 

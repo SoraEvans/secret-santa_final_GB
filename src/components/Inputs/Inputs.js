@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { StyledAuthInput, StyledInput } from './style'
 
-export const AuthInput = (props) => <StyledAuthInput fullWidth {...props} />
+export const AuthInput = forwardRef((props, ref) => (
+  <StyledAuthInput fullWidth {...props} inputRef={ref} />
+))
 
-export const CustomInput = (props) => <StyledInput fullWidth {...props} />
+export const CustomInput = forwardRef((props, ref) => (
+  <StyledInput fullWidth {...props} inputRef={ref} />
+))

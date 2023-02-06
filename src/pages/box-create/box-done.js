@@ -5,26 +5,35 @@ import {
   ContainerBoxCreated,
   SubTitle,
   TitleBoxCreated,
-  Container, Img
+  Img, BoxCreated
 } from './style'
+import BoxImg from '../../assets/images/opening-box.svg'
+
 
 function BoxDone() {
   return (
-    <Container>
+
       <ContainerBoxCreated>
-        <div>
+        <BoxCreated>
           <TitleBoxCreated>Коробка создана!</TitleBoxCreated>
-          <SubTitle style={{ marginBottom: '125px' }}>
+          <SubTitle style={{
+            marginBottom: '125px',
+            fontSize: '24px',
+            lineHeight: '34px',
+            color: '#A19593'
+          }}>
             Теперь можно заглянуть внутрь и добавить новых участников, чтобы провести жеребьевку и распределить Сант.
           </SubTitle>
           {/* todo сделать навигацию в созданную коробку */}
           <Link to="/boxes" style={{ textDecoration: 'none' }}>
             <Button type="button">Заглянуть в коробку</Button>
           </Link>
-        </div>
-        <Img src="img/Group.png" alt="alt" />
+        </BoxCreated>
+        <Img>
+          <img alt="box" src={BoxImg}/>
+        </Img>
       </ContainerBoxCreated>
-    </Container>
+
   )
 }
 
