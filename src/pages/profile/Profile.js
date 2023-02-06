@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Divider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import Container from '../../components/style_cont'
@@ -19,8 +19,8 @@ import { CustomInput } from '../../components/Inputs/Inputs'
 
 function Profile() {
   const [state, setState] = useState({
-    name: null,
-    email: null,
+    name: '',
+    email: '',
     notifications: false,
     password: null,
     confirm_password: null
@@ -32,7 +32,27 @@ function Profile() {
     localStorage.clear()
     navigate('/')
   }
-  console.log(state)
+
+  useEffect(() => {
+    fetch(`https://backsecsanta.alwaysdata.net/api/user/info/${id}`, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify()
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success') {
+          setState({
+            ...state,
+            name: response.user.name,
+            email: response.user.email
+          })
+        }
+      })
+  }, [])
+
   const onSubmitSave = async state => {
     await fetch(`https://backsecsanta.alwaysdata.net/api/user/update/${id}`, {
       method: 'PATCH',
@@ -49,7 +69,7 @@ function Profile() {
       .then(response => response.json())
       .then(response => {
         if (response.status === 'success') {
-          // navigate('/box-created')
+          alert(response.message)
         }
       })
   }
@@ -82,10 +102,12 @@ function Profile() {
               <CustomInput
                 id="first"
                 type="text"
+                autoComplete="off"
                 label="Ваше имя или никнейм"
                 margin="0 0 24px"
-                data-name="name"
-                // onChange={handleChangeState}
+                value={state.name}
+                error={state.name === '' ? 'Заполните поле' : false}
+                helperText={state.name === '' ? 'Заполните поле' : null}
                 onChange={event =>
                   setState({
                     ...state,
@@ -96,8 +118,10 @@ function Profile() {
               <CustomInput
                 id="second"
                 type="email"
+                autoComplete="off"
                 label="Ваш e-mail"
                 margin="0 0 24px"
+                value={state.email}
                 onChange={event =>
                   setState({
                     ...state,
@@ -132,20 +156,27 @@ function Profile() {
             <InputSection>
               <CustomInput
                 id="pass"
-                type="password"
+                type="text"
+                autoComplete="off"
                 label="Новый пароль"
                 margin="0 0 24px"
               />
               <CustomInput
                 id="confirm"
-                type="password"
+                type="text"
+                autoComplete="off"
                 label="Подтвердите пароль"
                 margin="0 0 24px"
               />
             </InputSection>
-            <ProfileButton type="button" onClick={() => onSubmitSave(state)}>
-              Сохранить изменения
-            </ProfileButton>
+            {(state.name && state.email) === '' ? (
+              <ProfileButton disabled>Сохранить изменения</ProfileButton>
+            ) : (
+              <ProfileButton type="button" onClick={() => onSubmitSave(state)}>
+                Сохранить изменения
+              </ProfileButton>
+            )}
+
             <Divider />
             <InputSectionTitle>Удаление профиля</InputSectionTitle>
             <RemoveDesc>
