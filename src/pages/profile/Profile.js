@@ -122,6 +122,8 @@ function Profile() {
                 label="Ваш e-mail"
                 margin="0 0 24px"
                 value={state.email}
+                error={state.email === '' ? 'Заполните поле' : false}
+                helperText={state.email === '' ? 'Заполните поле' : null}
                 onChange={event =>
                   setState({
                     ...state,
