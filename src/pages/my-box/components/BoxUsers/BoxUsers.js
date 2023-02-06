@@ -3,12 +3,7 @@ import { useParams } from 'react-router-dom'
 import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from '../no-box-users/NoBoxUsers'
-import {
-  BoxUsersWrapper,
-  UserItem,
-  UsersList,
-  UserBox
-} from './style'
+import { BoxUsersWrapper, UserItem, UsersList, UserBox } from './style'
 import {
   ModalLink,
   ModalSubTitle,
@@ -16,7 +11,7 @@ import {
 } from '../../../../components/modal/style'
 import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
-import { BtnAdd } from "../../../my-boxes/components/PrivateBox/style";
+import { BtnAdd } from '../../../my-boxes/components/PrivateBox/style'
 
 // eslint-disable-next-line react/prop-types
 const BoxUsers = ({ setActiveIdx }) => {
@@ -64,7 +59,7 @@ const BoxUsers = ({ setActiveIdx }) => {
         {user.name}
       </UserBox>
     ))
-  console.log(userData)
+
   const draw = () => {
     setDrawDone(true)
     setShowModal(prev => !prev)
@@ -85,7 +80,10 @@ const BoxUsers = ({ setActiveIdx }) => {
         <UsersList>
           {userItem}
           {drawDone ? null : (
-            <BtnAdd type="submit" onClick={() => setShowModalUsers(prevState => !prevState)}>
+            <BtnAdd
+              type="submit"
+              onClick={() => setShowModalUsers(prevState => !prevState)}
+            >
               Добавить участника
             </BtnAdd>
           )}
@@ -114,7 +112,11 @@ const BoxUsers = ({ setActiveIdx }) => {
           жеребьевки.
         </ModalSubTitle>
       </Modal>
-      <Modal padding="85px 60px 90px 103px" showModal={showModalUsers} setShowModal={setShowModalUsers}>
+      <Modal
+        padding="85px 60px 90px 103px"
+        showModal={showModalUsers}
+        setShowModal={setShowModalUsers}
+      >
         <InviteUsers />
       </Modal>
     </BoxUsersWrapper>
