@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Cover from '../../components/CoverCarousel/Cover'
+import BOX_CREATE_IMG from '../../constants/box-create-img'
 import {
   Head,
   Title,
@@ -9,9 +11,9 @@ import {
   Div,
   Label,
   P,
-  CoverButton,
+  // CoverButton,
   DivInput,
-  Cover,
+  CoverDiv,
   SmallInput,
   SmallLabel,
   CancellButton,
@@ -102,24 +104,18 @@ const BoxCreate = () => {
           />
           <Label for="title">Название коробки</Label>
         </DivInput>
-        <Cover>
+        <CoverDiv>
           <P>Обложка коробки</P>
-          <CoverButton
-            data-name="cover"
-            onClick={handleChangeForm}
-            type="button"
-          >
-            +
-          </CoverButton>
-        </Cover>
+          <Cover img={BOX_CREATE_IMG} />
+        </CoverDiv>
         <Div>
           <div>
             <P>Анонимность участников</P>
             <SubTitleBoxCreated>
-              При включенной опции участники будут видеть имена других
-              игроков. Когда опция выключена, участники будут видеть только
-              аватарки игроков и имя своего подопечного. Организатор будет
-              видеть имена игроков вне зависимости от состояния опции.
+              При включенной опции участники будут видеть имена других игроков.
+              Когда опция выключена, участники будут видеть только аватарки
+              игроков и имя своего подопечного. Организатор будет видеть имена
+              игроков вне зависимости от состояния опции.
             </SubTitleBoxCreated>
           </div>
           <AntSwitch
@@ -133,8 +129,8 @@ const BoxCreate = () => {
           <div>
             <P>Добавить в карточку почтовый адрес</P>
             <SubTitleBoxCreated>
-              При включенной опции участникам нужно будет указать свой
-              почтовый адрес в карточке.
+              При включенной опции участникам нужно будет указать свой почтовый
+              адрес в карточке.
             </SubTitleBoxCreated>
           </div>
 
@@ -147,9 +143,7 @@ const BoxCreate = () => {
         </Div>
         <Div
           style={
-            state.isPublic
-              ? { marginBottom: '38px' }
-              : { marginBottom: '85px' }
+            state.isPublic ? { marginBottom: '38px' } : { marginBottom: '38px' }
           }
         >
           <div>
@@ -157,9 +151,9 @@ const BoxCreate = () => {
             <SubTitleBoxCreated>
               При включенной опции к вашей коробке смогут присоединиться
               случайные пользователи. Необходимо будет указать максимальное
-              число участников для коробки, а также выбрать дату
-              автомвтического проведения жеребьевки. Жеребьевка будет
-              проведена независимо от достижения максимума участников.
+              число участников для коробки, а также выбрать дату автомвтического
+              проведения жеребьевки. Жеребьевка будет проведена независимо от
+              достижения максимума участников.
             </SubTitleBoxCreated>
           </div>
           <AntSwitch
@@ -202,17 +196,15 @@ const BoxCreate = () => {
         <div>
           <Div
             style={
-              state.limit
-                ? { marginBottom: '20px' }
-                : { marginBottom: '85px' }
+              state.limit ? { marginBottom: '20px' } : { marginBottom: '38px' }
             }
           >
             <div>
               <P>Ограничить стоимость подарков</P>
               <SubTitleBoxCreated>
                 При включенной опции участникам будет показано ограничение,
-                которому они должны будут следовать. Ограничение будет
-                показано на странице подопечного
+                которому они должны будут следовать. Ограничение будет показано
+                на странице подопечного
               </SubTitleBoxCreated>
             </div>
             <AntSwitch
@@ -242,10 +234,7 @@ const BoxCreate = () => {
           <CancellButton type="button" onClick={() => navigate('/boxes')}>
             Отмена
           </CancellButton>
-          <CreateButton
-            type="button"
-            onClick={() => onSubmit(state)}
-          >
+          <CreateButton type="button" onClick={() => onSubmit(state)}>
             Создать коробку
           </CreateButton>
         </ButtonsDiv>

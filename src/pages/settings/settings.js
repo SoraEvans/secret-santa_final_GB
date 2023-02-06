@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import Cover from '../../components/CoverCarousel/Cover'
+import BOX_CREATE_IMG from '../../constants/box-create-img'
 import {
   Head,
   Title,
@@ -8,9 +10,9 @@ import {
   Div,
   Label,
   P,
-  CoverButton,
+  // CoverButton,
   DivInput,
-  Cover,
+  CoverDiv,
   SmallInput,
   SmallLabel,
   CancellButton,
@@ -100,16 +102,10 @@ const Settings = () => {
           />
           <Label for="title">Название коробки</Label>
         </DivInput>
-        <Cover>
+        <CoverDiv>
           <P>Обложка коробки</P>
-          <CoverButton
-            data-name="cover"
-            onClick={handleChangeForm}
-            type="button"
-          >
-            +
-          </CoverButton>
-        </Cover>
+          <Cover img={BOX_CREATE_IMG} />
+        </CoverDiv>
         <Div>
           <div>
             <P>Анонимность участников</P>
@@ -145,7 +141,7 @@ const Settings = () => {
         </Div>
         <Div
           style={
-            state.isPublic ? { marginBottom: '38px' } : { marginBottom: '85px' }
+            state.isPublic ? { marginBottom: '38px' } : { marginBottom: '38px' }
           }
         >
           <div>
@@ -198,7 +194,7 @@ const Settings = () => {
         <div>
           <Div
             style={
-              state.limit ? { marginBottom: '20px' } : { marginBottom: '85px' }
+              state.limit ? { marginBottom: '20px' } : { marginBottom: '38px' }
             }
           >
             <div>
