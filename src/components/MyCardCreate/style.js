@@ -2,6 +2,13 @@ import styled from "styled-components";
 
 export const CreateCardWrapper = styled.div`
   margin-top: 20px;
+  font-family: Raleway;
+
+  h3 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 26px;
+  }
 `
 
 export const FormLabel = styled.div`
@@ -15,6 +22,7 @@ export const FormLabel = styled.div`
 export const InputSection = styled.div`
   display: flex;
   flex-direction: column;
+  width: 300px;
 `
 
 export const Input = styled.input`
@@ -35,15 +43,7 @@ export const AvatarList = styled.div`
   margin: 10px 0 40px 0;
 `
 
-export const AvatarImg = styled.button`
-  width: 59px;
-  height: 59px;
-  border: none;
-  background-color: #FFFFFF;
-  cursor: pointer;
-`
-
-export const AddAvatarButton = styled.button`
+export const AvatarImg = styled.div`
   width: 59px;
   height: 59px;
   border: none;

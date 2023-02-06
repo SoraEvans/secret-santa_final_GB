@@ -12,7 +12,7 @@ export const MyWardInfo = styled(CardInfo)`
 export const SantaImg = styled.div`
   width: 50%;
   display: flex;
-  `
+`
 
 export const TabsWrapper = st(Box)`
 
@@ -20,9 +20,9 @@ export const TabsWrapper = st(Box)`
 `
 
 export const BodyInner = styled.div`
-display: flex;
-margin: 54px 0 43px 0;
-height: 466px;
+  display: flex;
+  margin: 54px 0 43px 0;
+  height: 466px;
 `
 
 export const TabsInner = st(Tabs)`
@@ -74,12 +74,11 @@ export const TabItem = st(Tab)`
   }
 `
 export const BodyWrapper = styled.div`
-
-background-color: #F6F3F3;
-border: 2px solid #E4E4E4;
-border-radius: 0 4px 4px 0;
-margin-left: -2px;
-width: 100%;
+  background-color: #F6F3F3;
+  border: 2px solid #E4E4E4;
+  border-radius: 0 4px 4px 0;
+  margin-left: -2px;
+  width: 100%;
 `
 
 

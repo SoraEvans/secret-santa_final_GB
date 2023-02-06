@@ -8,21 +8,25 @@ import { InputWrapper, Form, AddBtn, RemoveBtn } from './style'
 import { CustomInput } from '../../../../components/Inputs/Inputs'
 import { ModalSubTitle, ModalTitle } from '../../../../components/modal/style'
 import SchemaValidation from '../../../../helpers/schemas/SchemaValidation'
+import sendInvites from '../../../../API/sendInvites'
+import getBoxInfo from '../../../../API/boxInfo'
 
-const InviteUsers = () => {
+// eslint-disable-next-line react/prop-types
+const InviteUsers = ({ id, setUserData }) => {
   const [open, setOpen] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm({
-    mode: 'onBlur',
+    mode: 'all',
     resolver: yupResolver(SchemaValidation)
   })
 
   const handleClick = () => {
     setOpen(true)
   }
+
   const [formDetails, setFormDetails] = useState([
     {
       name: '',
@@ -83,21 +87,11 @@ const InviteUsers = () => {
 
   const onSubmitHandle = async e => {
     e.preventDefault()
-    if (!errors) {
+    if (Object.keys(errors).length) {
       return
     }
-    await fetch('https://backsecsanta.alwaysdata.net/api/box/sendInvites', {
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify({
-        emails: formDetails.map(item => ({ ...item, id: 1 }))
-      })
-    }).then(() => {
-      setFormDetails([{ name: '', email: '', id: 1 }])
-      handleClick()
-    })
+    await sendInvites(formDetails, setFormDetails, handleClick, id)
+    await getBoxInfo(setUserData, id)
   }
 
   return (

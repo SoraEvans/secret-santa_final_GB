@@ -8,6 +8,7 @@ export const Div = styled.div`
   width: 83px;
   height: 83px;
   background: #ff5539;
+  color: black;
   border-radius: 3px;
 `
 export const CarouselWrapper = styled.div`

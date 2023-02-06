@@ -55,6 +55,21 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
     })
   }
 
+  const reverseDraw = async () => {
+    await fetch('https://backsecsanta.alwaysdata.net/api/box/reverseDraw', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        box_id: id
+      })
+    }).then(() => {
+      setDrawDone(true)
+      setShowModal(prev => !prev)
+    })
+  }
+
   return (
     <BoxUsersWrapper>
       {userData && box && box.title ? (
@@ -99,7 +114,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
           <br /> когда два участника дарят подарки друг другу.
           <br /> Теперь вы можете посмотреть{' '}
           <ModalLink to="/boxes">Кто чей Санта.</ModalLink>
-          <br /> Или <ModalLink to="/boxes">сбросить</ModalLink> результаты
+          <br /> Или <ModalLink onClick={reverseDraw}>сбросить</ModalLink> результаты
           жеребьевки.
         </ModalSubTitle>
       </Modal>

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const ModalBackground = styled.div`
   width: 100%;
@@ -64,8 +63,10 @@ export const ModalSubTitle = styled.p`
   margin-bottom: 14px;
 `
 
-export const ModalLink = styled(Link)`
-  font-family: 'Inter';
+export const ModalLink = styled.div`
+  font-family: Raleway;
+  cursor: pointer;
+  display: initial;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;

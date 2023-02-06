@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Popover } from "@mui/material";
 import Container from '../style_cont'
 import logo from '../../assets/images/logo.svg'
 import {
@@ -14,12 +15,9 @@ import UserNotification from '../UserNotification/UserNotification'
 function Header() {
   const location = useLocation()
   const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = useState(null);
   const isLogged = localStorage.getItem('isLoggedIn')
-  const [showNotification, setShowNotification] = useState(false)
   const [color, setColor] = useState('transparent')
-  const handlerNotification = () => {
-    setShowNotification(prevState => !prevState)
-  }
 
   const listenScrollEvent = () => {
     if (window.scrollY > 400 || document.location.pathname !== '/') {
@@ -28,7 +26,13 @@ function Header() {
       setColor('transparent')
     }
   }
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
 
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
   useEffect(() => {
     listenScrollEvent()
     document.addEventListener('scroll', listenScrollEvent)
@@ -43,11 +47,28 @@ function Header() {
               <img alt="logo" src={logo} />
             </Logo>
             <AuthorisedWrapper>
-              <StyledLink colorState={color} onClick={() => navigate('/boxes')}><div>Коробки</div></StyledLink>
-              <StyledLink margin="0 0 0 15px" colorState={color} onClick={handlerNotification}>
-                Уведомления
+              <StyledLink colorState={color} onClick={() => navigate('/boxes')}>
+                <div>Коробки</div>
               </StyledLink>
-              <UserNotification active={showNotification} />
+              <StyledLink margin="0 0 0 15px" colorState={color} onClick={handleClick}>
+                Уведомления (2)
+              </StyledLink>
+              <Popover
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                open={anchorEl}
+                marginThreshold={84}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <UserNotification active={anchorEl} />
+              </Popover>
               <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/profile')}>Профиль</StyledLink>
             </AuthorisedWrapper>
           </Wrapper>
@@ -63,7 +84,8 @@ function Header() {
           <Logo>
             <img alt="logo" src={logo} />
           </Logo>
-          <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/login')}>Вход и регистрация</StyledLink>
+          <StyledLink margin="0 0 0 15px" colorState={color} onClick={() => navigate('/login')}>Вход и
+            регистрация</StyledLink>
         </Wrapper>
       </Container>
     </HeaderEl>

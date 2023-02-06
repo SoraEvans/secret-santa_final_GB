@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { TabBox, TabItem, BoxWrapper, BoxItem } from './style'
-
 import PrivateBox from './components/PrivateBox/PrivateBox'
 import Container from '../../components/style_cont'
 import PublicBox from './components/PublicBox/PublicBox'
