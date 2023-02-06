@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { CarouselButton } from "../home/components/carousel/style";
+import { CarouselButton } from '../home/components/carousel/style'
 
-export const AuthForm = styled.div`
+export const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@ export const AuthForm = styled.div`
     top: -34px;
     right: 137px;
   }
-  
+
   .login-branch {
     position: absolute;
     top: -12px;
@@ -45,9 +45,8 @@ export const AuthForm = styled.div`
     right: -9px;
     bottom: -7px;
   }
-  
+
   .mail-icon {
-    
   }
 `
 

@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import { Snackbar, Alert } from '@mui/material'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { AddSharp, RemoveSharp } from '@mui/icons-material'
 import { CarouselButton } from '../../../home/components/carousel/style'
 import { InputWrapper, Form, AddBtn, RemoveBtn } from './style'
 import { CustomInput } from '../../../../components/Inputs/Inputs'
 import { ModalSubTitle, ModalTitle } from '../../../../components/modal/style'
+import SchemaValidation from '../../../../helpers/schemas/SchemaValidation'
 
 const InviteUsers = () => {
   const [open, setOpen] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(SchemaValidation)
+  })
 
   const handleClick = () => {
     setOpen(true)
@@ -17,6 +28,8 @@ const InviteUsers = () => {
       name: '',
       email: '',
       id: 1
+      // nameError: false,
+      // emailError: false
     }
   ])
 
@@ -33,6 +46,29 @@ const InviteUsers = () => {
     )
   }
 
+  // const formValidate = () => {
+  //   let nameError = false
+  //   let emailError = false
+  //
+  //   formDetails.forEach(item => {
+  //     if (!item.name) {
+  //       nameError = true
+  //     }
+  //     if (!item.email || !/\S+@\S+\.\S+/.test(item.email)) {
+  //       emailError = true
+  //     }
+  //   })
+  //   setFormDetails(
+  //     formDetails.map(item => ({
+  //       ...item,
+  //       nameError,
+  //       emailError
+  //     }))
+  //   )
+  //
+  //   return !(nameError || emailError)
+  // }
+
   const handleAddInputs = () => {
     setFormDetails([
       ...formDetails,
@@ -47,6 +83,9 @@ const InviteUsers = () => {
 
   const onSubmitHandle = async e => {
     e.preventDefault()
+    if (!errors) {
+      return
+    }
     await fetch('https://backsecsanta.alwaysdata.net/api/box/sendInvites', {
       method: 'POST',
       header: {
@@ -55,16 +94,15 @@ const InviteUsers = () => {
       body: JSON.stringify({
         emails: formDetails.map(item => ({ ...item, id: 1 }))
       })
+    }).then(() => {
+      setFormDetails([{ name: '', email: '', id: 1 }])
+      handleClick()
     })
-      .then(() => {
-        setFormDetails([{ name: '', email: '', id: 1 }])
-        handleClick()
-      })
   }
 
   return (
     <>
-      <Form onSubmit={onSubmitHandle}>
+      <Form onSubmit={handleSubmit(onSubmitHandle)}>
         {/* todo Сделать уведомление по макету (сейчас заглушка) */}
         <Snackbar
           open={open}
@@ -76,27 +114,33 @@ const InviteUsers = () => {
           </Alert>
         </Snackbar>
         <ModalTitle>Добавление участников</ModalTitle>
-        <ModalSubTitle>Заполните данные участников, чтобы создать их карточки,
-          и отправьте им на почту приглашения в игру</ModalSubTitle>
+        <ModalSubTitle>
+          Заполните данные участников, чтобы создать их карточки, и отправьте им
+          на почту приглашения в игру
+        </ModalSubTitle>
         <div>
           {formDetails.map((item, index) => (
             <InputWrapper>
               <CustomInput
-                name="name"
+                {...register('name')}
                 label="Имя участника"
                 value={item.name || ''}
                 onChange={handleChange}
                 id={item.id}
                 margin="0 23px 16px 0"
+                error={!!errors.name}
+                helperText={errors?.name?.message}
               />
               <CustomInput
-                name="email"
+                {...register('email')}
                 label="Email"
                 value={item.email || ''}
                 type="email"
                 onChange={handleChange}
                 id={item.id}
                 margin="0 0 16px"
+                error={!!errors.email}
+                helperText={errors?.email?.message}
               />
               {index === formDetails.length - 1 ? (
                 <AddBtn onClick={handleAddInputs}>
@@ -114,7 +158,7 @@ const InviteUsers = () => {
       <CarouselButton
         onClick={onSubmitHandle}
         type="submit"
-        style={{ margin: '0 80px 0 0', width: 186, height: 45, fontSize: 13}}
+        style={{ margin: '0 80px 0 0', width: 186, height: 45, fontSize: 13 }}
       >
         Отправить приглашение
       </CarouselButton>

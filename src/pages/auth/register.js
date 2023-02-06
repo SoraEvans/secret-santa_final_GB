@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthForm, Credits, StyledRegBtn, Title } from './auth-styles'
 import { AuthInput } from '../../components/Inputs/Inputs'
 import TextIcon from '../../assets/images/textHead.svg'
 import btnBranch from '../../assets/images/regBranch.svg'
+import SchemaValidation from '../../helpers/schemas/SchemaValidation'
 
 const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' })
   const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(SchemaValidation)
+  })
 
   const onSubmit = async form => {
     await fetch('https://backsecsanta.alwaysdata.net/api/user/register', {
@@ -42,7 +53,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <AuthForm>
+    <AuthForm onSubmit={handleSubmit(onSubmit)}>
       <div style={{ position: 'relative' }}>
         <img className="register-hat" src={TextIcon} alt="" />
         <h1>Регистрация</h1>
@@ -55,26 +66,37 @@ const RegisterPage = () => {
       </Title>
       <div style={{ width: 642 }}>
         <AuthInput
+          {...register('name')}
           id="name"
           label="Имя"
           value={form.name}
           onChange={handleChangeForm}
+          error={!!errors.name}
+          helperText={errors?.name?.message}
         />
       </div>
       <div style={{ width: 642 }}>
         <AuthInput
+          {...register('email')}
           id="email"
           label="E-mail"
+          type="email"
           value={form.email}
           onChange={handleChangeForm}
+          error={!!errors.email}
+          helperText={errors?.email?.message}
         />
       </div>
       <div style={{ width: 642 }}>
         <AuthInput
+          {...register('password')}
           id="password"
           label="Пароль"
+          type="password"
           value={form.password}
           onChange={handleChangeForm}
+          error={!!errors.password}
+          helperText={errors?.password?.message}
         />
       </div>
       <div style={{ position: 'relative' }}>
