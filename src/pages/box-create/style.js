@@ -48,23 +48,23 @@ export const Div = styled.div`
   min-height: 94px;
   background: #f7f3f3;
   border: 2px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 85px;
-  padding: 20px;
+  margin-bottom: 38px;
+  padding: 15px;
 `
 
 export const Input = styled.input`
   width: 633px;
-  height: 82px;
+  height: 57px;
   background: #f7f3f3;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   font-size: 28px;
   text-align: center;
-  margin-bottom: 50px;
 `
 
 export const DivInput = styled.div`
   position: relative;
+  margin-bottom: 13px;
 `
 
 export const Label = styled.label`
@@ -86,8 +86,8 @@ export const P = styled.p`
   color: #000000;
 `
 
-export const Cover = styled.div`
-  margin-bottom: 85px;
+export const CoverDiv = styled.div`
+  margin-bottom: 45px;
 `
 
 export const CoverButton = styled.button`
@@ -113,19 +113,32 @@ export const SmallLabel = styled(Label)`
 export const CreateButton = styled.button`
   width: 293px;
   height: 81px;
-  background: #fd9797;
-  border-radius: 2px;
-  border: 0;
+  background: #ff5539;
+  border-radius: 4px;
+  border: 2px solid #ff5539;
+  font-family: 'Raleway';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 24px;
-  line-height: 29px;
-  color: #000000;
+  line-height: 28px;
+  color: #ffffff;
+  &:hover {
+    background: #ffffff;
+    color: #ff5539;
+    border: 2px solid #ff5539;
+    transition: 300ms;
+  }
 `
 
 export const CancellButton = styled(CreateButton)`
-  background: #d9d9d9;
-  color: #9b9b9b;
+  background: #ffffff;
+  border: 2px solid #ff5539;
+  color: #ff5539;
+  &:hover {
+    background: #ff5539;
+    color: #ffffff;
+    transition: all 300ms;
+  }
 `
 
 export const ButtonsDiv = styled.div`
@@ -146,7 +159,7 @@ export const Select = styled.select`
 `
 
 export const CostDiv = styled(ButtonsDiv)`
-  margin-bottom: 85px;
+  margin-bottom: 45px;
 `
 
 export const CostInput = styled.input`
@@ -197,23 +210,31 @@ export const AntSwitch = st(Switch)(() => ({
     padding: 3,
     '&.Mui-checked': {
       transform: 'translateX(43px)',
-      color: '#FD9797',
+      '& .MuiSwitch-thumb': {
+        opacity: 1,
+        width: 30,
+        height: 30,
+        backgroundColor: '#FF5539',
+        boxShadow: 'none'
+      },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#FFBFBF'
+        backgroundColor: '#FF917E'
       }
     }
   },
   '& .MuiSwitch-thumb': {
     width: 30,
     height: 30,
-    borderRadius: 15
+    borderRadius: 15,
+    backgroundColor: '#C6BBB9',
+    boxShadow: 'none'
   },
   '& .MuiSwitch-track': {
     borderRadius: 38 / 2,
     opacity: 1,
     boxSizing: 'border-box',
-    backgroundColor: '#D9D9D9'
+    backgroundColor: '#D6CCCA'
   }
 }))
 
