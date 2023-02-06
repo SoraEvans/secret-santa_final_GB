@@ -12,6 +12,7 @@ const MyBoxTabs = () => {
   const [activeIdx, setActiveIdx] = useState(0)
   const [userData, setUserData] = useState({})
   const [santaId, setSantaId] = useState(null)
+  const [cardId, setCardId] = useState(null)
   const [isAdmin, setIsAdmin] = useState(false)
   const [wardId, setWardId] = useState(null)
   const currentUserId = +localStorage.getItem('userId')
@@ -27,7 +28,7 @@ const MyBoxTabs = () => {
     if (userData?.box?.creator_id === currentUserId) {
       setIsAdmin(true)
     }
-
+    setCardId(userData?.card?.id)
     userData?.secret_santas?.forEach(item => {
       if (currentUserId === item.id) {
         setSantaId(item.your_secret_santa_id)
@@ -59,8 +60,8 @@ const MyBoxTabs = () => {
           isAdmin={isAdmin}
         />}
       </TabBody>
-      <TabBody>{activeIdx === 1 && <MyCard santaId={santaId} setActiveIdx={setActiveIdx} id={id} />}</TabBody>
-      <TabBody>{activeIdx === 2 && <WardCard wardId={wardId} setActiveIdx={setActiveIdx} id={id} />}</TabBody>
+      <TabBody>{activeIdx === 1 && <MyCard santaId={santaId} setActiveIdx={setActiveIdx} id={cardId} />}</TabBody>
+      <TabBody>{activeIdx === 2 && <WardCard wardId={wardId} setActiveIdx={setActiveIdx} id={cardId} />}</TabBody>
       <TabBody>{activeIdx === 3 && <MyCardCreate isAdmin={isAdmin} userData={userData} />}</TabBody>
     </>
   )
