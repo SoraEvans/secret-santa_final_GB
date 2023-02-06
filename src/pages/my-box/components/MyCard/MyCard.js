@@ -17,9 +17,11 @@ import {
   TextBlock,
   UserInfo,
   UserInfoBlock,
-  UserName
+  UserName, StyledHr
 } from './style'
-import { AvatarImg } from '../../../../components/MyCardCreate/style'
+
+import { UserItem } from "../BoxUsers/style";
+import { ChatWrapper } from "../ChatBox/style";
 
 // eslint-disable-next-line react/prop-types
 const MyCard = ({ setActiveIdx }) => {
@@ -34,9 +36,18 @@ const MyCard = ({ setActiveIdx }) => {
         <MyCardPage>
           <CardInfo>
             <UserInfoBlock>
-              <AvatarImg style={{ width: '70px', height: '70px' }} />
+              <UserItem style={{
+                flex: '1 0 auto',
+                aspectRatio: '1 / 1',
+                fontSize: '48px',
+                maxWidth:'70px',
+                maxHeight:'70px',
+                cursor: 'default' }}>
+                И
+              </UserItem>
+
               <UserInfo>
-                <UserName>Имя Участника</UserName>
+                <UserName>Имя участника</UserName>
                 <Price>
                   Стоимость подарка:
                   <PriceAmount>до {price} руб.</PriceAmount>
@@ -67,18 +78,18 @@ const MyCard = ({ setActiveIdx }) => {
                   )
                 }}
                 onChange={event => setText(event.target.value)}
-                rows={10}
+                rows={8}
               />
               <CardFormLabel>Куда присылать подарок?</CardFormLabel>
               <Input fullWidth />
               <CardFormLabel>Номер телефона</CardFormLabel>
               <Input fullWidth />
-              <CarouselButton type="submit" style={{ margin: '22px 0' }}>
+              <CarouselButton type="submit" style={{ margin: '22px 0', width: '143px',  height: '44px', fontWeight: '500', fontSize: '15px' }}>
                 Сохранить
               </CarouselButton>
             </CardForm>
           </CardInfo>
-          <hr width="1" size="100%" style={{margin: '0 24px'}}/>
+          <StyledHr width="1" size="100%"/>
           <ChatBlock>
             <div>
               <ChatTitle>Чат с Сантой</ChatTitle>
@@ -89,7 +100,9 @@ const MyCard = ({ setActiveIdx }) => {
               </ChatSubTitle>
             </div>
             {/* убрать хардкод */}
-            <Chat receiverId={57} cardId={19} />
+            <ChatWrapper>
+              <Chat receiverId={57} cardId={19} />
+            </ChatWrapper>
           </ChatBlock>
         </MyCardPage>
       ) : (

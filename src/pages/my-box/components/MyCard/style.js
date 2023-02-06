@@ -5,9 +5,12 @@ import { styled as st } from '@mui/material/styles'
 export const MyCardPage = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #f5f5f5;
+  background: rgba(246, 243, 243, 0.5);
+  border-radius: 4px;
   padding: 46px;
-  max-width: 1186px;
+  height: 699px;
+  margin: 103px 295px 140px -67px;
+
 `
 
 export const CardInfo = styled.div`
@@ -27,27 +30,27 @@ export const UserInfo = styled.div`
 `
 
 export const UserName = styled.div`
-  font-family: 'Inter';
+  font-family: 'Raleway';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 15px;
   line-height: 18px;
 `
 
 export const Price = styled.div`
   display: flex;
-  font-family: 'Inter';
+  font-family: 'Raleway';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 13px;
-  line-height: 16px;
+  line-height: 15px;
   color: #c1c1c1;
   white-space: nowrap;
 `
 
 export const PriceAmount = styled.div`
   color: black;
-  margin-left: 2px;
+  margin-left: 4px;
 `
 
 export const CardForm = styled.div`
@@ -58,9 +61,19 @@ export const CardFormLabel = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0 6px 0;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
 
   a {
-    color: #fd9797;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    color: #FF5539;
   }
 `
 
@@ -79,7 +92,8 @@ export const TextBlock = styled.div`
 `
 
 export const Input = st(TextField)(() => ({
-  background: '#F7F3F3'
+  background: '#F6F3F3',
+
 }))
 
 export const ChatBlock = styled.div`
@@ -114,5 +128,10 @@ export const ChatSubTitle = styled.p`
   text-align: center;
   color: #a19593;
   max-width: 322px;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
+`
+
+export const StyledHr = styled.hr`
+margin: 0 24px;
+border: 1px solid rgba(214, 204, 202, 0.69);
 `
