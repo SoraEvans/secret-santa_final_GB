@@ -7,10 +7,9 @@ export const MyCardPage = styled.div`
   justify-content: space-between;
   background: rgba(246, 243, 243, 0.5);
   border-radius: 4px;
-  padding: 46px;
+  padding: 58px;
   height: 699px;
-  margin: 103px 295px 140px -67px;
-
+  margin: 53px 295px 30px -45px;
 `
 
 export const CardInfo = styled.div`
@@ -124,14 +123,14 @@ export const ChatSubTitle = styled.p`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 108.02%;
   text-align: center;
   color: #a19593;
-  max-width: 322px;
-  margin-bottom: 26px;
+  max-width: 400px;
+  line-height: 18.12px;
+  margin-bottom: 17px;
 `
 
 export const StyledHr = styled.hr`
-margin: 0 24px;
-border: 1px solid rgba(214, 204, 202, 0.69);
+  margin: 0 58px;
+  border: 1px solid rgba(214, 204, 202, 0.69);
 `

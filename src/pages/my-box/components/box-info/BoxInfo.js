@@ -5,14 +5,9 @@ import tree from '../../../../assets/images/elTree.svg'
 
 const BoxInfo = ({ title, cover, userCount }) => (
   <BoxTitleInner>
+    {console.log(cover)}
     <StyledBoxIcon>
-      <img
-        src={cover && tree}
-        alt={tree}
-        style={{ width: 34 }}
-        width={70}
-        height={70}
-      />
+      <img src={cover} alt="tree" style={{ width: 34 }} width={70} height={70} />
     </StyledBoxIcon>
     <BoxTitleText>
       <div>

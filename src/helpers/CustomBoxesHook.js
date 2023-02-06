@@ -1,43 +1,17 @@
 import { useEffect, useState } from 'react'
+import getAllBoxes from '../API/boxGet'
+import getOtherPublicBoxes from '../API/otherPublicBoxes'
 
 const CustomBoxesHook = () => {
   const [boxes, setBoxes] = useState([])
   const [publicBoxes, setPublicBoxes] = useState([])
 
   useEffect(() => {
-    fetch('https://backsecsanta.alwaysdata.net/api/box/get', {
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify({
-        id: localStorage.getItem('userId')
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.status === 'success') {
-          setBoxes(response)
-        }
-      })
+    getAllBoxes(setBoxes)
   }, [])
 
   useEffect(() => {
-    fetch('https://backsecsanta.alwaysdata.net/api/box/othersPublicBoxes', {
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify({
-        user_id: localStorage.getItem('userId')
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.status === 'success') {
-          setPublicBoxes(response.allOtherBoxes)
-        }
-      })
+    getOtherPublicBoxes(setPublicBoxes)
   }, [])
 
   return { boxes, publicBoxes }

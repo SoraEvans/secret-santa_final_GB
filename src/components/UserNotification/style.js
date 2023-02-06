@@ -1,27 +1,28 @@
 import styled from 'styled-components'
+import { StyledIcon } from "../../pages/my-boxes/components/PublicBox/style";
 
 export const NotificationBox = styled.div`
-  position: absolute;
-  top: 90px;
-  right: 200px;
-  background-color: #f2eeee;
-  min-height:100px;
+  background-color: #F2E7E7BF;
+  min-height: 100px;
   width: 100%;
-  max-width: 400px;
-  visibility: ${({ active }) => (active ? "visible" : "hidden")};
-  transform: translateY(${({ active }) => (active ? "0" : "-15%")});
-  padding: 20px;
-  text-align: center;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+  max-width: 491px;
+  padding: 25px;
+  border-radius: 0 0 4px 4px;
 
   span {
-    font-size: 14px;
-    line-height: 17px;
-    color: #979797;
+    font-size: 16px;
+    line-height: 18.7px;
+    color: #665959;
+
+    div {
+      font-weight: bold;
+    }
   }
-
-
 `
 
-export const NotificationList = styled.div``
+export const NotificationIcon = styled(StyledIcon)`
+  width: 100%;
+  max-width: 77px;
+  height: 77px;
+  margin-right: 19px;
+`

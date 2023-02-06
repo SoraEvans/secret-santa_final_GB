@@ -25,6 +25,7 @@ import {
   AntSwitch,
   SubTitleBoxCreated
 } from './style'
+import tree from '../../assets/images/elTree1.svg'
 
 const BoxCreate = () => {
   const [state, setState] = useState({
@@ -39,7 +40,6 @@ const BoxCreate = () => {
     cost: null,
     currency: 'RUB'
   })
-
   const navigate = useNavigate()
 
   const onSubmit = async state => {
@@ -50,7 +50,7 @@ const BoxCreate = () => {
       },
       body: JSON.stringify({
         title: state.title,
-        cover: state.cover,
+        cover: tree,
         // anonymous: state.anonymous, // отсутствует в бд
         email: state.email,
         isPublic: state.isPublic,

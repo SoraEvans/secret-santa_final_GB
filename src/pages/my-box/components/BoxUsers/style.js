@@ -10,10 +10,10 @@ export const BoxUsersWrapper = styled.div`
 
 export const UsersList = styled.ul`
   display: flex;
-  padding: 0;
   width: 100%;
   flex-wrap: wrap;
   list-style: none;
+  padding-right: 60px;
 `
 
 export const UserItem = styled.div`

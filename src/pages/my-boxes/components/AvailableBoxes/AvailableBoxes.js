@@ -11,7 +11,7 @@ import tree from '../../../../assets/images/elTree.svg'
 import { StyledIcon } from '../PublicBox/style'
 
 // eslint-disable-next-line react/prop-types
-const AvailableBoxes = ({ title, start, max_people, now_people }) => (
+const AvailableBoxes = ({ title, start, max_people, now_people, onClick, id }) => (
   <BoxItem>
     <BoxItemText>
       <div>
@@ -19,7 +19,16 @@ const AvailableBoxes = ({ title, start, max_people, now_people }) => (
         <p>Колличиство участников: {now_people}/{max_people}</p>
         <BoxTextDate>Дата жеребьевки: {moment(start).format('DD.MM.YY')}</BoxTextDate>
       </div>
-      <StyledLink padding="4px" width="118px" colorState="white" type="submit" fontsize="11px">Присоединиться</StyledLink>
+      <StyledLink
+        padding="4px"
+        width="118px"
+        colorState="white"
+        type="submit"
+        fontsize="11px"
+        onClick={() => onClick(id)}
+      >
+        Присоединиться
+      </StyledLink>
     </BoxItemText>
     <StyledIcon>
       <img src={tree} alt="Обложка" />

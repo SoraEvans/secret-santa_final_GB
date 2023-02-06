@@ -13,7 +13,7 @@ const Item = ({ item, alt }) => (
 
 const Cover = ({ img }) => {
   const imgArr = img
-
+console.log('imgArr', imgArr)
   return (
     <CarouselWrapper>
       <CarouselElement
