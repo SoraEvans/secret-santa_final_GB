@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Divider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import Container from '../../components/style_cont'
 import {
   PageBackground,
@@ -18,30 +16,77 @@ import {
   RemoveDesc
 } from './styles'
 import { CustomInput } from '../../components/Inputs/Inputs'
-import SchemaValidation from '../../helpers/schemas/SchemaValidation'
 
 function Profile() {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    notifications: false,
+    password: null,
+    confirm_password: null
+  })
+
+  const id = localStorage.getItem('userId')
   const navigate = useNavigate()
   const logOut = () => {
     localStorage.clear()
     navigate('/')
   }
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors }
-  } = useForm({
-    mode: 'onBlur',
-    resolver: yupResolver(SchemaValidation)
-  })
+  useEffect(() => {
+    fetch(`https://backsecsanta.alwaysdata.net/api/user/info/${id}`, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify()
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success') {
+          setState({
+            ...state,
+            name: response.user.name,
+            email: response.user.email
+          })
+        }
+      })
+  }, [])
 
-  const onSubmit = data => {
-    console.log('submit', data)
+  const onSubmitSave = async state => {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/user/update/${id}`, {
+      method: 'PATCH',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        name: state.name,
+        email: state.email,
+        email_notify: state.notifications,
+        newPassword: state.password
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success') {
+          alert(response.message)
+        }
+      })
   }
 
-  console.log(watch(['name', 'email']))
+  const onSubmitDelete = async () => {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/user/delete/${id}`, {
+      method: 'DELETE',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }).then(response => {
+      if (response.status === 200) {
+        logOut()
+      }
+    })
+  }
+
   return (
     <PageBackground>
       <Container>
@@ -50,27 +95,41 @@ function Profile() {
             <h2>Настройки профиля</h2>
             <StyledLink onClick={() => logOut()}>Выйти с сайта</StyledLink>
           </ProfileTop>
-          <ProfileForm onSubmit={handleSubmit(onSubmit)}>
+          <ProfileForm>
             <Divider />
             <InputSectionTitle>Личные данные</InputSectionTitle>
             <InputSection>
               <CustomInput
-                {...register('name')}
                 id="first"
                 type="text"
+                autoComplete="off"
                 label="Ваше имя или никнейм"
                 margin="0 0 24px"
-                error={!!errors.name}
-                helperText={errors?.name?.message}
+                value={state.name}
+                error={state.name === '' ? 'Заполните поле' : false}
+                helperText={state.name === '' ? 'Заполните поле' : null}
+                onChange={event =>
+                  setState({
+                    ...state,
+                    name: event.target.value
+                  })
+                }
               />
               <CustomInput
-                {...register('email')}
                 id="second"
                 type="email"
+                autoComplete="off"
                 label="Ваш e-mail"
                 margin="0 0 24px"
-                error={!!errors.email}
-                helperText={errors?.email?.message}
+                value={state.email}
+                error={state.email === '' ? 'Заполните поле' : false}
+                helperText={state.email === '' ? 'Заполните поле' : null}
+                onChange={event =>
+                  setState({
+                    ...state,
+                    email: event.target.value
+                  })
+                }
               />
             </InputSection>
             <Divider />
@@ -83,31 +142,42 @@ function Profile() {
                   адрес, указанный выше
                 </p>
               </SwitchText>
-              <ProfileSwitch />
+              <ProfileSwitch
+                checked={state.notifications}
+                name="notifications"
+                onChange={event =>
+                  setState({
+                    ...state,
+                    notifications: event.target.checked
+                  })
+                }
+              />
             </SwitchSection>
             <Divider />
             <InputSectionTitle>Смена пароля</InputSectionTitle>
             <InputSection>
               <CustomInput
-                {...register('password')}
                 id="pass"
-                type="password"
+                type="text"
+                autoComplete="off"
                 label="Новый пароль"
                 margin="0 0 24px"
-                error={!!errors.password}
-                helperText={errors?.password?.message}
               />
               <CustomInput
-                {...register('confirmPassword')}
-                id="confirmPassword"
-                type="password"
+                id="confirm"
+                type="text"
+                autoComplete="off"
                 label="Подтвердите пароль"
                 margin="0 0 24px"
-                error={!!errors.confirmPassword}
-                helperText={errors?.confirmPassword?.message}
               />
             </InputSection>
-            <ProfileButton type="submit">Сохранить изменения</ProfileButton>
+            {(state.name && state.email) === '' ? (
+              <ProfileButton disabled>Сохранить изменения</ProfileButton>
+            ) : (
+              <ProfileButton type="button" onClick={() => onSubmitSave(state)}>
+                Сохранить изменения
+              </ProfileButton>
+            )}
             <Divider />
             <InputSectionTitle>Удаление профиля</InputSectionTitle>
             <RemoveDesc>
@@ -115,7 +185,9 @@ function Profile() {
               будут удалены
             </RemoveDesc>
           </ProfileForm>
-          <ProfileButton type="submit">Удалить профиль</ProfileButton>
+          <ProfileButton type="submit" onClick={() => onSubmitDelete(state)}>
+            Удалить профиль
+          </ProfileButton>
         </div>
       </Container>
     </PageBackground>
