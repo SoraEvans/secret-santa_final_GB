@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-
+export const Details = styled.div`
+padding: 20px;
+`
 
 export const NoInfoText = styled.div`
 font-weight: 400;

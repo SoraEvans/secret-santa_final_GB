@@ -11,23 +11,34 @@ export const MyWardInfo = styled(CardInfo)`
 `
 export const SantaImg = styled.div`
   width: 50%;
+  display: flex;
   `
 
 export const TabsWrapper = st(Box)`
-border: 2px solid #E4E4E4;
+
+
 `
 
 export const BodyInner = styled.div`
 display: flex;
-margin: 10px 0;
+margin: 54px 0 43px 0;
+height: 466px;
 `
 
 export const TabsInner = st(Tabs)`
-  width: 50px;
-  border-radius: 4px;
+
+  border-radius: 3px 0px 0px 3px;
+  padding: 0;
+  
+
+  button {
+  padding: 0;
+  min-width: 70px;
+  }
+
 
   .MuiTabs-indicator {
-    background-color: #F6F3F3;
+    display: none;
   }
 
   button:hover,
@@ -39,6 +50,10 @@ export const TabsInner = st(Tabs)`
   button.Mui-selected {
     color: #444444;
     background-color: #F6F3F3;
+    min-width: 87px;
+    border: 2px solid #E4E4E4;
+    border-left: none;
+    
   }
 `
 
@@ -59,11 +74,11 @@ export const TabItem = st(Tab)`
   }
 `
 export const BodyWrapper = styled.div`
-padding: 20px;
-margin-right: 20px;
+
 background-color: #F6F3F3;
 border: 2px solid #E4E4E4;
-border-left: none;
+border-radius: 0 4px 4px 0;
+margin-left: -2px;
 width: 100%;
 `
 
