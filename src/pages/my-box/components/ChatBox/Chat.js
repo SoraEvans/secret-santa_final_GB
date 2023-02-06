@@ -92,7 +92,7 @@ const Chat = ({ receiverId, cardId }) => {
 
     <>
       <ChatDiv ref={ref}>
-      {messages.slice(0).reverse().map(message => (
+      {messages.map(message => (
         <MessageDiv key={message.id} props={message.writer_id === userId}>
           <MessageText>{message.text}</MessageText>
         </MessageDiv>
