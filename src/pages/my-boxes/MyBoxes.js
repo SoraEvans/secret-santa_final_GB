@@ -22,7 +22,7 @@ const MyBoxes = () => {
           <TabItem label="Публичные коробки" />
         </TabBox>
         <BoxItem>{tabIdx === 0 && <PrivateBox boxes={boxes.privateBoxes} />}</BoxItem>
-        <BoxItem>{tabIdx === 1 && <PublicBox boxes={boxes.publicBoxes} publicBoxes={publicBoxes} />}</BoxItem>
+        <BoxItem>{tabIdx === 1 && <PublicBox boxes={boxes} publicBoxes={publicBoxes} />}</BoxItem>
       </BoxWrapper>
     </Container>
   )

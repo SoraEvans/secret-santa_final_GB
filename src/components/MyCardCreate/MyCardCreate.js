@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Divider } from '@mui/material'
+import PropTypes from 'prop-types'
 import SchemaValidation from '../../helpers/schemas/SchemaValidation'
 import avatar_1 from '../../assets/images/avatar_1.svg'
 import avatar_2 from '../../assets/images/avatar_2.svg'
@@ -34,9 +35,14 @@ import {
   ModalButtons
 } from '../../pages/my-box/components/MyBoxSettings/style'
 
-const MyCardCreate = () => {
+const MyCardCreate = ({ userData }) => {
   const [cardCreated, setCardCreated] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [userValues, setUserValues] = useState({})
+  const [avatar, setAvatar] = useState('')
+  const { secret_santas_ward, box, secret_santas } = userData
+  const choosenUser = JSON.parse(localStorage.getItem('chosenUser'))
+  const isAdmin = box.creator_id === choosenUser.id
   const {
     register,
     handleSubmit,
@@ -117,21 +123,30 @@ const MyCardCreate = () => {
   }
 
   return (
-    <CreateCardWrapper>
-      <h3>Настройки карточки участника</h3>
-      {cardCreated ? (
-        <FormLabel>
-          Ваша карточка участника создана. Можете перейти в коробку для
-          проведения жеребьевки или удалить свою карточку
-        </FormLabel>
+    <>
+      {userData && box?.title ? (
+        <BoxInfo
+          title={box.title}
+          cover={box.cover}
+          userCount={secret_santas.length}
+        />
       ) : (
-        <FormLabel>
-          Создайте карточку участника для себя, если хотите принимать участие в
-          жеребьевке
-        </FormLabel>
+        <p>Моя коробка</p>
       )}
-      <form onSubmit={handleSubmit(onCreateCard)}>
-        {isAdmin ? (
+      <CreateCardWrapper>
+        <h3>Настройки карточки участника</h3>
+        {cardCreated
+          ?
+          <FormLabel>
+            Ваша карточка участника создана. Можете перейти в коробку для проведения жеребьевки или удалить свою
+            карточку
+          </FormLabel>
+          :
+          <FormLabel>
+            Создайте карточку участника для себя, если хотите принимать участие в
+            жеребьевке
+          </FormLabel>}
+        <form onSubmit={handleSubmit(onCreateCard)}>
           <InputSection>
             <Input
               type="text"
@@ -220,3 +235,11 @@ const MyCardCreate = () => {
 }
 
 export default MyCardCreate
+
+MyCardCreate.defaultProps = {
+  userData: {},
+}
+
+MyCardCreate.propTypes = {
+  userData: PropTypes.object,
+}
