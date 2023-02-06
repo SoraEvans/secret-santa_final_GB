@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Divider } from '@mui/material'
 import PropTypes from 'prop-types'
-import SchemaValidation from '../../helpers/schemas/SchemaValidation'
-import avatar_1 from '../../assets/images/avatar_1.svg'
-import avatar_2 from '../../assets/images/avatar_2.svg'
-import avatar_3 from '../../assets/images/avatar_3.svg'
-import santa_with_children from '../../assets/images/santa_with_children.svg'
-import snowman from '../../assets/images/snowman.svg'
+import SchemaValidation from '../../../../helpers/schemas/SchemaValidation'
+import avatar_1 from '../../../../assets/images/avatar_1.svg'
+import avatar_2 from '../../../../assets/images/avatar_2.svg'
+import avatar_3 from '../../../../assets/images/avatar_3.svg'
+import santa_with_children from '../../../../assets/images/santa_with_children.svg'
+import snowman from '../../../../assets/images/snowman.svg'
 import {
   AvatarImg,
   AvatarList,
@@ -21,21 +21,21 @@ import {
   FormLabel,
   InputSection
 } from './style'
-import { CarouselButton } from '../../pages/home/components/carousel/style'
-import Modal from '../modal/modal'
-import { ModalTitle } from '../modal/style'
-import { CancelButton, DeleteButton, ModalButtons } from '../../pages/my-box/components/MyBoxSettings/style'
-import { CustomInput } from '../Inputs/Inputs'
-import BoxInfo from '../../pages/my-box/components/box-info/BoxInfo'
+import BoxInfo from '../box-info/BoxInfo'
+import { CustomInput } from '../../../../components/Inputs/Inputs'
+import { CarouselButton } from '../../../home/components/carousel/style'
+import Modal from '../../../../components/modal/modal'
+import { ModalTitle } from '../../../../components/modal/style'
+import { CancelButton, DeleteButton, ModalButtons } from '../MyBoxSettings/style'
 
-const MyCardCreate = ({ userData }) => {
+const MyCardCreate = ({ userData, isAdmin }) => {
   const [cardCreated, setCardCreated] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [userValues, setUserValues] = useState({})
   const [avatar, setAvatar] = useState('')
-  const { secret_santas_ward, box, secret_santas } = userData
+  const { secret_santas_ward, box, secret_santas, card } = userData
   const choosenUser = JSON.parse(localStorage.getItem('chosenUser'))
-  const isAdmin = box.creator_id === choosenUser.id
+  console.log('card', card)
   const {
     register,
     handleSubmit,
@@ -51,7 +51,7 @@ const MyCardCreate = ({ userData }) => {
   const { id } = useParams()
 
   useEffect(() => {
-    setUserValues(isAdmin ? { name: '', email: '' } : choosenUser)
+    setUserValues(isAdmin ? { name: '', email: '' } : { name: '', email: '' })
   }, [])
 
   const onCreateCard = async data => {
@@ -217,4 +217,5 @@ MyCardCreate.defaultProps = {
 
 MyCardCreate.propTypes = {
   userData: PropTypes.object,
+  isAdmin: PropTypes.bool
 }

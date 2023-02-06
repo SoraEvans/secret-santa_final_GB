@@ -5,8 +5,8 @@ import { ButtonBlock, TextBlock } from '../MyCard/style'
 import MyWardDetails from "../MyWardDetails/MyWardDetails";
 
 // eslint-disable-next-line react/prop-types
-const WardCard = ({ setActiveIdx }) => {
-
+const WardCard = ({ setActiveIdx, wardId, id }) => {
+  console.log('wardId, id', wardId, id)
   const myWard = true;
   const cardCreated = true;
 
@@ -14,8 +14,7 @@ const WardCard = ({ setActiveIdx }) => {
     return (
       <div>
         {myWard
-          ?
-          <div><MyWardDetails /></div>
+          ? <MyWardDetails wardId={wardId} id={id}/>
           :
           <TextBlock>
             <ButtonBlock>

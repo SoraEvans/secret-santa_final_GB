@@ -14,22 +14,23 @@ import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
 import { BtnAdd } from '../../../my-boxes/components/PrivateBox/style'
 
-const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
+const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin }) => {
   const [showModal, setShowModal] = useState(false)
   const [showModalUsers, setShowModalUsers] = useState(false)
-  const [drawDone, setDrawDone] = useState(false)
-  const { secret_santas, box, invitedUsers } = userData
+  const { secret_santas, box, invitedUsers, secret_santas_ward } = userData
 
   const clickOnUser = (user) => {
-    localStorage.setItem('chosenUser', JSON.stringify(user))
-    setActiveIdx(3)
+    if (currentUserId === user.id || isAdmin) {
+      localStorage.setItem('chosenUser', JSON.stringify(user))
+      setActiveIdx(3)
+    }
   }
 
   const { id } = useParams()
   const userItem = secret_santas?.map(user => (
     <UserBox onClick={() => clickOnUser(user)}>
-      <UserItem key={user.id}>{user.name[0]}</UserItem>
-      {user.name}
+      <UserItem key={user.id}>{user.name[0]?.toUpperCase()}</UserItem>
+      {user.name} {currentUserId === user.id && '(Вы)'}
     </UserBox>
   ))
 
@@ -49,10 +50,10 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
       body: JSON.stringify({
         box_id: id
       })
-    }).then(() => {
-      setDrawDone(true)
-      setShowModal(prev => !prev)
     })
+      .then(() => {
+        setShowModal(prev => !prev)
+      })
   }
 
   const reverseDraw = async () => {
@@ -64,10 +65,10 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
       body: JSON.stringify({
         box_id: id
       })
-    }).then(() => {
-      setDrawDone(true)
-      setShowModal(prev => !prev)
     })
+      .then(() => {
+        setShowModal(prev => !prev)
+      })
   }
 
   return (
@@ -77,6 +78,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
           title={box.title}
           cover={box.cover}
           userCount={secret_santas.length}
+          isAdmin={isAdmin}
         />
       ) : (
         <p>Моя коробка</p>
@@ -85,7 +87,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
         <UsersList>
           {userItem}
           {invitedItem}
-          {drawDone ? null : (
+          {secret_santas_ward?.length || !isAdmin ? null : (
             <BtnAdd
               type="submit"
               onClick={() => setShowModalUsers(prevState => !prevState)}
@@ -97,7 +99,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData }) => {
       ) : (
         <NoBoxUsers />
       )}
-      {drawDone ? null : (
+      {secret_santas_ward?.length || !isAdmin ? null : (
         <DrawButton
           onClick={draw}
           userCount={
@@ -133,12 +135,18 @@ export default BoxUsers
 
 BoxUsers.defaultProps = {
   userData: {},
-  setActiveIdx: () => {},
-  setUserData: () => {}
+  setActiveIdx: () => {
+  },
+  setUserData: () => {
+  },
+  currentUserId: () => {
+  }
 }
 
 BoxUsers.propTypes = {
   userData: PropTypes.object,
   setActiveIdx: PropTypes.func,
-  setUserData: PropTypes.func
+  setUserData: PropTypes.func,
+  currentUserId: PropTypes.number,
+  isAdmin: PropTypes.bool
 }

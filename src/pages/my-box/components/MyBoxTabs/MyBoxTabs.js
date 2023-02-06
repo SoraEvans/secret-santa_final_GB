@@ -5,21 +5,36 @@ import BoxUsers from '../BoxUsers/BoxUsers'
 import MyCard from '../MyCard/MyCard'
 import WardCard from '../WardCard/WardCard'
 import MyBoxSettings from '../MyBoxSettings/MyBoxSettings'
-import MembersAdding from '../MembersAdding/MembersAdding'
+import MyCardCreate from '../MembersAdding/MyCardCreate'
 import getBoxInfo from '../../../../API/boxInfo'
 
 const MyBoxTabs = () => {
   const [activeIdx, setActiveIdx] = useState(0)
   const [userData, setUserData] = useState({})
-
+  const [santaId, setSantaId] = useState(null)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [wardId, setWardId] = useState(null)
+  const currentUserId = +localStorage.getItem('userId')
   const handlerChangeTab = (event, newIdx) => {
     setActiveIdx(newIdx)
   }
-
   const { id } = useParams()
   useEffect(() => {
     getBoxInfo(setUserData, id)
   }, [])
+
+  useEffect(() => {
+    if (userData?.box?.creator_id === currentUserId) {
+      setIsAdmin(true)
+    }
+
+    userData?.secret_santas?.forEach(item => {
+      if (currentUserId === item.id) {
+        setSantaId(item.your_secret_santa_id)
+        setWardId(item.secret_santa_to_id)
+      }
+    })
+  }, [userData])
 
   return (
     <>
@@ -35,10 +50,18 @@ const MyBoxTabs = () => {
           <TabItem label={<div>Мой подопечный</div>} />
         </TabsInner>
       </TabsWrapper>
-      <TabBody>{activeIdx === 0 && <BoxUsers userData={userData} setActiveIdx={setActiveIdx} setUserData={setUserData} />}</TabBody>
-      <TabBody>{activeIdx === 1 && <MyCard setActiveIdx={setActiveIdx} />}</TabBody>
-      <TabBody>{activeIdx === 2 && <WardCard setActiveIdx={setActiveIdx} />}</TabBody>
-      <TabBody>{activeIdx === 3 && <MembersAdding userData={userData} />}</TabBody>
+      <TabBody>
+        {activeIdx === 0 && <BoxUsers
+          currentUserId={currentUserId}
+          userData={userData}
+          setActiveIdx={setActiveIdx}
+          setUserData={setUserData}
+          isAdmin={isAdmin}
+        />}
+      </TabBody>
+      <TabBody>{activeIdx === 1 && <MyCard santaId={santaId} setActiveIdx={setActiveIdx} id={id} />}</TabBody>
+      <TabBody>{activeIdx === 2 && <WardCard wardId={wardId} setActiveIdx={setActiveIdx} id={id} />}</TabBody>
+      <TabBody>{activeIdx === 3 && <MyCardCreate isAdmin={isAdmin} userData={userData} />}</TabBody>
     </>
   )
 }

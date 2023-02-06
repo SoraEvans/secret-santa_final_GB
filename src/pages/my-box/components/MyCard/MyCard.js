@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { InputAdornment } from '@mui/material'
+import PropTypes from 'prop-types'
 import { CarouselButton } from '../../../home/components/carousel/style'
 import Chat from '../ChatBox/Chat'
 import {
@@ -19,14 +20,12 @@ import {
   UserInfoBlock,
   UserName, StyledHr
 } from './style'
+import { UserItem } from '../BoxUsers/style'
+import { ChatWrapper } from '../ChatBox/style'
 
-import { UserItem } from "../BoxUsers/style";
-import { ChatWrapper } from "../ChatBox/style";
-
-// eslint-disable-next-line react/prop-types
-const MyCard = ({ setActiveIdx }) => {
-  const [text, setText] = React.useState('')
-
+const MyCard = ({ setActiveIdx, santaId, id }) => {
+  const [text, setText] = useState('')
+console.log('santaId, id', santaId, id)
   const cardCreated = true
   const price = 1000
 
@@ -40,9 +39,10 @@ const MyCard = ({ setActiveIdx }) => {
                 flex: '1 0 auto',
                 aspectRatio: '1 / 1',
                 fontSize: '48px',
-                maxWidth:'70px',
-                maxHeight:'70px',
-                cursor: 'default' }}>
+                maxWidth: '70px',
+                maxHeight: '70px',
+                cursor: 'default'
+              }}>
                 И
               </UserItem>
 
@@ -84,12 +84,18 @@ const MyCard = ({ setActiveIdx }) => {
               <Input fullWidth />
               <CardFormLabel>Номер телефона</CardFormLabel>
               <Input fullWidth />
-              <CarouselButton type="submit" style={{ margin: '22px 0', width: '143px',  height: '44px', fontWeight: '500', fontSize: '15px' }}>
+              <CarouselButton type="submit" style={{
+                margin: '22px 0',
+                width: '143px',
+                height: '44px',
+                fontWeight: '500',
+                fontSize: '15px'
+              }}>
                 Сохранить
               </CarouselButton>
             </CardForm>
           </CardInfo>
-          <StyledHr width="1" size="100%"/>
+          <StyledHr width="1" size="100%" />
           <ChatBlock>
             <div>
               <ChatTitle>Чат с Сантой</ChatTitle>
@@ -99,9 +105,8 @@ const MyCard = ({ setActiveIdx }) => {
                 контактами или просто поболтать
               </ChatSubTitle>
             </div>
-            {/* убрать хардкод */}
             <ChatWrapper>
-              <Chat receiverId={57} cardId={19} />
+              <Chat receiverId={santaId} cardId={id} />
             </ChatWrapper>
           </ChatBlock>
         </MyCardPage>
@@ -123,3 +128,14 @@ const MyCard = ({ setActiveIdx }) => {
 }
 
 export default MyCard
+
+MyCard.defaultProps = {
+  santaId: null,
+  setActiveIdx: () => {}
+}
+
+MyCard.propTypes = {
+  santaId: PropTypes.number,
+  setActiveIdx: PropTypes.func,
+  id: PropTypes.number
+}
