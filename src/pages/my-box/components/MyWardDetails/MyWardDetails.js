@@ -23,7 +23,8 @@ import ContactDetails from '../ContactDetails/ContactDetails'
 import Chat from '../ChatBox/Chat'
 import { UserItem } from "../BoxUsers/style";
 
-const MyWardDetails = () => {
+// eslint-disable-next-line react/prop-types
+const MyWardDetails = ({ wardId, id }) => {
   const price = 1000
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -40,9 +41,10 @@ const MyWardDetails = () => {
             flex: '1 0 auto',
             aspectRatio: '1 / 1',
             fontSize: '48px',
-            maxWidth:'70px',
-            maxHeight:'70px',
-            cursor: 'default' }}>
+            maxWidth: '70px',
+            maxHeight: '70px',
+            cursor: 'default'
+          }}>
             И
           </UserItem>
           <UserInfo>
@@ -57,22 +59,21 @@ const MyWardDetails = () => {
         <BodyInner>
           <TabsWrapper>
             <TabsInner
-
               orientation="vertical"
               value={activeIndex}
               onChange={handlerChangeTab}
             >
-              <TabItem style={{minHeight:"233px", alignSelf: "flex-start"}} label={<div>Чат с подопечным</div>} />
-              <TabItem style={{minHeight:"233px", alignSelf: "flex-start"}} label={<div>Контакты подопечного</div>} />
+              <TabItem style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Чат с подопечным</div>} />
+              <TabItem style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Контакты
+                подопечного</div>} />
             </TabsInner>
           </TabsWrapper>
           <BodyWrapper>
             <TabBody style={{ margin: 0 }}>
-              {/* убрать хардкод */}
               {activeIndex === 0 && (
                 <Chat
-                  receiverId={57}
-                  cardId={19}
+                  receiverId={wardId}
+                  cardId={id}
                   setActiveIndex={setActiveIndex}
                 />
               )}
@@ -85,7 +86,7 @@ const MyWardDetails = () => {
           </BodyWrapper>
         </BodyInner>
       </MyWardInfo>
-      <StyledHr width="1" size="100%"/>
+      <StyledHr width="1" size="100%" />
       <SantaImg>
         <img alt="santa" src={santa} width="100%" />
       </SantaImg>

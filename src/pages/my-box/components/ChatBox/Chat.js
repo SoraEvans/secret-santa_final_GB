@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Input, InputAdornment, SvgIcon } from '@mui/material'
-// import { Send } from '@mui/icons-material'
 import { ChatDiv, ChatInput, MessageDiv, MessageText } from './style'
-// import SendIcon from '../../../../assets/images/chat-send-icon.svg'
-
 
 const Chat = ({ receiverId, cardId }) => {
   const ref = useRef(null)
@@ -19,7 +16,7 @@ const Chat = ({ receiverId, cardId }) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: JSON.stringify({
-        first_chatter: localStorage.getItem('userId'),
+        first_chatter: userId,
         second_chatter: receiverId,
         card_id: cardId
       })

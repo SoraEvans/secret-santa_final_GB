@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BoxTitleInner, BoxTitleText, StyledBoxIcon } from './style'
 import tree from '../../../../assets/images/elTree.svg'
 
-const BoxInfo = ({ title, cover, userCount }) => (
+const BoxInfo = ({ title, cover, userCount, isAdmin }) => (
   <BoxTitleInner>
     {console.log(cover)}
     <StyledBoxIcon>
@@ -14,7 +14,7 @@ const BoxInfo = ({ title, cover, userCount }) => (
         <h3>Коробка: {title}</h3>
         <p>Участников: {userCount}</p>
       </div>
-      <p>Вы организатор</p>
+      {isAdmin ? <p>Вы организатор</p> : <p>Вы участник</p> }
     </BoxTitleText>
   </BoxTitleInner>
 )
@@ -28,6 +28,7 @@ BoxInfo.defaultProps = {
 BoxInfo.propTypes = {
   title: PropTypes.string,
   cover: PropTypes.string,
-  userCount: PropTypes.number
+  userCount: PropTypes.number,
+  isAdmin: PropTypes.bool
 }
 export default BoxInfo
