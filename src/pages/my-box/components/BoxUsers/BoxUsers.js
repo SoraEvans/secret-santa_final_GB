@@ -4,12 +4,8 @@ import { useParams } from 'react-router-dom'
 import DrawButton from '../draw-button/DrawButton'
 import Modal from '../../../../components/modal/modal'
 import NoBoxUsers from '../no-box-users/NoBoxUsers'
-import { BoxUsersWrapper, UserItem, UsersList, UserBox } from './style'
-import {
-  ModalLink,
-  ModalSubTitle,
-  ModalTitle
-} from '../../../../components/modal/style'
+import { BoxUsersWrapper, UserBox, UserItem, UsersList } from './style'
+import { ModalLink, ModalSubTitle, ModalTitle } from '../../../../components/modal/style'
 import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
 import { BtnAdd } from '../../../my-boxes/components/PrivateBox/style'
@@ -35,8 +31,12 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin 
   ))
 
   const invitedItem = invitedUsers?.map(user => (
-    <UserBox onClick={() => clickOnUser(user)}>
-      <UserItem>{user.name[0]?.toUpperCase()}</UserItem>
+    <UserBox>
+      <UserItem style={{
+        border: "2px solid #D6CCCA",
+        color: "#D6CCCA",
+        cursor: "default"
+      }}>{user.name[0]?.toUpperCase()}</UserItem>
       {user.name}
     </UserBox>
   ))
@@ -135,12 +135,9 @@ export default BoxUsers
 
 BoxUsers.defaultProps = {
   userData: {},
-  setActiveIdx: () => {
-  },
-  setUserData: () => {
-  },
-  currentUserId: () => {
-  }
+  setActiveIdx: () => {},
+  setUserData: () => {},
+  currentUserId: () => {}
 }
 
 BoxUsers.propTypes = {
