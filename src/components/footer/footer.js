@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   ModalCandyTop,
   ModalCandyBot,
@@ -23,12 +23,13 @@ const Footer = () => {
   const openModal = () => {
     setShowModal(prev => !prev)
   }
+  const navigate = useNavigate()
 
   return (
     <FooterEl>
       <Container>
         <Wrapper>
-          <FooterText>Помочь проекту</FooterText>
+          <FooterText onClick={() => navigate('/support-us')}>Помочь проекту</FooterText>
           <FooterText onClick={openModal}>Обратная связь</FooterText>
           <CopyrightText>©Copyright 2022</CopyrightText>
           <Modal

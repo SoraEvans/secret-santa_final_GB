@@ -13,6 +13,8 @@ import Profile from './pages/profile/Profile'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import Settings from './pages/settings/settings'
+import SupportPage from "./pages/support-us/SupportPage";
+
 
 const App = () => {
   const [showHeadFoot, setShowHeadFoot] = useState(true)
@@ -37,6 +39,7 @@ const App = () => {
         <Route path="/password-reset" element={<PasswordResetPage />} />
         <Route path="/create-box" element={<BoxCreate />} />
         <Route path="/box-created" element={<BoxDone />} />
+        <Route path="/support-us" element={<SupportPage />} />
 
         <Route path="/box/:id">
           <Route index element={<MyBox />} />
