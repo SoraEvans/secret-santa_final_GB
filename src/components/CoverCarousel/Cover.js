@@ -1,56 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Div, Img, CarouselElement, CarouselWrapper } from './style'
-import ArrowLeft from '../../assets/images/arrow_left.svg'
-import ArrowRight from '../../assets/images/arrow_right.svg'
+import { Div, CoverImg, Wrapper } from './style'
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ item, alt }) => (
-  <Div>
-    <Img src={item} alt={alt} style={{ marginLeft: '110px' }} />
-  </Div>
+  <div>
+    <Div>
+      <CoverImg src={item} alt={alt} />
+    </Div>
+  </div>
 )
 
-const Cover = ({ img }) => {
+const Cover = ({ img, fu, state }) => {
   const imgArr = img
-console.log('imgArr', imgArr)
   return (
-    <CarouselWrapper>
-      <CarouselElement
-        autoPlay={false}
-        IndicatorIcon={null}
-        navButtonsAlwaysVisible
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'transparent',
-            borderRadius: 0
-          }
-        }}
-        navButtonsWrapperProps={{
-          style: {
-            bottom: '0',
-            top: 'unset',
-            backgroundColor: 'white'
-          }
-        }}
-        NextIcon={<Img src={ArrowRight} data-next-btn alt="next" />}
-        PrevIcon={<Img src={ArrowLeft} data-prev-btn alt="prev" />}
-      >
-        {imgArr.map((item, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Item key={i} item={item.path} alt={item.alt} />
-        ))}
-      </CarouselElement>
-    </CarouselWrapper>
+    <Wrapper>
+      {imgArr.map((item, i) => (
+        // eslint-disable-next-line jsx-a11y/label-has-associated-control, react/no-array-index-key
+        <label key={i}>
+          <input
+            type="radio"
+            name="test"
+            value={item.path}
+            onChange={event =>
+              fu({
+                ...state,
+                cover: event.target.value
+              })
+            }
+          />
+          <Item item={item.path} alt={item.alt} />
+        </label>
+      ))}
+    </Wrapper>
   )
 }
 
 Cover.defaultProps = {
-  img: null
+  img: null,
+  fu: null,
+  state: null
 }
 
 Cover.propTypes = {
-  img: PropTypes.array
+  img: PropTypes.array,
+  fu: PropTypes.func,
+  state: PropTypes.object
 }
 
 export default Cover

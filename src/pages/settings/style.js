@@ -6,16 +6,19 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 87px;
   width: 100%;
   margin: auto;
   padding-bottom: 80px;
-  padding-top: 100px;
+  padding-top: 140px;
 `
 
 export const Head = styled.div`
+  max-width: 1328px;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 103px;
 `
 
 export const Title = styled.h1`
@@ -25,7 +28,7 @@ export const Title = styled.h1`
   font-size: 30px;
   line-height: 29px;
   color: #000000;
-  margin-bottom: 12px;
+  margin-bottom: 47px;
 `
 
 export const SubTitle = styled.p`
@@ -45,7 +48,8 @@ export const Div = styled.div`
   max-width: 633px;
   min-height: 94px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
   margin-bottom: 38px;
   padding: 15px;
 `
@@ -82,6 +86,7 @@ export const P = styled.p`
   font-size: 18px;
   line-height: 22px;
   color: #000000;
+  padding-bottom: 7px;
 `
 
 export const CoverDiv = styled.div`
@@ -99,6 +104,16 @@ export const CoverButton = styled.button`
 export const SmallInput = styled(Input)`
   height: 50px;
   margin-bottom: 46px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #a19593;
+  background: #f7f3f3;
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
 `
 
 export const SmallLabel = styled(Label)`
@@ -109,7 +124,7 @@ export const SmallLabel = styled(Label)`
 `
 
 export const CreateButton = styled.button`
-  width: 293px;
+  width: 266px;
   height: 81px;
   background: #ff5539;
   border-radius: 4px;
@@ -141,18 +156,21 @@ export const CancellButton = styled(CreateButton)`
 
 export const ButtonsDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  column-gap: 25px;
+  justify-content: center;
 `
 
 export const Select = styled.select`
   width: 304px;
   height: 55px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 23px;
   color: #000000;
 `
 
@@ -165,11 +183,14 @@ export const CostInput = styled.input`
   width: 304px;
   height: 55px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 28px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
   color: #000000;
 `
 
@@ -179,7 +200,7 @@ export const Img = styled.img`
 
 export const Button = styled.button`
   font-family: Raleway;
-  width: 291px;
+  width: 266px;
   height: 81px;
   background: #ff5539;
   font-style: normal;
@@ -264,5 +285,6 @@ export const SubTitleBoxCreated = styled.p`
 `
 export const Hr = styled.hr`
   border: 1px solid #e2e2e2;
+  max-width: 1328px;
   width: 100%;
 `

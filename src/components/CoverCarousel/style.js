@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Carousel from 'react-material-ui-carousel'
 
 export const Div = styled.div`
   display: flex;
@@ -14,20 +13,30 @@ export const Div = styled.div`
 export const CarouselWrapper = styled.div`
   margin: 42px auto 0 auto;
 `
+export const Wrapper = styled.fieldset`
+  display: flex;
+  border: 0;
+  column-gap: 26.91px;
 
-export const CarouselElement = styled(Carousel)`
-  button[aria-label='Previous'] {
-    width: 90px;
+  [type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
-  button[aria-label='Next'] {
-    width: 84px;
+  [type='radio'] + div {
+    cursor: pointer;
   }
 
-  > div:first-child {
-    //width: 81%;
-    //margin: auto;
+  [type='radio']:checked + div {
+    outline: 2px solid #ff5539;
+    outline-offset: 5px;
+    border-radius: 2px;
+    border: 0;
   }
 `
 
-export const Img = styled.img``
+export const CoverImg = styled.img`
+  align-self: center;
+`
