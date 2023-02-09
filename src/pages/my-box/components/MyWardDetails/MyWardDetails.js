@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 
 import santa from '../../../../assets/images/santa.svg'
-import {
-  Price,
-  PriceAmount, StyledHr,
-  UserInfo,
-  UserInfoBlock,
-  UserName
-} from '../MyCard/style'
+import { Price, PriceAmount, StyledHr, UserInfo, UserInfoBlock, UserName } from '../MyCard/style'
 import {
   BodyInner,
   BodyWrapper,
+  GiftSentButton,
   MyWardInfo,
   MyWardPage,
   SantaImg,
@@ -31,6 +26,23 @@ const MyWardDetails = ({ wardId, id }) => {
 
   const handlerChangeTab = (event, newIndex) => {
     setActiveIndex(newIndex)
+  }
+
+  const onPresentSent = async data => {
+
+    await fetch('https://backsecsanta.alwaysdata.net/api/card/addAdditionalInfo', {
+      method: 'PATCH',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        card_id: id,
+        presentReceived: true,
+
+      })
+    })
+
+    console.log(data)
   }
 
   return (
@@ -54,6 +66,7 @@ const MyWardDetails = ({ wardId, id }) => {
               Стоимость подарка:
               <PriceAmount>до {price} руб.</PriceAmount>
             </Price>
+            <GiftSentButton type="button" onClick={onPresentSent}>Я отправил подарок!</GiftSentButton>
           </UserInfo>
         </UserInfoBlock>
         <BodyInner>

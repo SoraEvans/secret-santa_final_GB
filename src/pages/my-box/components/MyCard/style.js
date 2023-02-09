@@ -47,12 +47,13 @@ export const Price = styled.div`
   white-space: nowrap;
 `
 
+
 export const PriceAmount = styled.div`
   color: black;
   margin-left: 4px;
 `
 
-export const CardForm = styled.div`
+export const CardForm = styled.form`
   padding-top: 22px;
 `
 
@@ -66,14 +67,19 @@ export const CardFormLabel = styled.div`
   font-size: 12px;
   line-height: 14px;
 
-  a {
+
+`
+export const GiftButton = styled.button`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
     line-height: 15px;
     color: #FF5539;
-  }
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
 `
 
 export const ButtonBlock = styled.div`
