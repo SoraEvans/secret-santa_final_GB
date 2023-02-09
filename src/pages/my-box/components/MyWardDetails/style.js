@@ -2,13 +2,20 @@ import styled from 'styled-components';
 import { styled as st } from '@mui/material/styles';
 import { Tabs, Tab, Box } from '@mui/material'
 
-import { CardInfo, MyCardPage } from "../MyCard/style";
+import { CardInfo, GiftButton, MyCardPage } from "../MyCard/style";
 
 export const MyWardPage = styled(MyCardPage)`
 `
 
 export const MyWardInfo = styled(CardInfo)`
 `
+
+export const GiftSentButton = styled(GiftButton)`
+    align-self: flex-end;
+    margin: 50px 0 5px;
+   
+`
+
 export const SantaImg = styled.div`
   width: 50%;
   display: flex;
@@ -21,7 +28,7 @@ export const TabsWrapper = st(Box)`
 
 export const BodyInner = styled.div`
   display: flex;
-  margin: 54px 0 43px 0;
+  margin-bottom: 43px;
   height: 466px;
 `
 
