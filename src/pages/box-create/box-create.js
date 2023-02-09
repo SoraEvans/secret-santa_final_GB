@@ -31,12 +31,12 @@ const BoxCreate = () => {
   const [state, setState] = useState({
     title: '',
     cover: 'img',
-    anonymous: false,
+    isAnonym: false,
     email: false,
     isPublic: false,
     max_people_in_box: null,
     draw_starts_at: null,
-    limit: false,
+    isLimit: false,
     cost: null,
     currency: 'RUB'
   })
@@ -51,14 +51,15 @@ const BoxCreate = () => {
       body: JSON.stringify({
         title: state.title,
         cover: tree,
-        // anonymous: state.anonymous, // отсутствует в бд
+        isAnonym: state.isAnonym,
         email: state.email,
         isPublic: state.isPublic,
         max_people_in_box: state.max_people_in_box,
         draw_starts_at: state.draw_starts_at,
+        isLimit: state.isLimit,
         cost: state.cost,
-        creator_id: localStorage.getItem('userId')
-        // currency: state.currency // отсутствует в бд
+        creator_id: localStorage.getItem('userId'),
+        currency: state.currency
       })
     })
       // .then(response => response.text()) // Проверка ответа
@@ -105,8 +106,8 @@ const BoxCreate = () => {
           <Label for="title">Название коробки</Label>
         </DivInput>
         <CoverDiv>
-          <P>Обложка коробки</P>
-          <Cover img={BOX_CREATE_IMG} />
+          <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
+          <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
         </CoverDiv>
         <Div>
           <div>
@@ -119,8 +120,8 @@ const BoxCreate = () => {
             </SubTitleBoxCreated>
           </div>
           <AntSwitch
-            checked={state.anonymous}
-            name="anonymous"
+            checked={state.isAnonym}
+            name="isAnonym"
             onChange={handleChangeSwitch}
             inputProps={{ 'aria-label': 'controlled' }}
           />
@@ -178,7 +179,7 @@ const BoxCreate = () => {
                 Введите максимальное количество участников
               </SmallLabel>
             </DivInput>
-            <DivInput>
+            <DivInput style={{ marginBottom: '0' }}>
               <SmallInput
                 required
                 data-name="draw_starts_at"
@@ -196,7 +197,9 @@ const BoxCreate = () => {
         <div>
           <Div
             style={
-              state.limit ? { marginBottom: '20px' } : { marginBottom: '38px' }
+              state.isLimit
+                ? { marginBottom: '20px' }
+                : { marginBottom: '38px' }
             }
           >
             <div>
@@ -208,13 +211,13 @@ const BoxCreate = () => {
               </SubTitleBoxCreated>
             </div>
             <AntSwitch
-              checked={state.limit}
-              name="limit"
+              checked={state.isLimit}
+              name="isLimit"
               onChange={handleChangeSwitch}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </Div>
-          {state.limit ? (
+          {state.isLimit ? (
             <CostDiv>
               <CostInput
                 required

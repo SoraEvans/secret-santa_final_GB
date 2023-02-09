@@ -47,7 +47,8 @@ export const Div = styled.div`
   max-width: 633px;
   min-height: 94px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
   margin-bottom: 38px;
   padding: 15px;
 `
@@ -84,6 +85,7 @@ export const P = styled.p`
   font-size: 18px;
   line-height: 22px;
   color: #000000;
+  padding-bottom: 7px;
 `
 
 export const CoverDiv = styled.div`
@@ -101,6 +103,16 @@ export const CoverButton = styled.button`
 export const SmallInput = styled(Input)`
   height: 50px;
   margin-bottom: 46px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #a19593;
+  background: #f7f3f3;
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
 `
 
 export const SmallLabel = styled(Label)`
@@ -111,7 +123,7 @@ export const SmallLabel = styled(Label)`
 `
 
 export const CreateButton = styled.button`
-  width: 293px;
+  width: 266px;
   height: 81px;
   background: #ff5539;
   border-radius: 4px;
@@ -143,18 +155,21 @@ export const CancellButton = styled(CreateButton)`
 
 export const ButtonsDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  column-gap: 25px;
+  justify-content: center;
 `
 
 export const Select = styled.select`
   width: 304px;
   height: 55px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 23px;
   color: #000000;
 `
 
@@ -167,17 +182,18 @@ export const CostInput = styled.input`
   width: 304px;
   height: 55px;
   background: #f7f3f3;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d6ccca;
+  border-radius: 3px;
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 28px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
   color: #000000;
 `
 
-export const Img = styled.div`
-
-`
+export const Img = styled.div``
 
 export const Button = styled.button`
   font-family: Raleway;
@@ -245,7 +261,6 @@ export const ContainerBoxCreated = styled.div`
   width: 100%;
   margin: auto;
   padding: 100px 385px 80px;
-
 `
 export const BoxCreated = styled.div`
   max-width: 535px;

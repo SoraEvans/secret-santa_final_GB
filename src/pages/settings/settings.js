@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Cover from '../../components/CoverCarousel/Cover'
 import BOX_CREATE_IMG from '../../constants/box-create-img'
@@ -29,20 +29,50 @@ import {
 const Settings = () => {
   const [state, setState] = useState({
     title: '',
-    cover: 'img',
-    anonymous: false,
+    cover: null,
+    isAnonym: false,
     email: false,
     isPublic: false,
-    max_people_in_box: null,
-    draw_starts_at: null,
-    limit: false,
+    max_people_in_box: '',
+    draw_starts_at: '',
+    isLimit: false,
     cost: null,
     currency: 'RUB'
   })
-
+  console.log('state', state)
   const navigate = useNavigate()
 
   const { id } = useParams()
+
+  useEffect(() => {
+    fetch(`https://backsecsanta.alwaysdata.net/api/box/onlyBoxInfo`, {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        box_id: id
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'success') {
+          setState({
+            ...state,
+            title: res.box.title,
+            cover: res.box.cover,
+            isAnonym: res.box.isAnonym,
+            email: res.box.email,
+            isPublic: res.box.isPublic,
+            max_people_in_box: res.box.max_people_in_box,
+            draw_starts_at: res.box.draw_starts_at,
+            isLimit: res.box.isLimit,
+            cost: res.box.cost,
+            currency: res.box.currency
+          })
+        }
+      })
+  }, [])
 
   const onSubmit = async state => {
     await fetch(`https://backsecsanta.alwaysdata.net/api/box/update/${id}`, {
@@ -53,14 +83,15 @@ const Settings = () => {
       body: JSON.stringify({
         title: state.title,
         cover: state.cover,
-        // anonymous: state.anonymous, // отсутствует в бд
+        isAnonym: state.isAnonym,
         email: state.email,
         isPublic: state.isPublic,
         max_people_in_box: state.max_people_in_box,
         draw_starts_at: state.draw_starts_at,
+        isLimit: state.isLimit,
         cost: state.cost,
-        creator_id: localStorage.getItem('userId')
-        // currency: state.currency // отсутствует в бд
+        creator_id: localStorage.getItem('userId'),
+        currency: state.currency
       })
     })
       .then(response => response.json())
@@ -89,8 +120,9 @@ const Settings = () => {
     <Container>
       <Head>
         <Title>Настройки коробки</Title>
+        <Hr />
       </Head>
-      <Hr />
+
       <div>
         <DivInput>
           <Input
@@ -98,13 +130,14 @@ const Settings = () => {
             data-name="title"
             id="title"
             type="text"
+            value={state.title}
             onChange={handleChangeForm}
           />
           <Label for="title">Название коробки</Label>
         </DivInput>
         <CoverDiv>
-          <P>Обложка коробки</P>
-          <Cover img={BOX_CREATE_IMG} />
+          <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
+          <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
         </CoverDiv>
         <Div>
           <div>
@@ -117,8 +150,8 @@ const Settings = () => {
             </SubTitleBoxCreated>
           </div>
           <AntSwitch
-            checked={state.anonymous}
-            name="anonymous"
+            checked={state.isAnonym}
+            name="isAnonym"
             onChange={handleChangeSwitch}
             inputProps={{ 'aria-label': 'controlled' }}
           />
@@ -176,7 +209,7 @@ const Settings = () => {
                 Введите максимальное количество участников
               </SmallLabel>
             </DivInput>
-            <DivInput>
+            <DivInput style={{ marginBottom: '0' }}>
               <SmallInput
                 required
                 data-name="draw_starts_at"
@@ -194,7 +227,9 @@ const Settings = () => {
         <div>
           <Div
             style={
-              state.limit ? { marginBottom: '20px' } : { marginBottom: '38px' }
+              state.isLimit
+                ? { marginBottom: '20px' }
+                : { marginBottom: '38px' }
             }
           >
             <div>
@@ -206,22 +241,27 @@ const Settings = () => {
               </SubTitleBoxCreated>
             </div>
             <AntSwitch
-              checked={state.limit}
-              name="limit"
+              checked={state.isLimit}
+              name="isLimit"
               onChange={handleChangeSwitch}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </Div>
-          {state.limit ? (
+          {state.isLimit ? (
             <CostDiv>
               <CostInput
                 required
                 data-name="cost"
+                value={state.cost}
                 type="number"
                 min="0"
                 onChange={handleChangeForm}
               />
-              <Select data-name="currency" onChange={handleChangeForm}>
+              <Select
+                value={state.currency}
+                data-name="currency"
+                onChange={handleChangeForm}
+              >
                 <option value="RUB">RUB</option>
                 <option value="EUR">EUR</option>
               </Select>
