@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
-
 export const ChatWrapper = styled.div`
-background-color: #f6f3f3;
+  background-color: #f6f3f3;
   border: 1px solid #d6ccca;
   border-radius: 3px;
   width: 100%;
@@ -21,8 +20,8 @@ export const ChatInput = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 8px;
-  background: #FFFFFF;
-  border: 1px solid #DBDBDB;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
   border-radius: 4px;
   margin: 16px 34px 22px;
   min-height: 49px;
@@ -65,4 +64,15 @@ export const MessageText = styled.h3`
   font-size: 13px;
   line-height: 100.02%;
   color: #8b8b8b;
+`
+export const Date = styled.h3`
+  margin-top: 8px;
+  margin-bottom: 8px;
+  align-self: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #a19593;
 `
