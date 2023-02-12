@@ -55,7 +55,7 @@ function Header() {
 								colorState={color}
 								onClick={handleClick}
 							>
-								Уведомления ({notification && notification?.notifications.length})
+								Уведомления {Object.keys(notification).length && `(${notification?.notifications?.length})`}
 							</StyledLink>
 							<Popover
 								anchorEl={anchorEl}
