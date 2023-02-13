@@ -78,7 +78,7 @@ const MyBoxTabs = () => {
         )}
       </TabBody>
       <TabBody style={{ marginLeft: 340 }}>{activeIdx === 3 &&
-      <MyCardCreate setUserData={setUserData} isAdmin={isAdmin} userData={userData} />}</TabBody>
+      <MyCardCreate setUserData={setUserData} isAdmin={isAdmin} userData={userData} setActiveIdx={setActiveIdx} />}</TabBody>
       <TabBody style={{ marginLeft: 340 }}>
         {activeIdx === 4 && (
           <DrawResult isAdmin={isAdmin} setActiveIdx={setActiveIdx} userData={userData} />

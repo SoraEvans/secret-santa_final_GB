@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Alert, Divider, Slide, Snackbar } from '@mui/material'
@@ -29,7 +29,7 @@ import getBoxInfo from "../../../../API/boxInfo";
 
 const TransitionLeft = (props) => <Slide {...props} direction="right" />
 
-const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
+const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
   const [showModal, setShowModal] = useState(false)
   const [open, setOpen] = useState(false)
   const [userValues, setUserValues] = useState({})
@@ -49,7 +49,7 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
     }
   })
   const { id } = useParams()
-
+  const navigate = useNavigate()
   useEffect(() => {
     setUserValues(typeof card !== 'object' ? { name: '', email: '' } : choosenUser)
   }, [])
@@ -91,6 +91,9 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
     })
       .then(() => {
         getBoxInfo(setUserData, id)
+        if (choosenUser?.card_id === card?.id && !isAdmin) {
+          navigate('/boxes')
+        } else setActiveIdx(0)
       })
   }
 
@@ -259,5 +262,6 @@ MyCardCreate.defaultProps = {
 MyCardCreate.propTypes = {
   userData: PropTypes.object,
   isAdmin: PropTypes.bool,
-  setUserData: PropTypes.func
+  setUserData: PropTypes.func,
+  setActiveIdx: PropTypes.func
 }
