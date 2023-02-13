@@ -142,12 +142,12 @@ export const CreateButton = styled.button`
   font-size: 20px;
   line-height: 28px;
   color: #ffffff;
-  /* &:hover {
-    background: #ffffff;
-    color: #ff5539;
-    border: 2px solid #ff5539;
-    transition: 300ms;
-  } */
+
+  &:hover {
+    background: #f53e20;
+    color: #ffffff;
+    transition: all 300ms;
+  }
 `
 
 export const CancellButton = styled(CreateButton)`
@@ -155,11 +155,6 @@ export const CancellButton = styled(CreateButton)`
   border: 2px solid #ff5539;
   cursor: pointer;
   color: #ff5539;
-  /* &:hover {
-    background: #ff5539;
-    color: #ffffff;
-    transition: all 300ms;
-  } */
 `
 
 export const ButtonsDiv = styled.div`

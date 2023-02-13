@@ -118,7 +118,7 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
     setShowModal(prev => !prev)
   }
 
-  const validCard = Object.keys(card || {}).length
+  const validCard = Object.keys(card || {}).length || choosenUser?.card_id
 
   if (!card && secret_santas_ward.length) {
     return (

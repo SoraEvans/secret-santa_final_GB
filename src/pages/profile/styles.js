@@ -141,7 +141,7 @@ export const ProfileButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #ff4f32;
+    background-color: #f53e20;
   }
 `
 
