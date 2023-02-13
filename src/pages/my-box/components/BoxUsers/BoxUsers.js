@@ -32,7 +32,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
 
   const { id } = useParams()
   const userItem = secret_santas?.map(user => (
-    <UserBox outline onClick={() => clickOnUser(user)}>
+    <UserBox outline={isAdmin || currentUserId === user.id} onClick={() => clickOnUser(user)}>
       {user?.image ?
         <UserItem key={user.id} outline={isAdmin || currentUserId === user.id}>
           <img src={user.image} alt="avatar" style={{ height: 110, cursor: 'pointer' }} />
