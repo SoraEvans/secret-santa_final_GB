@@ -6,7 +6,7 @@ export const StyledAuthInput = styled(TextField)`
 
   & label {
     font-family: Raleway;
-    font-weight: 600;
+    //font-weight: 600;
   }
 
   & label.Mui-focused {

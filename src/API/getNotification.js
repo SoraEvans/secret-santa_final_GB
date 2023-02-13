@@ -11,7 +11,7 @@ const getNotification = async (setNotification, id) => {
 		.then((response) => response.json())
 		.then((response) => {
 			if (response.status === 'success') {
-				setNotification(response);
+				setNotification(response.notifications);
 			}
 		});
 };

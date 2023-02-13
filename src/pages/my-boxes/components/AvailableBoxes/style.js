@@ -4,14 +4,18 @@ export const BoxItem = styled.div`
   font-family: Raleway;
   background-color: white;
   max-width: 544px;
-  height: 142px;
+  height: 133px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 19px 33px;
-  margin-bottom: 40px;
-  border: 1px solid #FF5539;
+  padding: 16px 33px 19px;
+  margin-bottom: 20px;
+  outline: 1px solid #FF5539;
   border-radius: 3px;
+  
+  :hover {
+    outline: 3px solid #FF5539;
+  }
 `
 
 export const BoxItemText = styled.div`

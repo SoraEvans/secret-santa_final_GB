@@ -16,11 +16,6 @@ export const TabsInner = styled(Tabs)`
     background-color: #ff5539;
   }
 
-  button:hover,
-  button:focus {
-    background-color: rgba(255, 125, 104, 0.52);
-  }
-
   button.Mui-selected {
     color: white;
     background-color: #FF5539;
@@ -35,6 +30,11 @@ export const TabItem = styled(Tab)`
   align-self: center;
   text-transform: none;
   height: 181px;
+
+  &:hover {
+    color: white;
+    background-color: #f53e20;
+  }
 
   & div {
     writing-mode: tb;

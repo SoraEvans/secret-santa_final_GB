@@ -181,11 +181,11 @@ function Profile() {
             <Divider />
             <InputSectionTitle>Удаление профиля</InputSectionTitle>
             <RemoveDesc>
-              ВАЖНО: После удаления профиля, ваши карточки во всех коробках
+              После удаления профиля, ваши карточки во всех коробках
               будут удалены
             </RemoveDesc>
           </ProfileForm>
-          <ProfileButton type="submit" onClick={() => onSubmitDelete(state)}>
+          <ProfileButton style={{ width: 189 }} type="submit" onClick={() => onSubmitDelete(state)}>
             Удалить профиль
           </ProfileButton>
         </div>

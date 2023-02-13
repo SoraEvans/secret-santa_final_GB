@@ -19,29 +19,33 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 50px;
+  height: 60px;
 `
 
 export const FooterText = styled.p`
   text-align: center;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 29px;
   cursor: pointer;
   color: #ffffff;
+
+  :hover {
+    color: #ff6f56;
+  }
 `
 
 export const CopyrightText = styled.p`
   text-align: center;
   color: #818181;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 29px;
 `
 export const ModalHead = styled.div`
   margin-bottom: 40px;
   h1 {
-    font-family: 'Raleway';
+    font-family: Raleway;
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
@@ -51,7 +55,7 @@ export const ModalHead = styled.div`
   }
 
   p {
-    font-family: 'Raleway';
+    font-family: Raleway;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;

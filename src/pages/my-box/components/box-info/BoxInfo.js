@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { BoxTitleInner, BoxTitleText, StyledBoxIcon } from './style'
 import tree from '../../../../assets/images/elTree.svg'
 
-const BoxInfo = ({ title, cover, userCount, isAdmin }) => (
-  <BoxTitleInner>
-    {console.log(cover)}
+const BoxInfo = ({ title, cover, userCount, isAdmin, table }) => (
+  <BoxTitleInner table={table}>
     <StyledBoxIcon>
       <img src={cover} alt="tree" style={{ width: 34 }} width={70} height={70} />
     </StyledBoxIcon>
@@ -29,6 +28,7 @@ BoxInfo.propTypes = {
   title: PropTypes.string,
   cover: PropTypes.string,
   userCount: PropTypes.number,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  table: PropTypes.bool
 }
 export default BoxInfo

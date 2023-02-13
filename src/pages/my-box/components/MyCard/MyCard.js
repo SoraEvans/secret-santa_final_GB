@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { InputAdornment } from '@mui/material'
 import PropTypes from 'prop-types'
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
 import { CarouselButton } from '../../../home/components/carousel/style'
 import Chat from '../ChatBox/Chat'
 import {
@@ -25,28 +24,31 @@ import {
 } from './style'
 import { UserItem } from '../BoxUsers/style'
 import { ChatWrapper } from '../ChatBox/style'
+import wait_image from '../../../../assets/images/santa_image_wait.svg'
 
-const MyCard = ({ setActiveIdx, santaId, id }) => {
-  const [text, setText] = useState('')
+const MyCard = ({
+                  setActiveIdx,
+                  santaId,
+                  id,
+                  userData: {
+                    card,
+                    box: { cost }
+                  }
+                }) => {
   const [formValues, setFormValues] = useState({})
-  const userId = localStorage.getItem('userId')
-
+  const { wishlist, phone, address, image, name } = card || {}
   useEffect(() => {
     setFormValues({
-      wishlist: '',
-      address: '',
-      phone: ''
+      wishlist,
+      address,
+      phone
     })
   }, [])
 
-  console.log('santaId, id', santaId, id, userId)
-
-  const cardCreated = true
-  const price = 1000
   const {
     handleSubmit
   } = useForm({
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues: {
       wishlist: '',
       address: '',
@@ -54,9 +56,7 @@ const MyCard = ({ setActiveIdx, santaId, id }) => {
     }
   })
 
-
-  const onUpdateInfo = async data => {
-
+  const onUpdateInfo = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/card/addAdditionalInfo', {
       method: 'PATCH',
       header: {
@@ -64,18 +64,14 @@ const MyCard = ({ setActiveIdx, santaId, id }) => {
       },
       body: JSON.stringify({
         card_id: id,
-        phone: formValues.phone,
-        wishlist: formValues.wishlist,
-        address: formValues.address,
-
+        ...(formValues.phone !== phone && { phone: formValues.phone }),
+        ...(formValues.wishlist !== wishlist && { wishlist: formValues.wishlist }),
+        ...(formValues.address !== address && { address: formValues.address }),
       })
     })
-
-    console.log(data)
   }
 
-  const onPresentReceived = async data => {
-
+  const onPresentReceived = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/card/addAdditionalInfo', {
       method: 'PATCH',
       header: {
@@ -83,130 +79,137 @@ const MyCard = ({ setActiveIdx, santaId, id }) => {
       },
       body: JSON.stringify({
         card_id: id,
-        presentReceived: true,
-
+        presentReceived: true
       })
     })
-
-    console.log(data)
   }
 
   return (
-    <div>
-      {cardCreated ? (
-        <MyCardPage>
-          <CardInfo>
-            <UserInfoBlock>
-              <UserItem style={{
-                flex: '1 0 auto',
-                aspectRatio: '1 / 1',
-                fontSize: '48px',
-                maxWidth: '70px',
-                maxHeight: '70px',
-                cursor: 'default'
-              }}>
-                И
+    // eslint-disable-next-line no-nested-ternary
+    santaId ? (
+      <MyCardPage>
+        <CardInfo>
+          <UserInfoBlock>
+            <div style={{ display: 'flex' }}>
+              <UserItem
+                style={{
+                  flex: '1 0 auto',
+                  aspectRatio: '1 / 1',
+                  fontSize: '48px',
+                  maxWidth: '70px',
+                  maxHeight: '70px',
+                  cursor: 'default'
+                }}
+              >
+                {image ?
+                  <img src={image} alt="avatar" style={{ height: 53 }} />
+                  : name[0]?.toUpperCase()}
               </UserItem>
-
               <UserInfo>
-                <UserName>Имя участника</UserName>
-                <Price>
+                <UserName>{name}</UserName>
+                {cost ? <Price style={{ marginBottom: 4 }}>
                   Стоимость подарка:
-                  <PriceAmount>до {price} руб.</PriceAmount>
-                </Price>
+                  <PriceAmount>до {cost} руб.</PriceAmount>
+                </Price> : null}
               </UserInfo>
-            </UserInfoBlock>
-            <CardForm onSubmit={handleSubmit(onUpdateInfo)}>
-              <CardFormLabel>
-                <div>Вишлист</div>
-                <GiftButton type="button" onClick={onPresentReceived}>Я получил подарок!</GiftButton>
-              </CardFormLabel>
-              <Input
-                value={formValues.wishlist}
-
-                onChange={(e) => {
-                  setFormValues(prevState => ({ ...prevState, wishlist: e.target.value }))
-                  setText(e.target.value)
-                }}
-                fullWidth
-                placeholder="Это ваш вишлист. Здесь можно оставить для своего Санты пожелания о том, какой подарок вы хотели бы получить"
-                multiline
-                InputProps={{
-                  inputProps: { maxLength: 1000 },
-                  endAdornment: (
-                    <InputAdornment
-                      position="end"
-                      style={{
-                        alignSelf: 'end',
-                        height: '20px'
-                      }}
-                    >
-                      {text.length}/1000
-                    </InputAdornment>
-                  )
-                }}
-                rows={8}
-              />
-              <CardFormLabel>Куда присылать подарок?</CardFormLabel>
-              <Input fullWidth
-                     value={formValues.address}
-
-                     onChange={(e) => {
-                       setFormValues(prevState => ({ ...prevState, address: e.target.value }))
-
-                     }}
-              />
-              <CardFormLabel>Номер телефона</CardFormLabel>
-              <Input fullWidth
-                     value={formValues.phone}
-
-                     onChange={(e) => {
-                       setFormValues(prevState => ({ ...prevState, phone: e.target.value }))
-
-                     }}
-              />
-              <CarouselButton type="submit"
-                              onClick={onUpdateInfo}
-                              style={{
-                                margin: '22px 0',
-                                width: '143px',
-                                height: '44px',
-                                fontWeight: '500',
-                                fontSize: '15px'
-                              }}>
-                Сохранить
-              </CarouselButton>
-            </CardForm>
-          </CardInfo>
-          <StyledHr width="1" size="100%" />
-          <ChatBlock>
-            <div>
-              <ChatTitle>Чат с Сантой</ChatTitle>
-              <ChatSubTitle>
-                Это анонимный чат с вашим Сантой.
-                <br /> Здесь вы можете обсудить желаемый подарок, обменяться
-                контактами или просто поболтать
-              </ChatSubTitle>
             </div>
-            <ChatWrapper>
-              <Chat receiverId={santaId} cardId={id} />
-            </ChatWrapper>
-          </ChatBlock>
-        </MyCardPage>
-      ) : (
-        <div>
-          <TextBlock>
-            <ButtonBlock>
-              Упс! У вас еще нет карточки участника. Создайте свою карточку
-              участника, если вы хотите принимать участие в игре.
-            </ButtonBlock>
-            <CarouselButton onClick={() => setActiveIdx(3)}>
-              Создать карточку
+          </UserInfoBlock>
+          <CardForm onSubmit={handleSubmit(onUpdateInfo)}>
+            <CardFormLabel>
+              <div>Вишлист</div>
+              <GiftButton type="button" onClick={onPresentReceived}>Я получил подарок!</GiftButton>
+            </CardFormLabel>
+            <Input
+              value={formValues.wishlist}
+              onChange={(e) => {
+                setFormValues(prevState => ({ ...prevState, wishlist: e.target.value }))
+              }}
+              fullWidth
+              placeholder="Это ваш вишлист. Здесь можно оставить для своего Санты пожелания о том, какой подарок вы хотели бы получить"
+              multiline
+              rows={9}
+            />
+            <CardFormLabel>Куда присылать подарок?</CardFormLabel>
+            <Input
+              fullWidth
+              value={formValues.address}
+              onChange={(e) => {
+                setFormValues(prevState => ({ ...prevState, address: e.target.value }))
+              }}
+            />
+            <CardFormLabel>Номер телефона</CardFormLabel>
+            <Input
+              fullWidth
+              value={formValues.phone}
+              onChange={(e) => {
+                setFormValues(prevState => ({ ...prevState, phone: e.target.value }))
+              }}
+            />
+            <CarouselButton
+              type="submit"
+              style={{
+                margin: '22px 0',
+                width: '143px',
+                height: '44px',
+                fontWeight: '500',
+                fontSize: '15px'
+              }}>
+              Сохранить
             </CarouselButton>
-          </TextBlock>
-        </div>
-      )}
-    </div>
+          </CardForm>
+        </CardInfo>
+        <StyledHr size="100%" />
+        <ChatBlock>
+          <div>
+            <ChatTitle>Чат с Сантой</ChatTitle>
+            <ChatSubTitle>
+              Это анонимный чат с вашим Сантой.
+              <br /> Здесь вы можете обсудить желаемый подарок, обменяться
+              контактами или просто поболтать
+            </ChatSubTitle>
+          </div>
+          <ChatWrapper>
+            <Chat receiverId={santaId} cardId={id} />
+          </ChatWrapper>
+        </ChatBlock>
+      </MyCardPage>
+    ) : (!id ? (
+      <TextBlock style={{
+        position: 'absolute',
+        height: 'fit-content',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        margin: 'auto',
+      }}>
+        <ButtonBlock>
+          Упс! У вас еще нет карточки участника. Создайте свою карточку
+          участника, если вы хотите принимать участие в игре.
+        </ButtonBlock>
+        <CarouselButton style={{
+          margin: 0,
+          height: 70,
+          width: 253,
+          fontSize: 22
+        }} onClick={() => setActiveIdx(3)}>
+          Создать карточку
+        </CarouselButton>
+      </TextBlock>
+    ) : <TextBlock style={{
+      position: 'absolute',
+      height: 'fit-content',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      margin: 'auto',
+    }}>
+      <ButtonBlock style={{marginTop: 180}}>
+        Ваша карточка участника будет доступна после проведения жеревьевки!
+      </ButtonBlock>
+      <img src={wait_image} alt="img" style={{ width: 350 }} />
+    </TextBlock>)
   )
 }
 
@@ -221,5 +224,6 @@ MyCard.defaultProps = {
 MyCard.propTypes = {
   santaId: PropTypes.number,
   setActiveIdx: PropTypes.func,
-  id: PropTypes.number
+  id: PropTypes.number,
+  userData: PropTypes.object
 }

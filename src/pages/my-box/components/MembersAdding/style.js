@@ -7,7 +7,7 @@ export const CreateCardWrapper = styled.div`
   h3 {
     font-size: 17px;
     font-weight: bold;
-    margin-bottom: 26px;
+    margin-bottom: 18px;
   }
 `
 
@@ -55,6 +55,8 @@ export const ErrorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: max-content;
+  margin-left: 17vw;
 `
 
 export const ErrorText = styled.div`
@@ -72,7 +74,7 @@ export const DeleteCardBtn = styled.button`
   border: none;
   margin: 20px 0;
   background: none;
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
@@ -80,6 +82,10 @@ export const DeleteCardBtn = styled.button`
   text-decoration-line: underline;
   color: #FF5539;
   cursor: pointer;
+  
+  :hover {
+    color: #f53e20;
+  }
 `
 
 

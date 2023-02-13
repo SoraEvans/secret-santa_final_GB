@@ -13,8 +13,6 @@ import {
   // CoverButton,
   DivInput,
   CoverDiv,
-  SmallInput,
-  SmallLabel,
   CancellButton,
   CreateButton,
   ButtonsDiv,
@@ -25,6 +23,7 @@ import {
   SubTitleBoxCreated,
   Hr
 } from './style'
+import { BackImage } from "../box-create/style";
 
 const Settings = () => {
   const [state, setState] = useState({
@@ -32,14 +31,12 @@ const Settings = () => {
     cover: null,
     isAnonym: false,
     email: false,
-    isPublic: false,
     max_people_in_box: '',
     draw_starts_at: '',
     isLimit: false,
     cost: null,
     currency: 'RUB'
   })
-  console.log('state', state)
   const navigate = useNavigate()
 
   const { id } = useParams()
@@ -63,7 +60,6 @@ const Settings = () => {
             cover: res.box.cover,
             isAnonym: res.box.isAnonym,
             email: res.box.email,
-            isPublic: res.box.isPublic,
             max_people_in_box: res.box.max_people_in_box,
             draw_starts_at: res.box.draw_starts_at,
             isLimit: res.box.isLimit,
@@ -85,7 +81,6 @@ const Settings = () => {
         cover: state.cover,
         isAnonym: state.isAnonym,
         email: state.email,
-        isPublic: state.isPublic,
         max_people_in_box: state.max_people_in_box,
         draw_starts_at: state.draw_starts_at,
         isLimit: state.isLimit,
@@ -117,167 +112,100 @@ const Settings = () => {
     })
   }
   return (
-    <Container>
-      <Head>
-        <Title>Настройки коробки</Title>
-        <Hr />
-      </Head>
-
-      <div>
-        <DivInput>
-          <Input
-            required
-            data-name="title"
-            id="title"
-            type="text"
-            value={state.title}
-            onChange={handleChangeForm}
-          />
-          <Label for="title">Название коробки</Label>
-        </DivInput>
-        <CoverDiv>
-          <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
-          <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
-        </CoverDiv>
-        <Div>
-          <div>
-            <P>Анонимность участников</P>
-            <SubTitleBoxCreated>
-              При включенной опции участники будут видеть имена других игроков.
-              Когда опция выключена, участники будут видеть только аватарки
-              игроков и имя своего подопечного. Организатор будет видеть имена
-              игроков вне зависимости от состояния опции.
-            </SubTitleBoxCreated>
-          </div>
-          <AntSwitch
-            checked={state.isAnonym}
-            name="isAnonym"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        <Div>
-          <div>
-            <P>Добавить в карточку почтовый адрес</P>
-            <SubTitleBoxCreated>
-              При включенной опции участникам нужно будет указать свой почтовый
-              адрес в карточке.
-            </SubTitleBoxCreated>
-          </div>
-
-          <AntSwitch
-            checked={state.email}
-            name="email"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        <Div
-          style={
-            state.isPublic ? { marginBottom: '38px' } : { marginBottom: '38px' }
-          }
-        >
-          <div>
-            <P>Сделать коробку публичной</P>
-            <SubTitleBoxCreated>
-              При включенной опции к вашей коробке смогут присоединиться
-              случайные пользователи. Необходимо будет указать максимальное
-              число участников для коробки, а также выбрать дату автомвтического
-              проведения жеребьевки. Жеребьевка будет проведена независимо от
-              достижения максимума участников.
-            </SubTitleBoxCreated>
-          </div>
-          <AntSwitch
-            checked={state.isPublic}
-            name="isPublic"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        {state.isPublic ? (
-          <div>
-            <DivInput>
-              <SmallInput
-                required
-                data-name="max_people_in_box"
-                id="max_people_in_box"
-                type="number"
-                min="0"
-                onChange={handleChangeForm}
-              />
-              <SmallLabel for="max_people_in_box">
-                Введите максимальное количество участников
-              </SmallLabel>
-            </DivInput>
-            <DivInput style={{ marginBottom: '0' }}>
-              <SmallInput
-                required
-                data-name="draw_starts_at"
-                id="draw_starts_at"
-                type="date"
-                min="2022-12-01"
-                onChange={handleChangeForm}
-              />
-              <SmallLabel for="draw_starts_at">
-                Выберите дату проведения автоматической жеребьевки
-              </SmallLabel>
-            </DivInput>
-          </div>
-        ) : null}
+    <BackImage>
+      <Container>
+        <Head>
+          <Title>Настройки коробки</Title>
+          <Hr />
+        </Head>
         <div>
-          <Div
-            style={
-              state.isLimit
-                ? { marginBottom: '20px' }
-                : { marginBottom: '38px' }
-            }
-          >
+          <DivInput>
+            <Input
+              required
+              data-name="title"
+              id="title"
+              type="text"
+              value={state.title}
+              onChange={handleChangeForm}
+            />
+            <Label for="title">Название коробки</Label>
+          </DivInput>
+          <CoverDiv>
+            <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
+            <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
+          </CoverDiv>
+          <Div>
             <div>
-              <P>Ограничить стоимость подарков</P>
+              <P>Анонимность участников</P>
               <SubTitleBoxCreated>
-                При включенной опции участникам будет показано ограничение,
-                которому они должны будут следовать. Ограничение будет показано
-                на странице подопечного
+                При включенной опции участники будут видеть имена других игроков.
+                Когда опция выключена, участники будут видеть только аватарки
+                игроков и имя своего подопечного. Организатор будет видеть имена
+                игроков вне зависимости от состояния опции.
               </SubTitleBoxCreated>
             </div>
             <AntSwitch
-              checked={state.isLimit}
-              name="isLimit"
+              checked={state.isAnonym}
+              name="isAnonym"
               onChange={handleChangeSwitch}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </Div>
-          {state.isLimit ? (
-            <CostDiv>
-              <CostInput
-                required
-                data-name="cost"
-                value={state.cost}
-                type="number"
-                min="0"
-                onChange={handleChangeForm}
+          <div>
+            <Div
+              style={
+                state.isLimit
+                  ? { marginBottom: '20px' }
+                  : { marginBottom: '38px' }
+              }
+            >
+              <div>
+                <P>Ограничить стоимость подарков</P>
+                <SubTitleBoxCreated>
+                  При включенной опции участникам будет показано ограничение,
+                  которому они должны будут следовать. Ограничение будет показано
+                  на странице подопечного
+                </SubTitleBoxCreated>
+              </div>
+              <AntSwitch
+                checked={state.isLimit}
+                name="isLimit"
+                onChange={handleChangeSwitch}
+                inputProps={{ 'aria-label': 'controlled' }}
               />
-              <Select
-                value={state.currency}
-                data-name="currency"
-                onChange={handleChangeForm}
-              >
-                <option value="RUB">RUB</option>
-                <option value="EUR">EUR</option>
-              </Select>
-            </CostDiv>
-          ) : null}
+            </Div>
+            {state.isLimit ? (
+              <CostDiv>
+                <CostInput
+                  required
+                  data-name="cost"
+                  value={state.cost}
+                  type="number"
+                  min="0"
+                  onChange={handleChangeForm}
+                />
+                <Select
+                  value={state.currency}
+                  data-name="currency"
+                  onChange={handleChangeForm}
+                >
+                  <option value="RUB">RUB</option>
+                  <option value="EUR">EUR</option>
+                </Select>
+              </CostDiv>
+            ) : null}
+          </div>
+          <ButtonsDiv>
+            <CancellButton type="button" onClick={() => navigate(`/box/${id}`)}>
+              Отмена
+            </CancellButton>
+            <CreateButton type="button" onClick={() => onSubmit(state)}>
+              Сохранить
+            </CreateButton>
+          </ButtonsDiv>
         </div>
-        <ButtonsDiv>
-          <CancellButton type="button" onClick={() => navigate(`/box/${id}`)}>
-            Отмена
-          </CancellButton>
-          <CreateButton type="button" onClick={() => onSubmit(state)}>
-            Сохранить
-          </CreateButton>
-        </ButtonsDiv>
-      </div>
-    </Container>
+      </Container>
+    </BackImage>
   )
 }
 

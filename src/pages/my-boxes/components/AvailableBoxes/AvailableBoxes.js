@@ -7,11 +7,10 @@ import {
   BoxTextHeading
 } from './style'
 import { StyledLink } from '../../../../components/header/style'
-import tree from '../../../../assets/images/elTree.svg'
 import { StyledIcon } from '../PublicBox/style'
 
 // eslint-disable-next-line react/prop-types
-const AvailableBoxes = ({ title, start, max_people, now_people, onClick, id }) => (
+const AvailableBoxes = ({ title, start, max_people, now_people, onClick, id, cover }) => (
   <BoxItem>
     <BoxItemText>
       <div>
@@ -26,12 +25,13 @@ const AvailableBoxes = ({ title, start, max_people, now_people, onClick, id }) =
         type="submit"
         fontsize="11px"
         onClick={() => onClick(id)}
+        disableRipple
       >
         Присоединиться
       </StyledLink>
     </BoxItemText>
     <StyledIcon>
-      <img src={tree} alt="Обложка" />
+      <img src={cover} alt="Обложка" />
     </StyledIcon>
   </BoxItem>
 )

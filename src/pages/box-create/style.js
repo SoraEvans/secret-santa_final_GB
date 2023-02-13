@@ -1,7 +1,17 @@
 import styled from 'styled-components'
 import { Switch, styled as st } from '@mui/material'
 
+export const BackImage = styled.div`
+  background-image: url("/img/Snowflake-Background-PNG 2.svg");
+  background-position: top -50px right 0;
+  background-repeat: no-repeat;
+  flex: 1;
+`
+
 export const Container = styled.div`
+  background-image: url("/img/Snowflake-Background-PNG 1.svg");
+  background-position: bottom -140px left 0;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +20,7 @@ export const Container = styled.div`
   width: 100%;
   margin: auto;
   padding-bottom: 80px;
-  padding-top: 100px;
+  padding-top: 160px;
 `
 
 export const Head = styled.div`
@@ -21,7 +31,7 @@ export const Head = styled.div`
 `
 
 export const Title = styled.h1`
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -56,11 +66,12 @@ export const Div = styled.div`
 export const Input = styled.input`
   width: 633px;
   height: 57px;
+  font-family: Raleway;
   background: #f7f3f3;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  font-size: 28px;
-  text-align: center;
+  font-size: 22px;
+  padding-left: 14px;
 `
 
 export const DivInput = styled.div`
@@ -69,6 +80,7 @@ export const DivInput = styled.div`
 `
 
 export const Label = styled.label`
+  font-family: Raleway;
   position: absolute;
   font-style: normal;
   font-weight: 600;
@@ -89,7 +101,7 @@ export const P = styled.p`
 `
 
 export const CoverDiv = styled.div`
-  margin-bottom: 45px;
+  margin-bottom: 26px;
 `
 
 export const CoverButton = styled.button`
@@ -103,7 +115,7 @@ export const CoverButton = styled.button`
 export const SmallInput = styled(Input)`
   height: 50px;
   margin-bottom: 46px;
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -123,17 +135,18 @@ export const SmallLabel = styled(Label)`
 `
 
 export const CreateButton = styled.button`
-  width: 266px;
-  height: 81px;
+  width: 249px;
+  height: 65px;
   background: #ff5539;
   border-radius: 4px;
   border: 2px solid #ff5539;
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 28px;
   color: #ffffff;
+
   &:hover {
     background: #ffffff;
     color: #ff5539;
@@ -146,6 +159,7 @@ export const CancellButton = styled(CreateButton)`
   background: #ffffff;
   border: 2px solid #ff5539;
   color: #ff5539;
+
   &:hover {
     background: #ff5539;
     color: #ffffff;
@@ -165,8 +179,9 @@ export const Select = styled.select`
   background: #f7f3f3;
   border: 2px solid #d6ccca;
   border-radius: 3px;
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
+  padding-left: 13px;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
@@ -178,13 +193,13 @@ export const CostDiv = styled(ButtonsDiv)`
 `
 
 export const CostInput = styled.input`
-  text-align: center;
   width: 304px;
   height: 55px;
   background: #f7f3f3;
   border: 2px solid #d6ccca;
   border-radius: 3px;
-  font-family: 'Raleway';
+  padding-left: 13px;
+  font-family: Raleway;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -276,11 +291,11 @@ export const TitleBoxCreated = styled.h1`
   color: #000000;
 `
 export const SubTitleBoxCreated = styled.p`
-  max-width: 463px;
-  font-family: 'Inter';
+  max-width: 499px;
+  font-family: Raleway;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 15px;
   text-align: justify;
   color: #a2a2a2;

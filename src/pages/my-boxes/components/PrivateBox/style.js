@@ -15,6 +15,11 @@ export const BoxInner = styled.button`
   background-color: #FF5539;
   border-radius: 4px;
   border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f53e20;
+  }
 `
 
 export const StyledName = styled.div`
@@ -35,10 +40,10 @@ export const BtnAdd = styled(BoxInner)`
   letter-spacing: 0.065em;
   line-height: 20.44px;
   font-size: 14px;
-  transition: background-color 0.2s ease-in, scale 0.2s ease-in-out;
 
   &:hover {
-    background-color: rgba(255, 85, 57, 0.65);
+    background-color: #f53e20;
+    border: 2px solid #f53e20;
     color: #fff;
   }
 

@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const ChatWrapper = styled.div`
-  background-color: #f6f3f3;
+  background-color: #F7F3F3;
   border: 1px solid #d6ccca;
   border-radius: 3px;
   width: 100%;
   height: 450px;
 `
+
 export const ChatDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@ export const MessageDiv = styled.div`
   background: ${({ props }) => (props ? '#EEE5E3' : '#FCE4E1')};
   border-radius: ${({ props }) =>
     props ? '4px 4px 0px 4px' : '4px 4px 4px 0px'};
-  padding: 10px;
+  padding: 16px;
   margin-bottom: 20px;
   position: relative;
 
@@ -58,18 +59,19 @@ export const MessageDiv = styled.div`
 `
 
 export const MessageText = styled.h3`
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 100.02%;
-  color: #8b8b8b;
+  font-weight: ${({ bold }) => bold ? 'bold' : '400'};
+  font-size: 14px;
+  line-height: 16px;
+  color: ${({ bold }) => bold ? 'black' : '#818181'};
 `
+
 export const Date = styled.h3`
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 18px;
   align-self: center;
-  font-family: 'Inter';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;

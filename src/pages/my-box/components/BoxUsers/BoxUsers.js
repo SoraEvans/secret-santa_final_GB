@@ -10,7 +10,7 @@ import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
 import { BtnAdd } from '../../../my-boxes/components/PrivateBox/style'
 
-const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin }) => {
+const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin, wardId }) => {
   const [showModal, setShowModal] = useState(false)
   const [showModalUsers, setShowModalUsers] = useState(false)
   const { secret_santas, box, invitedUsers, secret_santas_ward } = userData
@@ -24,20 +24,36 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin 
 
   const { id } = useParams()
   const userItem = secret_santas?.map(user => (
-    <UserBox onClick={() => clickOnUser(user)}>
-      <UserItem key={user.id}>{user.name[0]?.toUpperCase()}</UserItem>
-      {user.name} {currentUserId === user.id && '(Вы)'}
+    <UserBox outline onClick={() => clickOnUser(user)}>
+      {user?.image ?
+        <UserItem key={user.id} outline={isAdmin || currentUserId === user.id}>
+          <img src={user.image} alt="avatar" style={{ height: 110, cursor: 'pointer' }} />
+        </UserItem>
+        : <UserItem
+          outline={isAdmin || currentUserId === user.id}
+          key={user.id}
+        >
+          {user.name[0]?.toUpperCase()}
+        </UserItem>
+      }
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {!secret_santas_ward.length ? (currentUserId === user.id ? `${user.name} ${currentUserId === user.id ? '(Вы)' : ''}` : '')
+        : (currentUserId === user.id || wardId === user.id ? `${user.name} ${currentUserId === user.id ? '(Вы)' : ''}` : '')}
     </UserBox>
   ))
 
   const invitedItem = invitedUsers?.map(user => (
     <UserBox>
-      <UserItem style={{
-        border: "2px solid #D6CCCA",
-        color: "#D6CCCA",
-        cursor: "default"
-      }}>{user.name[0]?.toUpperCase()}</UserItem>
-      {user.name}
+      <UserItem
+        style={{
+          border: '4px solid #D6CCCA',
+          color: '#D6CCCA',
+          cursor: 'default'
+        }}
+      >
+        {user.name[0]?.toUpperCase()}
+      </UserItem>
+      {!box?.isAnonym ? `${user.name} (Ждем ответа)` : '(Ждем ответа)'}
     </UserBox>
   ))
 
@@ -135,9 +151,12 @@ export default BoxUsers
 
 BoxUsers.defaultProps = {
   userData: {},
-  setActiveIdx: () => {},
-  setUserData: () => {},
-  currentUserId: () => {}
+  setActiveIdx: () => {
+  },
+  setUserData: () => {
+  },
+  currentUserId: () => {
+  }
 }
 
 BoxUsers.propTypes = {
@@ -145,5 +164,6 @@ BoxUsers.propTypes = {
   setActiveIdx: PropTypes.func,
   setUserData: PropTypes.func,
   currentUserId: PropTypes.number,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  wardId: PropTypes.number
 }

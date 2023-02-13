@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import PropTypes from "prop-types";
 import BoxInfo from '../box-info/BoxInfo';
 import {Table, Thead, Tbody, Td, Tr, Th} from './style';
 import getBoxInfo from '../../../../API/boxInfo';
 
-const DrawResult = () => {
-	const [boxInfo, setBoxino] = useState({});
+const DrawResult = ({isAdmin, userData}) => {
+	const [boxInfo, setBoxInfo] = useState({});
 	const id = useParams();
+  const { secret_santas, box } = userData
 
 	useEffect(() => {
-		getBoxInfo(setBoxino, id);
+		getBoxInfo(setBoxInfo, id);
 	}, []);
 
 	const tableData = boxInfo?.secret_santas?.map((item, idx) => (
@@ -28,7 +30,13 @@ const DrawResult = () => {
 	console.log(boxInfo);
 	return (
 		<>
-			<BoxInfo />
+			<BoxInfo
+        title={box.title}
+        cover={box.cover}
+        userCount={secret_santas.length}
+        isAdmin={isAdmin}
+        table
+      />
 			<Table>
 				<Thead>
 					<Tr>
@@ -47,5 +55,10 @@ const DrawResult = () => {
 		</>
 	);
 };
+
+DrawResult.propTypes = {
+  userData: PropTypes.object,
+  isAdmin: PropTypes.bool
+}
 
 export default DrawResult;

@@ -2,17 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Divider } from '@mui/material'
+import { Alert, Divider, Slide, Snackbar } from '@mui/material'
 import PropTypes from 'prop-types'
 import SchemaValidation from '../../../../helpers/schemas/SchemaValidation'
-import avatar_1 from '../../../../assets/images/avatar_1.svg'
-import avatar_2 from '../../../../assets/images/avatar_2.svg'
-import avatar_3 from '../../../../assets/images/avatar_3.svg'
 import santa_with_children from '../../../../assets/images/santa_with_children.svg'
 import snowman from '../../../../assets/images/snowman.svg'
 import {
-  AvatarImg,
-  AvatarList,
   CreateCardWrapper,
   DeleteCardBtn,
   ErrorImg,
@@ -27,35 +22,47 @@ import { CarouselButton } from '../../../home/components/carousel/style'
 import Modal from '../../../../components/modal/modal'
 import { ModalTitle } from '../../../../components/modal/style'
 import { CancelButton, DeleteButton, ModalButtons } from '../MyBoxSettings/style'
+import { CoverDiv } from '../../../box-create/style'
+import Cover from '../../../../components/CoverCarousel/Cover'
+import USER_CREATE_IMG from "../../../../constants/user-create-img";
+import getBoxInfo from "../../../../API/boxInfo";
 
-const MyCardCreate = ({ userData, isAdmin }) => {
-  const [cardCreated, setCardCreated] = useState(false)
+const TransitionLeft = (props) => <Slide {...props} direction="right" />
+
+const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
   const [showModal, setShowModal] = useState(false)
+  const [open, setOpen] = useState(false)
   const [userValues, setUserValues] = useState({})
-  const [avatar, setAvatar] = useState('')
+
   const { secret_santas_ward, box, secret_santas, card } = userData
   const choosenUser = JSON.parse(localStorage.getItem('chosenUser'))
-  console.log('card', card)
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm({
-    mode: 'onBlur',
+    mode: 'all',
     resolver: yupResolver(SchemaValidation),
     defaultValues: {
       name: '',
-      email: ''
+      email: '',
+      image: null
     }
   })
   const { id } = useParams()
 
   useEffect(() => {
-    setUserValues(isAdmin ? { name: '', email: '' } : { name: '', email: '' })
+    setUserValues(typeof card !== 'object' ? { name: '', email: '' } : choosenUser)
   }, [])
 
-  const onCreateCard = async data => {
-    data.preventDefault()
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const onCreateCard = async () => {
     if (isAdmin) {
       await fetch('https://backsecsanta.alwaysdata.net/api/box/createCard', {
         method: 'POST',
@@ -65,18 +72,31 @@ const MyCardCreate = ({ userData, isAdmin }) => {
         body: JSON.stringify({
           box_id: id,
           user_id: box.creator_id,
+          image: userValues?.cover || choosenUser.image,
         })
       })
+        .then(() => {
+          setOpen(true)
+          getBoxInfo(setUserData, id)
+        })
     }
-    setCardCreated(true)
-    console.log(data, errors)
   }
 
-  const deleteCard = () => {
-    setCardCreated(false)
+  const deleteCard = async () => {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/card/delete/${card?.id}`, {
+      method: 'DELETE',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify()
+    })
+      .then(() => {
+        getBoxInfo(setUserData, id)
+      })
   }
 
   const updateCard = async () => {
+    console.log('userValues?.cover || choosenUser.image, UPDATE', userValues?.cover || choosenUser.image,)
     await fetch('https://backsecsanta.alwaysdata.net/api/card/update', {
       method: 'PATCH',
       header: {
@@ -85,29 +105,46 @@ const MyCardCreate = ({ userData, isAdmin }) => {
       body: JSON.stringify({
         name: userValues.name,
         email: userValues.email,
-        image: avatar,
+        image: userValues?.cover || choosenUser.image,
         box_id: id,
         user_id: choosenUser.id,
       })
     })
+      .then(() => {
+        setOpen(true)
+        getBoxInfo(setUserData, id)
+      })
   }
+
   const openModal = () => {
     setShowModal(prev => !prev)
   }
 
-  const drawDone = Object.keys(secret_santas_ward || {}).length;
+  const validCard = Object.keys(card || {}).length
 
-  if (drawDone) {
+  if (!card && secret_santas_ward.length) {
     return (
-      <ErrorWrapper>
-        <ErrorText>
-          Вы не можете создать карточку участника, так как жеребьевка уже была
-          проведена(
-        </ErrorText>
-        <ErrorImg>
-          <img src={santa_with_children} alt="santa" />
-        </ErrorImg>
-      </ErrorWrapper>
+      <>
+        {userData && box?.title ? (
+          <BoxInfo
+            title={box.title}
+            cover={box.cover}
+            userCount={secret_santas.length}
+            isAdmin={isAdmin}
+          />
+        ) : (
+          <p>Моя коробка</p>
+        )}
+        <ErrorWrapper>
+          <ErrorText>
+            Вы не можете создать карточку участника, так как жеребьевка уже была
+            проведена(
+          </ErrorText>
+          <ErrorImg>
+            <img src={santa_with_children} alt="santa" />
+          </ErrorImg>
+        </ErrorWrapper>
+      </>
     )
   }
 
@@ -118,23 +155,24 @@ const MyCardCreate = ({ userData, isAdmin }) => {
           title={box.title}
           cover={box.cover}
           userCount={secret_santas.length}
+          isAdmin={isAdmin}
         />
       ) : (
         <p>Моя коробка</p>
       )}
       <CreateCardWrapper>
         <h3>Настройки карточки участника</h3>
-        {cardCreated
+        {isAdmin && (validCard
           ?
-          <FormLabel>
+          <FormLabel style={{ marginBottom: 10 }}>
             Ваша карточка участника создана. Можете перейти в коробку для проведения жеребьевки или удалить свою
             карточку
           </FormLabel>
           :
-          <FormLabel>
+          <FormLabel style={{ marginBottom: 10 }}>
             Создайте карточку участника для себя, если хотите принимать участие в
             жеребьевке
-          </FormLabel>}
+          </FormLabel>)}
         <form onSubmit={handleSubmit(onCreateCard)}>
           <InputSection>
             <CustomInput
@@ -142,7 +180,7 @@ const MyCardCreate = ({ userData, isAdmin }) => {
               label="Ваше имя или никнейм"
               value={userValues.name}
               margin="16px 0"
-              {...register('name')}
+              {...register('name', { required: true })}
               onChange={(e) => {
                 setUserValues(prevState => ({ ...prevState, name: e.target.value }))
               }}
@@ -152,39 +190,46 @@ const MyCardCreate = ({ userData, isAdmin }) => {
               type="text"
               label="Ваш e-mail"
               value={userValues.email}
-              {...register('email')}
+              {...register('email', { required: true })}
               onChange={(e) => {
                 setUserValues(prevState => ({ ...prevState, email: e.target.value }))
               }}
             />
-            <p style={{color: 'red'}}>{errors.email?.message}</p>
+            <p style={{ color: 'red' }}>{errors.email?.message}</p>
           </InputSection>
-          <FormLabel>Выберите аватар</FormLabel>
-          <AvatarList>
-            <AvatarImg onClick={() => setAvatar(avatar_1)}>
-              <img src={avatar_1} alt='avatar1' />
-            </AvatarImg>
-            <AvatarImg onClick={() => setAvatar(avatar_2)}>
-              <img src={avatar_2} alt='avatar2' />
-            </AvatarImg>
-            <AvatarImg onClick={() => setAvatar(avatar_3)}>
-              <img src={avatar_3} alt='avatar3' />
-            </AvatarImg>
-          </AvatarList>
-          {cardCreated || !isAdmin
+          <CoverDiv style={{ margin: 0 }}>
+            <FormLabel style={{ marginBottom: 10 }}>Выберите аватар</FormLabel>
+            <Cover fu={setUserValues} state={userValues} img={USER_CREATE_IMG} avatar />
+          </CoverDiv>
+          {validCard
             ?
-            <div>
+            <div style={{ position: 'relative', width: 300 }}>
+              <Snackbar
+                open={open}
+                autoHideDuration={3000}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                TransitionComponent={TransitionLeft}
+              >
+                <Alert severity="success" sx={{ width: '100%' }}>
+                  Информация успешно обновлена!
+                </Alert>
+              </Snackbar>
               <CarouselButton
                 type='button'
                 onClick={updateCard}
-                style={{ margin: 0, width: 150, height: 45, fontSize: 13 }}
+                style={{ margin: 0, width: 182, height: 45, fontSize: 14 }}
               >
                 Сохранить изменения
               </CarouselButton>
-              <Divider style={{ marginTop: 40 }} />
-              <DeleteCardBtn type="button" onClick={openModal}>Удалить мою карточку участника</DeleteCardBtn>
+              <Divider style={{ marginTop: 28 }} />
+              {!secret_santas_ward.length &&
+              <DeleteCardBtn type="button" onClick={openModal}>Удалить карточку участника</DeleteCardBtn>}
               <Modal showModal={showModal} setShowModal={setShowModal}>
-                <ModalTitle>Вы уверены, что хотите удалить свою карточку участника?</ModalTitle>
+                <ModalTitle>Вы уверены, что хотите удалить карточку участника?</ModalTitle>
                 <ModalButtons>
                   <CancelButton onClick={() => setShowModal(prev => !prev)}>
                     Отмена
@@ -217,5 +262,6 @@ MyCardCreate.defaultProps = {
 
 MyCardCreate.propTypes = {
   userData: PropTypes.object,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  setUserData: PropTypes.func
 }

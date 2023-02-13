@@ -33,7 +33,8 @@ export const StartDrawButton = st(Button)({
 
 export const ButtonText = styled.div`
   font-family: Raleway;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.2;
   width: 291px;
   color: #979797;
 `

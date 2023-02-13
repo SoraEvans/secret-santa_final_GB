@@ -8,7 +8,7 @@ const DrawButton = ({ onClick, userCount }) => {
       <ButtonBlock>
         <StartDrawButton disabled>Провести жеребьёвку</StartDrawButton>
         <ButtonText>
-          Сейчас нельзя провести жеребьевку. Для проведения жеребьевки в коробке
+          Сейчас нельзя провести жеребьевку.<br/> Для проведения жеребьевки в коробке
           должно быть как минимум три участника
         </ButtonText>
       </ButtonBlock>

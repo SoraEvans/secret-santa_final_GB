@@ -22,7 +22,7 @@ export const UserItem = styled.div`
   height: 142px;
   background-color: white;
   border-radius: 4px;
-  border: 2px solid #FF5539;
+  border: 4px solid #FF5539;
   color: #FF5539;
   font-family: "Amatic SC bold";
   font-size: 96px;
@@ -30,17 +30,25 @@ export const UserItem = styled.div`
   align-items: center;
   justify-content: center;
   flex: 0 0 16.3333%;
-  cursor: pointer;
+  cursor: ${({ outline }) => outline ? 'pointer' : 'default'};
+  
+  :hover {
+    outline: ${({ outline }) => outline ? '2px solid #FF5539' : 'none'};
+  }
 `
 
 export const UserBox = styled.div`
   max-width: 142px;
   width: 100%;
   text-align: center;
-  margin: 0 58px 44px 0;
-  font-size: 13px;
+  margin: 0 50px 40px 0;
+  font-size: 15px;
   color: #8F8F8F;
   font-family: Raleway;
+  
+  :hover {
+    font-weight: ${({ outline }) => outline ? 'bold' : '400'};
+  }
 `
 
 export const AddUsersBtn = styled(UserItem)`
@@ -50,7 +58,7 @@ export const AddUsersBtn = styled(UserItem)`
   box-shadow: none;
   border: 2px dashed #ff5539;
   border-radius: 4px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

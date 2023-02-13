@@ -1,20 +1,21 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import { Details, InfoBox, InfoLabel, NoInfoText } from "./style";
 
-const ContactDetails = () => {
-
+const ContactDetails = ({ test: { address, phone, wishlist } }) => {
   const cardCreated = true;
-
 
   return (
     <div>
       {cardCreated
         ?
         <Details>
+          <InfoLabel>Пожелания подопечного</InfoLabel>
+          <InfoBox>{wishlist || 'Не указано'}</InfoBox>
           <InfoLabel>Адрес, на который присылать подарок</InfoLabel>
-          <InfoBox>МО, г. Иваново, ул. Новосельская, 34. Индекс 412902</InfoBox>
+          <InfoBox>{address || 'Не указан'}</InfoBox>
           <InfoLabel>Номер телефона </InfoLabel>
-          <InfoBox>+79008070601</InfoBox>
+          <InfoBox>{phone || 'Не указан'}</InfoBox>
         </Details>
         :
         <NoInfoText>
@@ -25,6 +26,10 @@ const ContactDetails = () => {
       }
     </div>
   )
+}
+
+ContactDetails.propTypes = {
+  test: PropTypes.object,
 }
 
 export default ContactDetails

@@ -15,7 +15,6 @@ import getBoxInfo from '../../../../API/boxInfo'
 const InviteUsers = ({ id, setUserData }) => {
   const [open, setOpen] = useState(false)
   const {
-    register,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -32,8 +31,6 @@ const InviteUsers = ({ id, setUserData }) => {
       name: '',
       email: '',
       id: 1
-      // nameError: false,
-      // emailError: false
     }
   ])
 
@@ -41,37 +38,14 @@ const InviteUsers = ({ id, setUserData }) => {
     const { name, value, id: targetId } = e.target
     setFormDetails(
       formDetails.map(item => {
-        if (+item.id === +targetId) {
-          item[name] = value
+        if (+item.id === +targetId.split('-').at(-2)) {
+          item[name.split('-')[0]] = value
           return item
         }
         return item
       })
     )
   }
-
-  // const formValidate = () => {
-  //   let nameError = false
-  //   let emailError = false
-  //
-  //   formDetails.forEach(item => {
-  //     if (!item.name) {
-  //       nameError = true
-  //     }
-  //     if (!item.email || !/\S+@\S+\.\S+/.test(item.email)) {
-  //       emailError = true
-  //     }
-  //   })
-  //   setFormDetails(
-  //     formDetails.map(item => ({
-  //       ...item,
-  //       nameError,
-  //       emailError
-  //     }))
-  //   )
-  //
-  //   return !(nameError || emailError)
-  // }
 
   const handleAddInputs = () => {
     setFormDetails([
@@ -95,68 +69,75 @@ const InviteUsers = ({ id, setUserData }) => {
   }
 
   return (
-    <>
-      <Form onSubmit={handleSubmit(onSubmitHandle)}>
-        {/* todo Сделать уведомление по макету (сейчас заглушка) */}
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        >
-          <Alert severity="success" sx={{ width: '100%' }}>
-            Приглашения успешно отправлены!
-          </Alert>
-        </Snackbar>
-        <ModalTitle>Добавление участников</ModalTitle>
-        <ModalSubTitle>
-          Заполните данные участников, чтобы создать их карточки, и отправьте им
-          на почту приглашения в игру
-        </ModalSubTitle>
-        <div>
-          {formDetails.map((item, index) => (
-            <InputWrapper>
-              <CustomInput
-                {...register('name')}
-                label="Имя участника"
-                value={item.name || ''}
-                onChange={handleChange}
-                id={item.id}
-                margin="0 23px 16px 0"
-                error={!!errors.name}
-                helperText={errors?.name?.message}
-              />
-              <CustomInput
-                {...register('email')}
-                label="Email"
-                value={item.email || ''}
-                type="email"
-                onChange={handleChange}
-                id={item.id}
-                margin="0 0 16px"
-                error={!!errors.email}
-                helperText={errors?.email?.message}
-              />
-              {index === formDetails.length - 1 ? (
-                <AddBtn onClick={handleAddInputs}>
-                  <AddSharp fontSize="large" />
-                </AddBtn>
-              ) : (
-                <RemoveBtn onClick={() => handleRemoveInputs(index)}>
-                  <RemoveSharp fontSize="large" />
-                </RemoveBtn>
-              )}
-            </InputWrapper>
-          ))}
-        </div>
-      </Form>
+    <Form onSubmit={handleSubmit(onSubmitHandle)}>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Приглашения успешно отправлены!
+        </Alert>
+      </Snackbar>
+      <ModalTitle>Добавление участников</ModalTitle>
+      <ModalSubTitle>
+        Заполните данные участников, чтобы создать их карточки, и отправьте им
+        на почту приглашения в игру
+      </ModalSubTitle>
+      <div style={{
+        maxHeight: '300px',
+        overflowY: 'auto',
+        paddingTop: '15px'
+      }}>
+        {formDetails.map((item, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <InputWrapper key={index}>
+            <CustomInput
+              label="Имя участника"
+              name={`name-${item.id}-${index}`}
+              value={item.name || ''}
+              onChange={handleChange}
+              id={`name-${item.id}-${index}`}
+              margin="0 23px 16px 0"
+              error={!!errors.name}
+              helperText={errors?.name?.message}
+            />
+            <CustomInput
+              label="Email"
+              value={item.email || ''}
+              name={`email-${item.id}-${index}`}
+              type="email"
+              onChange={handleChange}
+              id={`email-${item.id}-${index}`}
+              margin="0 0 16px"
+              error={!!errors.email}
+              helperText={errors?.email?.message}
+            />
+            {index === formDetails.length - 1 ? (
+              <AddBtn onClick={handleAddInputs}>
+                <AddSharp fontSize="large" />
+              </AddBtn>
+            ) : (
+              <RemoveBtn onClick={() => handleRemoveInputs(index)}>
+                <RemoveSharp fontSize="large" />
+              </RemoveBtn>
+            )}
+          </InputWrapper>
+        ))}
+      </div>
       <CarouselButton
         onClick={onSubmitHandle}
         type="submit"
-        style={{ margin: '0 80px 0 0', width: 186, height: 45, fontSize: 13 }}
+        style={{
+          margin: '22px auto 0',
+          width: '235px',
+          height: '56px',
+          fontSize: '16px',
+        }}
       >
         Отправить приглашение
       </CarouselButton>
-    </>
+    </Form>
   )
 }
 

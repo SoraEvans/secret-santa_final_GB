@@ -8,7 +8,7 @@ const SchemaValidation = yup.object().shape({
     .required('Введите ваш Email'),
   password: yup
     .string()
-    .min(6, 'Пароль должен быть не менее 6 символов')
+    .min(8, 'Пароль должен быть не менее 8 символов')
     .required('Введите пароль'),
   confirmPassword: yup
     .string()

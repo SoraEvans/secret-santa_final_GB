@@ -5,7 +5,7 @@ export const BoxTitleInner = styled.div`
   display: flex;
   align-items: center;
   column-gap: 18px;
-  margin: 70px 0;
+  margin: ${({ table }) => table ? '70px 0 29px' : '70px 0'};
 
   img {
     background-color: #ff5539;

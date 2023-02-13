@@ -27,8 +27,8 @@ export const TabItem = styled(Tab)`
   }
   
   &:hover {
-    //color: white;
-    //background-color: #ffbfbf;
+    color: white;
+    background-color: #f53e20;
   }
 `
 

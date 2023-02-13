@@ -7,10 +7,9 @@ import {
   PublicLeftTitle,
   PublicRightBox,
   PublicRightTitle,
-  PublicBoxList, PublicLeftItem, AddPrBox, StyledBoxItem,
+  PublicBoxList, PublicLeftItem, AddPrBox, StyledBoxItem, StyledBoxElement,
 } from './style'
 import { StyledName } from '../PrivateBox/style'
-import tree from '../../../../assets/images/elTree.svg'
 import getOtherPublicBoxes from '../../../../API/otherPublicBoxes'
 import getAllBoxes from '../../../../API/boxGet'
 
@@ -35,16 +34,16 @@ const PublicBox = ({ boxes, publicBoxes: startedPublicBoxes }) => {
 
   return (
     <PublicWrapper>
-      <div style={{ padding: '0 110px 0 0' }}>
+      <div style={{ padding: '0 60px 0 0', width: 600, borderRight: '1px solid #EAE9E9' }}>
         <PublicLeftTitle>Мои публичные коробки</PublicLeftTitle>
         <PublicLeftItem>
           {alignedBoxes?.publicBoxes.map(box =>
-            <div style={{ textAlign: 'center', margin: '0 0 19px' }}>
+            <StyledBoxElement style={{ textAlign: 'center', margin: '0 0 19px' }}>
               <StyledBoxItem onClick={() => navigate(`/box/${box.id}`)}>
-                <img src={tree} alt="Обложка" />
+                <img src={box.cover} alt="Обложка" />
               </StyledBoxItem>
-              <StyledName size={12}>{box.title}</StyledName>
-            </div>
+              <StyledName size={14}>{box.title}</StyledName>
+            </StyledBoxElement>
           )}
           <AddPrBox onClick={() => navigate('/create-box')}>Добавить коробку</AddPrBox>
         </PublicLeftItem>
@@ -52,7 +51,7 @@ const PublicBox = ({ boxes, publicBoxes: startedPublicBoxes }) => {
       <PublicRightBox>
         <PublicRightTitle>Доступные публичные коробки</PublicRightTitle>
         <PublicBoxList>
-          {nonAlignedBoxes.map(({ title, draw_starts_at, max_people_in_box, email, id }) => (
+          {nonAlignedBoxes.map(({ title, draw_starts_at, max_people_in_box, email, id, cover }) => (
             <AvailableBoxes
               onClick={onSubscribe}
               title={title}
@@ -60,6 +59,7 @@ const PublicBox = ({ boxes, publicBoxes: startedPublicBoxes }) => {
               max_people={max_people_in_box}
               now_people={email}
               id={id}
+              cover={cover}
             />
           ))}
         </PublicBoxList>

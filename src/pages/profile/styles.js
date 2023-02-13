@@ -25,6 +25,11 @@ export const StyledLink = styled(Button)`
   color: #FF5539 !important;
   text-decoration: underline !important;
   font-weight: bold !important;
+  
+  :hover {
+    background-color: transparent !important; 
+    color: #f53e20 !important;
+  }
 `
 
 export const ProfileForm = styled.form`
@@ -34,18 +39,18 @@ export const ProfileForm = styled.form`
 
 export const InputSection = styled.div`
   margin: 0 auto 29px;
-  width: 642px;
+  width: 490px;
 `
 
 export const InputSectionTitle = styled.h3`
-  margin: 35px 0 19px;
+  margin: 19px 0 19px;
 `
 
 export const SwitchSection = styled.div`
   background-color: #F6F3F3;
   border: 2px solid #CDCCCC;
   border-radius: 3px;
-  width: 642px;
+  width: 490px;
   display: flex;
   align-items: center;
   margin: 0 auto 53px;
@@ -59,7 +64,10 @@ export const SwitchText = styled.div`
   }
 
   p {
-    font-size: 14px;
+    max-width: 499px;
+    font-family: Raleway;
+    color: #a2a2a2;
+    font-size: 16px;
   }
 `
 
@@ -111,9 +119,10 @@ export const ProfileSwitch = st(Switch)(() => ({
 
 export const RemoveDesc = styled.div`
   font-family: Raleway;
+  margin-top: 28px;
   text-align: center;
   color: #7C7C7C;
-  font-size: 20px;
+  font-size: 18px;
 `
 
 export const ProfileButton = styled.button`
@@ -122,11 +131,11 @@ export const ProfileButton = styled.button`
   text-align: center;
   color: white;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   margin: 40px auto 71px;
-  height: 81px;
+  height: 61px;
   border-radius: 4px;
-  width: 291px;
+  width: 226px;
   background-color: #FF5539;
   border: none;
   cursor: pointer;

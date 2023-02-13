@@ -2,13 +2,16 @@ import styled from 'styled-components'
 import { Switch, styled as st } from '@mui/material'
 
 export const Container = styled.div`
+  background-image: url("/img/Snowflake-Background-PNG 1.svg");
+  background-position: bottom -140px left 0;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   margin: auto;
-  padding-bottom: 80px;
+  padding-bottom: 55px;
   padding-top: 140px;
 `
 
@@ -18,17 +21,17 @@ export const Head = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 103px;
+  margin-bottom: 70px;
 `
 
 export const Title = styled.h1`
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 29px;
   color: #000000;
-  margin-bottom: 47px;
+  margin-bottom: 40px;
 `
 
 export const SubTitle = styled.p`
@@ -50,7 +53,7 @@ export const Div = styled.div`
   background: #f7f3f3;
   border: 2px solid #d6ccca;
   border-radius: 3px;
-  margin-bottom: 38px;
+  margin-bottom: 25px;
   padding: 15px;
 `
 
@@ -58,10 +61,11 @@ export const Input = styled.input`
   width: 633px;
   height: 57px;
   background: #f7f3f3;
+  font-family: Raleway;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  font-size: 28px;
-  text-align: center;
+  font-size: 22px;
+  padding-left: 14px;
 `
 
 export const DivInput = styled.div`
@@ -70,6 +74,7 @@ export const DivInput = styled.div`
 `
 
 export const Label = styled.label`
+  font-family: Raleway;
   position: absolute;
   font-style: normal;
   font-weight: 600;
@@ -81,6 +86,7 @@ export const Label = styled.label`
 `
 
 export const P = styled.p`
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -90,7 +96,7 @@ export const P = styled.p`
 `
 
 export const CoverDiv = styled.div`
-  margin-bottom: 45px;
+  margin-bottom: 30px;
 `
 
 export const CoverButton = styled.button`
@@ -104,7 +110,7 @@ export const CoverButton = styled.button`
 export const SmallInput = styled(Input)`
   height: 50px;
   margin-bottom: 46px;
-  font-family: 'Raleway';
+  font-family: Raleway;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -124,15 +130,16 @@ export const SmallLabel = styled(Label)`
 `
 
 export const CreateButton = styled.button`
-  width: 266px;
-  height: 81px;
+  width: 189px;
+  height: 58px;
   background: #ff5539;
   border-radius: 4px;
   border: 2px solid #ff5539;
-  font-family: 'Raleway';
+  font-family: Raleway;
+  cursor: pointer;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 28px;
   color: #ffffff;
   /* &:hover {
@@ -146,6 +153,7 @@ export const CreateButton = styled.button`
 export const CancellButton = styled(CreateButton)`
   background: #ffffff;
   border: 2px solid #ff5539;
+  cursor: pointer;
   color: #ff5539;
   /* &:hover {
     background: #ff5539;
@@ -166,7 +174,8 @@ export const Select = styled.select`
   background: #f7f3f3;
   border: 2px solid #d6ccca;
   border-radius: 3px;
-  font-family: 'Raleway';
+  font-family: Raleway;
+  padding-left: 13px;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -179,13 +188,13 @@ export const CostDiv = styled(ButtonsDiv)`
 `
 
 export const CostInput = styled.input`
-  text-align: center;
   width: 304px;
   height: 55px;
   background: #f7f3f3;
   border: 2px solid #d6ccca;
   border-radius: 3px;
-  font-family: 'Raleway';
+  padding-left: 13px;
+  font-family: Raleway;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -274,8 +283,8 @@ export const TitleBoxCreated = styled.h1`
   color: #000000;
 `
 export const SubTitleBoxCreated = styled.p`
-  max-width: 463px;
-  font-family: 'Inter';
+  max-width: 499px;
+  font-family: Raleway;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -283,8 +292,8 @@ export const SubTitleBoxCreated = styled.p`
   text-align: justify;
   color: #a2a2a2;
 `
-export const Hr = styled.hr`
-  border: 1px solid #e2e2e2;
+export const Hr = styled.div`
+  border-bottom: 1px solid #e2e2e2;
   max-width: 1328px;
   width: 100%;
 `

@@ -32,10 +32,11 @@ export const Logo = styled.a.attrs({
   height: 65px;
 `
 
-export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, width }) => ({
+export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, width, active }) => ({
   'font-family': 'Raleway',
   textTransform: 'inherit',
-  color: colorState === 'white' ? '#FF5539' : 'black',
+  // eslint-disable-next-line no-nested-ternary
+  color: colorState === 'white' ? (active ? 'white' : '#FF5539') : 'black',
   outline: colorState === 'white' ? '1px solid #FF5539' : 'none',
   textDecoration: 'none',
   display: 'block',
@@ -45,7 +46,14 @@ export const StyledLink = st(Button)(({ colorState, margin, padding, fontsize, w
   padding: padding ? `${padding} !important` : '8px 30px !important',
   width: width || 'auto',
   margin: margin || '',
-  background: colorState === 'white' ? colorState : '#FF7D68',
+  // eslint-disable-next-line no-nested-ternary
+  background: colorState === 'white' ? (active ? '#FF5539' : 'white') : '#FF7D68',
+
+  '&:hover': {
+    backgroundColor: '#f53e20',
+    color: '#fff',
+  },
+
   '& div': {
     'font-family': 'Raleway',
   }

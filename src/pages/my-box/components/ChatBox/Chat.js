@@ -31,13 +31,6 @@ const Chat = ({ receiverId, cardId }) => {
       })
   }
 
-  const intervalMessage = () => {
-    setTimeout(function go() {
-      getMessages()
-      setTimeout(go, 9000)
-    }, 9000)
-  }
-
   const sendMessage = async msg => {
     await fetch('https://backsecsanta.alwaysdata.net/api/chat/send', {
       method: 'POST',
@@ -61,8 +54,13 @@ const Chat = ({ receiverId, cardId }) => {
 
   useEffect(() => {
     getMessages()
-    intervalMessage()
-  }, [])
+    const handle = setInterval(() => {
+      getMessages()
+    }, 7000);
+    return () => {
+      clearInterval(handle);
+    };
+  }, []);
 
   const handleScrollBottom = useCallback(() => {
     if (ref.current) {
@@ -96,19 +94,18 @@ const Chat = ({ receiverId, cardId }) => {
           const maessageDay = moment(message.created_at, 'YYYY/MM/DD').format(
             'DD MMMM YYYY'
           )
-
           if (day !== maessageDay) {
             day = maessageDay
             isNeedPrintDay = true
           } else {
             isNeedPrintDay = false
           }
-
           return (
             <>
               {isNeedPrintDay && <Date>{day}</Date>}
               <MessageDiv key={message.id} props={message.writer_id === userId}>
-                <MessageText>{message.text}</MessageText>
+                <MessageText bold={message.text?.toLowerCase().includes('подопечн')
+                || message.text?.toLowerCase().includes('санта')}>{message.text}</MessageText>
               </MessageDiv>
             </>
           )

@@ -23,14 +23,13 @@ import {
   CostDiv,
   CostInput,
   AntSwitch,
-  SubTitleBoxCreated
+  SubTitleBoxCreated, BackImage
 } from './style'
-import tree from '../../assets/images/elTree1.svg'
 
 const BoxCreate = () => {
   const [state, setState] = useState({
     title: '',
-    cover: 'img',
+    cover: '',
     isAnonym: false,
     email: false,
     isPublic: false,
@@ -50,7 +49,7 @@ const BoxCreate = () => {
       },
       body: JSON.stringify({
         title: state.title,
-        cover: tree,
+        cover: state.cover,
         isAnonym: state.isAnonym,
         email: state.email,
         isPublic: state.isPublic,
@@ -89,160 +88,146 @@ const BoxCreate = () => {
     })
   }
   return (
-    <Container>
-      <Head>
-        <Title>Создание коробки</Title>
-        <SubTitle>Настройте свою коробку за несколько простых шагов</SubTitle>
-      </Head>
-      <div>
-        <DivInput>
-          <Input
-            required
-            data-name="title"
-            id="title"
-            type="text"
-            onChange={handleChangeForm}
-          />
-          <Label for="title">Название коробки</Label>
-        </DivInput>
-        <CoverDiv>
-          <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
-          <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
-        </CoverDiv>
-        <Div>
-          <div>
-            <P>Анонимность участников</P>
-            <SubTitleBoxCreated>
-              При включенной опции участники будут видеть имена других игроков.
-              Когда опция выключена, участники будут видеть только аватарки
-              игроков и имя своего подопечного. Организатор будет видеть имена
-              игроков вне зависимости от состояния опции.
-            </SubTitleBoxCreated>
-          </div>
-          <AntSwitch
-            checked={state.isAnonym}
-            name="isAnonym"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        <Div>
-          <div>
-            <P>Добавить в карточку почтовый адрес</P>
-            <SubTitleBoxCreated>
-              При включенной опции участникам нужно будет указать свой почтовый
-              адрес в карточке.
-            </SubTitleBoxCreated>
-          </div>
-
-          <AntSwitch
-            checked={state.email}
-            name="email"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        <Div
-          style={
-            state.isPublic ? { marginBottom: '38px' } : { marginBottom: '38px' }
-          }
-        >
-          <div>
-            <P>Сделать коробку публичной</P>
-            <SubTitleBoxCreated>
-              При включенной опции к вашей коробке смогут присоединиться
-              случайные пользователи. Необходимо будет указать максимальное
-              число участников для коробки, а также выбрать дату автомвтического
-              проведения жеребьевки. Жеребьевка будет проведена независимо от
-              достижения максимума участников.
-            </SubTitleBoxCreated>
-          </div>
-          <AntSwitch
-            checked={state.isPublic}
-            name="isPublic"
-            onChange={handleChangeSwitch}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-        </Div>
-        {state.isPublic ? (
-          <div>
-            <DivInput>
-              <SmallInput
-                required
-                data-name="max_people_in_box"
-                id="max_people_in_box"
-                type="number"
-                min="0"
-                onChange={handleChangeForm}
-              />
-              <SmallLabel for="max_people_in_box">
-                Введите максимальное количество участников
-              </SmallLabel>
-            </DivInput>
-            <DivInput style={{ marginBottom: '0' }}>
-              <SmallInput
-                required
-                data-name="draw_starts_at"
-                id="draw_starts_at"
-                type="date"
-                min="2022-12-01"
-                onChange={handleChangeForm}
-              />
-              <SmallLabel for="draw_starts_at">
-                Выберите дату проведения автоматической жеребьевки
-              </SmallLabel>
-            </DivInput>
-          </div>
-        ) : null}
+    <BackImage>
+      <Container>
+        <Head>
+          <Title>Создание коробки</Title>
+          <SubTitle>Настройте свою коробку за несколько простых шагов</SubTitle>
+        </Head>
         <div>
-          <Div
-            style={
-              state.isLimit
-                ? { marginBottom: '20px' }
-                : { marginBottom: '38px' }
-            }
-          >
+          <DivInput>
+            <Input
+              required
+              data-name="title"
+              id="title"
+              type="text"
+              onChange={handleChangeForm}
+            />
+            <Label for="title">Название коробки</Label>
+          </DivInput>
+          <CoverDiv>
+            <P style={{ marginBottom: '11px' }}>Обложка коробки</P>
+            <Cover fu={setState} state={state} img={BOX_CREATE_IMG} />
+          </CoverDiv>
+          <Div>
             <div>
-              <P>Ограничить стоимость подарков</P>
+              <P>Анонимность участников</P>
               <SubTitleBoxCreated>
-                При включенной опции участникам будет показано ограничение,
-                которому они должны будут следовать. Ограничение будет показано
-                на странице подопечного
+                При включенной опции участники будут видеть имена других игроков.
+                Когда опция выключена, участники будут видеть только аватарки
+                игроков и имя своего подопечного. Организатор будет видеть имена
+                игроков вне зависимости от состояния опции.
               </SubTitleBoxCreated>
             </div>
             <AntSwitch
-              checked={state.isLimit}
-              name="isLimit"
+              checked={state.isAnonym}
+              name="isAnonym"
               onChange={handleChangeSwitch}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </Div>
-          {state.isLimit ? (
-            <CostDiv>
-              <CostInput
-                required
-                data-name="cost"
-                type="number"
-                min="0"
-                onChange={handleChangeForm}
-              />
-              <Select data-name="currency" onChange={handleChangeForm}>
-                <option value="RUB">RUB</option>
-                <option value="EUR">EUR</option>
-              </Select>
-            </CostDiv>
+          <Div
+            style={
+              state.isPublic ? { marginBottom: '38px' } : { marginBottom: '38px' }
+            }
+          >
+            <div>
+              <P>Сделать коробку публичной</P>
+              <SubTitleBoxCreated>
+                При включенной опции к вашей коробке смогут присоединиться
+                случайные пользователи. Необходимо будет указать максимальное
+                число участников для коробки, а также выбрать дату автомвтического
+                проведения жеребьевки. Жеребьевка будет проведена независимо от
+                достижения максимума участников.
+              </SubTitleBoxCreated>
+            </div>
+            <AntSwitch
+              checked={state.isPublic}
+              name="isPublic"
+              onChange={handleChangeSwitch}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+          </Div>
+          {state.isPublic ? (
+            <div>
+              <DivInput>
+                <SmallInput
+                  required
+                  data-name="max_people_in_box"
+                  id="max_people_in_box"
+                  type="number"
+                  min="0"
+                  onChange={handleChangeForm}
+                />
+                <SmallLabel for="max_people_in_box">
+                  Введите максимальное количество участников
+                </SmallLabel>
+              </DivInput>
+              <DivInput style={{ marginBottom: '0' }}>
+                <SmallInput
+                  required
+                  data-name="draw_starts_at"
+                  id="draw_starts_at"
+                  type="date"
+                  min="2022-12-01"
+                  onChange={handleChangeForm}
+                />
+                <SmallLabel for="draw_starts_at">
+                  Выберите дату проведения автоматической жеребьевки
+                </SmallLabel>
+              </DivInput>
+            </div>
           ) : null}
+          <div>
+            <Div
+              style={
+                state.isLimit
+                  ? { marginBottom: '20px' }
+                  : { marginBottom: '38px' }
+              }
+            >
+              <div>
+                <P>Ограничить стоимость подарков</P>
+                <SubTitleBoxCreated>
+                  При включенной опции участникам будет показано ограничение,
+                  которому они должны будут следовать. Ограничение будет показано
+                  на странице подопечного
+                </SubTitleBoxCreated>
+              </div>
+              <AntSwitch
+                checked={state.isLimit}
+                name="isLimit"
+                onChange={handleChangeSwitch}
+                inputProps={{ 'aria-label': 'controlled' }}
+              />
+            </Div>
+            {state.isLimit ? (
+              <CostDiv>
+                <CostInput
+                  required
+                  data-name="cost"
+                  type="number"
+                  min="0"
+                  onChange={handleChangeForm}
+                />
+                <Select data-name="currency" onChange={handleChangeForm}>
+                  <option value="RUB">RUB</option>
+                  <option value="EUR">EUR</option>
+                </Select>
+              </CostDiv>
+            ) : null}
+          </div>
+          <ButtonsDiv>
+            <CancellButton type="button" onClick={() => navigate('/boxes')}>
+              Отмена
+            </CancellButton>
+            <CreateButton type="button" onClick={() => onSubmit(state)}>
+              Создать коробку
+            </CreateButton>
+          </ButtonsDiv>
         </div>
-        <ButtonsDiv>
-          <CancellButton type="button" onClick={() => navigate('/boxes')}>
-            Отмена
-          </CancellButton>
-          <CreateButton type="button" onClick={() => onSubmit(state)}>
-            Создать коробку
-          </CreateButton>
-        </ButtonsDiv>
-      </div>
-    </Container>
+      </Container>
+    </BackImage>
   )
 }
 

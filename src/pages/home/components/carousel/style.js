@@ -1,21 +1,30 @@
 import styled from '@emotion/styled'
 import Carousel from 'react-material-ui-carousel'
+import { AccordionSummary } from "@mui/material";
 
 export const CarouselSection = styled.section`
   margin: 65px auto 88px auto;
-  padding: 0 1rem;
+
   max-width: 1200px;
   width: 100%;
 `
 
 export const CarouselElement = styled(Carousel)`
+  padding: 0 1rem;
+  height: 396px;
 
   button[aria-label='Previous'] {
     width: 90px;
+    :hover {
+      opacity: 0.8 !important;
+    }
   }
 
   button[aria-label='Next'] {
     width: 84px;
+    :hover {
+      opacity: 0.8 !important;
+    }
   }
 
   > div:first-child {
@@ -40,7 +49,17 @@ export const CarouselButton = styled.button`
   border-radius: 4px;
 
   &:hover {
-    background-color: #FF5539;
+    background-color: #f53e20;
+  }
+`
+
+export const StyledAccordionSummary = styled(AccordionSummary)`
+  outline: 1px solid #D9D2CD;
+  border-radius: 4px;
+  background: white;
+
+  &:hover {
+    background-color: rgb(245, 240, 240)
   }
 `
 

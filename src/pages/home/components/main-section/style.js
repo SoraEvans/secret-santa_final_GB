@@ -49,22 +49,37 @@ export const Text = styled.span`
 export const SantaBoxBtn = styled.div`
   display: grid;
   place-items: center;
+  cursor: pointer;
   width: max-content;
+  position: relative;
   margin: -65px;
+  transition: transform 0.5s ease-in-out;
+  
+  :hover {
+    svg {
+      fill: #FF5539;
+    }
+    transform: scale(1.1);
+  }
 `
 
-export const SantaBoxText = styled.img`
+export const SantaBoxText = styled.div`
   animation-name: rotation;
-  animation-duration: 9s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
+  svg {
+    fill: black;
+    width: 183px;
+  }
+
   @keyframes rotation {
     0% {
-      transform:rotate(0deg);
+      transform: rotate(0deg);
     }
     100% {
-      transform:rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 `
