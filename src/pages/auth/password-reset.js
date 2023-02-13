@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { AuthForm, Credits, StyledRegBtn } from './auth-styles'
+import { AuthForm, Credits, StyledRemBtn } from './auth-styles'
 import { AuthInput } from '../../components/Inputs/Inputs'
 import TextIcon from '../../assets/images/textHead.svg'
 import btnBranch from '../../assets/images/regBranch.svg'
@@ -23,7 +23,7 @@ const PasswordResetPage = () => {
       [field]: e.target.value
     })
   }
-  const onSubmit = async form => {
+  const onSubmit = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/user/restore', {
       method: 'POST',
       header: {
@@ -47,43 +47,42 @@ const PasswordResetPage = () => {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    mode: 'onBlur',
+    mode: 'all',
     resolver: yupResolver(SchemaValidation)
   })
 
   return (
-    <AuthForm onSubmit={handleSubmit(onSubmit)}>
+    <AuthForm onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'center' }}>
       <div style={{ position: 'relative' }}>
         <img className="reset-hat" src={TextIcon} alt="" />
-        <h1>Восстановление доступа</h1>
+        <h1 style={{ marginBottom: 20 }}>Восстановление пароля</h1>
       </div>
-      <div style={{ width: 642 }}>
+      <Credits style={{ width: 610, marginBottom: 40, marginTop: 0 }}>
+        На указанный e-mail будет отправлено письмо с временным паролем для
+        входа на сайт.
+      </Credits>
+      <div style={{ width: 490 }}>
         <AuthInput
-          {...register('email')}
+          {...register('email', { required: true })}
           id="email"
           type="email"
           label="Введите ваш e-mail"
           value={form.email}
           onChange={handleChangeForm}
+          style={{ marginBottom: 0 }}
           error={!!errors.email}
           helperText={errors?.email?.message}
         />
       </div>
-      <Credits>
-        На указанный e-mail будет отправлено письмо с временным паролем для
-        входа на сайт.
-      </Credits>
       <img className="mail-icon" src={mail} alt="" />
       <div style={{ position: 'relative' }}>
         <img className="reg-branch" src={btnBranch} alt="" />
-        <StyledRegBtn
+        <StyledRemBtn
           variant="outlined"
-          onClick={() => {
-            onSubmit(form)
-          }}
+          type="submit"
         >
           Отправить
-        </StyledRegBtn>
+        </StyledRemBtn>
       </div>
     </AuthForm>
   )

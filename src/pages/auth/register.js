@@ -16,11 +16,11 @@ const RegisterPage = () => {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    mode: 'onBlur',
+    mode: 'all',
     resolver: yupResolver(SchemaValidation)
   })
 
-  const onSubmit = async form => {
+  const onSubmit = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/user/register', {
       method: 'POST',
       header: {
@@ -64,9 +64,9 @@ const RegisterPage = () => {
           Войти на сайт
         </Link>
       </Title>
-      <div style={{ width: 642 }}>
+      <div style={{ width: 490 }}>
         <AuthInput
-          {...register('name')}
+          {...register('name', { required: true } )}
           id="name"
           label="Имя"
           value={form.name}
@@ -75,9 +75,9 @@ const RegisterPage = () => {
           helperText={errors?.name?.message}
         />
       </div>
-      <div style={{ width: 642 }}>
+      <div style={{ width: 490 }}>
         <AuthInput
-          {...register('email')}
+          {...register('email', { required: true } )}
           id="email"
           label="E-mail"
           type="email"
@@ -87,9 +87,9 @@ const RegisterPage = () => {
           helperText={errors?.email?.message}
         />
       </div>
-      <div style={{ width: 642 }}>
+      <div style={{ width: 490 }}>
         <AuthInput
-          {...register('password')}
+          {...register('password', { required: true } )}
           id="password"
           label="Пароль"
           type="password"
