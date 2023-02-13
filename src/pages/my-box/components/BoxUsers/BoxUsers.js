@@ -9,6 +9,7 @@ import { ModalLink, ModalSubTitle, ModalTitle } from '../../../../components/mod
 import BoxInfo from '../box-info/BoxInfo'
 import InviteUsers from '../invite-users/InviteUsers'
 import { BtnAdd } from '../../../my-boxes/components/PrivateBox/style'
+import getBoxInfo from "../../../../API/boxInfo"
 
 const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin, wardId }) => {
   const [showModal, setShowModal] = useState(false)
@@ -76,6 +77,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
     })
       .then(() => {
         setShowModal(prev => !prev)
+        getBoxInfo(setUserData, id)
       })
   }
 

@@ -38,15 +38,9 @@ const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
   const choosenUser = JSON.parse(localStorage.getItem('chosenUser'))
   const {
     handleSubmit,
-    formState: { errors }
   } = useForm({
     mode: 'all',
-    resolver: yupResolver(SchemaValidation),
-    defaultValues: {
-      name: '',
-      email: '',
-      image: null
-    }
+    resolver: yupResolver(SchemaValidation)
   })
   const { id } = useParams()
   const navigate = useNavigate()
@@ -185,7 +179,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
                 setUserValues(prevState => ({ ...prevState, name: e.target.value }))
               }}
             />
-            <p style={{ color: 'red' }}>{errors.name?.message}</p>
             <CustomInput
               type="text"
               label="Ваш e-mail"
@@ -194,7 +187,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
                 setUserValues(prevState => ({ ...prevState, email: e.target.value }))
               }}
             />
-            <p style={{ color: 'red' }}>{errors.email?.message}</p>
           </InputSection>
           <CoverDiv style={{ margin: 0 }}>
             <FormLabel style={{ marginBottom: 10 }}>Выберите аватар</FormLabel>

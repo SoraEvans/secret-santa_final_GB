@@ -13,9 +13,10 @@ import boxImg from '../../../../assets/images/box.svg';
 import Modal from '../../../../components/modal/modal';
 import { ModalTitle } from '../../../../components/modal/style';
 import SettingsIcon from './components/SettingsIcon';
+import getBoxInfo from "../../../../API/boxInfo";
 
 // eslint-disable-next-line react/prop-types
-const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card }) => {
+const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -33,6 +34,21 @@ const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card }) => {
     openModal();
     navigate(`/boxes`);
   };
+
+  const reverseDraw = async () => {
+    await fetch('https://backsecsanta.alwaysdata.net/api/box/reverseDraw', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        box_id: id
+      })
+    })
+      .then(() => {
+        getBoxInfo(setUserData, id)
+      })
+  }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -81,6 +97,7 @@ const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card }) => {
             }}
           >Настройки коробки</p>}
           <p onClick={() => setActiveIdx(4)}>Кто чей санта?</p>
+          <p onClick={reverseDraw}>Отменить жеребьевку</p>
           <p onClick={openModal}>Удалить коробку</p>
         </DropdownMenu>
       </Popover>
