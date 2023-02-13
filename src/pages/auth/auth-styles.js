@@ -36,7 +36,7 @@ export const AuthForm = styled.form`
 
   .login-branch {
     position: absolute;
-    top: -12px;
+    top: 5px;
     left: -10px;
   }
 
@@ -47,6 +47,7 @@ export const AuthForm = styled.form`
   }
 
   .mail-icon {
+    margin: 30px 0 20px;
   }
 `
 
@@ -59,27 +60,63 @@ export const StyledDesc = styled.p`
 `
 
 export const Title = styled(StyledDesc)`
+  font-family: Raleway;
   margin: 17px 0 40px;
+  font-size: 20px;
+
+  a {
+    :hover {
+      color: #FF5539 !important;
+    }
+  }
 `
 
 export const Credits = styled(StyledDesc)`
-  margin-top: 37px;
+  font-family: Raleway;
+  font-size: 20px;
+  margin-top: 29px;
+
+  a {
+    :hover {
+      color: #FF5539 !important;
+    }
+  }
 `
 
 export const LabelLink = styled.label`
   position: absolute;
   bottom: 0;
   right: 0;
+
+  a {
+    color: #979797 !important;
+
+    :hover {
+      color: #FF5539 !important;
+    }
+  }
 `
 
 export const StyledLoginBtn = styled(CarouselButton)`
-  width: 215px !important;
-  height: 73px !important;
+  margin: 16px auto 136px auto !important;
+  font-size: 22px !important;
+  width: 185px !important;
+  height: 68px !important;
   margin-bottom: 0 !important;
 `
 
 export const StyledRegBtn = styled(CarouselButton)`
-  width: 291px !important;
-  height: 81px !important;
+  margin: 16px auto 136px auto !important;
+  font-size: 22px !important;
+  width: 276px !important;
+  height: 68px !important;
+  margin-bottom: 0 !important;
+`
+
+export const StyledRemBtn = styled(CarouselButton)`
+  margin: 16px auto 136px auto !important;
+  font-size: 22px !important;
+  width: 226px !important;
+  height: 68px !important;
   margin-bottom: 0 !important;
 `

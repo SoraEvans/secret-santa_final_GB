@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { styled as st } from '@mui/material/styles';
+import { styled as st } from '@mui/material/styles'
 import { Tabs, Tab, Box } from '@mui/material'
 
-import { CardInfo, GiftButton, MyCardPage } from "../MyCard/style";
+import { CardInfo, GiftButton, MyCardPage } from "../MyCard/style"
 
 export const MyWardPage = styled(MyCardPage)`
 `
@@ -11,9 +11,8 @@ export const MyWardInfo = styled(CardInfo)`
 `
 
 export const GiftSentButton = styled(GiftButton)`
-    align-self: flex-end;
-    margin: 50px 0 5px;
-   
+  align-self: flex-end;
+  margin: 30px 0 8px;
 `
 
 export const SantaImg = styled.div`
@@ -69,15 +68,19 @@ export const TabItem = st(Tab)`
   transform:scale(-1);
   font-size: 16px;
   align-self: center;
-  background-color: #E8E8E8;
+  background-color: rgba(219, 202, 199, 0.5);
   text-transform: none;
   height: 181px;
   color: #AAA9A9;
   
+  &.MuiTab-textColorPrimary {
+    :hover {
+      background: #F7F3F3 !important;
+    }
+  }
 
   & div {
     writing-mode: tb;
-    
   }
 `
 export const BodyWrapper = styled.div`

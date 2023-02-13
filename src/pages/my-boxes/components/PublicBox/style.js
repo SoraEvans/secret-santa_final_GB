@@ -3,8 +3,7 @@ import { BtnAdd } from '../PrivateBox/style'
 
 export const PublicWrapper = styled.div`
   font-family: Raleway;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
 `
 
 export const PublicLeftItem = styled.div`
@@ -22,12 +21,14 @@ export const PublicLeftTitle = styled.h4`
 
 export const PublicRightBox = styled.div`
   display: flex;
+  padding-left: 60px;
   flex-direction: column;
   width: fit-content;
   align-items: center;
 `
 
 export const PublicBoxList = styled.div`
+  padding: 3px 15px 3px 3px;
   max-height: 440px;
   width: 570px;
   overflow: auto;
@@ -38,22 +39,27 @@ export const PublicRightTitle = styled.h4`
 `
 
 export const StyledIcon = styled.button`
-  width: 103px;
-  height: 103px;
+  width: 97px;
+  height: 97px;
   background-color: #FF5539;
   border-radius: 4px;
   border: none;
 `
 
+export const StyledBoxElement = styled.div`
+  :hover {
+    font-weight: bold;
+  }
+`
+
 export const StyledBoxItem = styled(StyledIcon)`
   width: 112px;
   height: 112px;
-
-  transition: background-color 0.2s ease-in, scale 0.2s ease-in-out;
-
+  cursor: pointer;
+  
   &:hover {
-    background-color: #de4832;
-    color: #fff;
+    background-color: #f53e20;
+    color: white;
   }
 
   &:active {
