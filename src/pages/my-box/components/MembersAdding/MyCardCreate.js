@@ -100,7 +100,7 @@ const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
       body: JSON.stringify({
         name: userValues.name,
         email: userValues.email,
-        image: userValues?.cover || choosenUser.image,
+        image: userValues?.cover || choosenUser.image || null,
         box_id: id,
         user_id: choosenUser.id,
       })
@@ -158,11 +158,7 @@ const MyCardCreate = ({ userData, isAdmin, setUserData, setActiveIdx }) => {
       <CreateCardWrapper>
         <h3>Настройки карточки участника</h3>
         {isAdmin && (validCard
-          ?
-          <FormLabel style={{ marginBottom: 10 }}>
-            Ваша карточка участника создана. Можете перейти в коробку для проведения жеребьевки или удалить свою
-            карточку
-          </FormLabel>
+          ? null
           :
           <FormLabel style={{ marginBottom: 10 }}>
             Создайте карточку участника для себя, если хотите принимать участие в

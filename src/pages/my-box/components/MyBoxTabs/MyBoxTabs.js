@@ -43,7 +43,14 @@ const MyBoxTabs = () => {
   return (
     <>
       <TabsWrapper>
-        {isAdmin && <MyBoxSettings setUserData={setUserData} setActiveIdx={setActiveIdx} isAdmin={isAdmin} currentUserId={currentUserId} card={userData?.card} />}
+        {isAdmin && <MyBoxSettings
+          setUserData={setUserData}
+          setActiveIdx={setActiveIdx}
+          isAdmin={isAdmin}
+          currentUserId={currentUserId}
+          wardId={wardId}
+          card={userData?.card}
+        />}
         <TabsInner
           orientation="vertical"
           value={activeIdx}

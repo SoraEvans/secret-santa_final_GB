@@ -16,7 +16,7 @@ import SettingsIcon from './components/SettingsIcon';
 import getBoxInfo from "../../../../API/boxInfo";
 
 // eslint-disable-next-line react/prop-types
-const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData }) => {
+const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData, wardId }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -97,7 +97,7 @@ const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData
             }}
           >Настройки коробки</p>}
           <p onClick={() => setActiveIdx(4)}>Кто чей санта?</p>
-          <p onClick={reverseDraw}>Отменить жеребьевку</p>
+          {wardId && <p onClick={reverseDraw}>Отменить жеребьевку</p>}
           <p onClick={openModal}>Удалить коробку</p>
         </DropdownMenu>
       </Popover>

@@ -19,7 +19,11 @@ export const AddBtn = st(Button)({
   fontSize: 32,
   minWidth: '56px',
   height: '56px',
-  margin: '0 0 6px 16px'
+  margin: '0 0 6px 16px',
+
+  ":hover": {
+    border: '3px solid #FF5539',
+  }
 })
 
 export const RemoveBtn = st(Button)({
@@ -27,5 +31,9 @@ export const RemoveBtn = st(Button)({
   color: '#D6CCCA',
   minWidth: '56px',
   height: '56px',
-  margin: '0 0 6px 16px'
+  margin: '0 0 6px 16px',
+
+  ":hover": {
+    border: '3px solid #D6CCCA',
+  }
 })

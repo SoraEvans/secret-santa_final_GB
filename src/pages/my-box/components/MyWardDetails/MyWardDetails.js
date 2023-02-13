@@ -23,8 +23,8 @@ const MyWardDetails = ({ wardId, id, userData: { secret_santas_ward, secret_sant
   const price = box.cost
 
   const [activeIndex, setActiveIndex] = useState(0)
-  const currentWard = secret_santas_ward.filter(item => item.id === wardId)[0]
-  const currentWardAvatar = secret_santas.filter(item => item.id === wardId)[0].image
+  const currentWard = secret_santas_ward?.filter(item => item.id === wardId)[0]
+  const currentWardAvatar = secret_santas?.filter(item => item.id === wardId)[0].image
 
   const handlerChangeTab = (event, newIndex) => {
     setActiveIndex(newIndex)
@@ -60,10 +60,10 @@ const MyWardDetails = ({ wardId, id, userData: { secret_santas_ward, secret_sant
             >
               {currentWardAvatar ?
                 <img src={currentWardAvatar} alt="avatar" style={{ height: 53 }} />
-                : currentWard.name[0]?.toUpperCase()}
+                : currentWard?.name[0]?.toUpperCase()}
             </UserItem>
             <UserInfo>
-              <UserName>{currentWard.name}</UserName>
+              <UserName>{currentWard?.name}</UserName>
               <Price style={{ flex: 1, marginTop: 4 }}>Ваш подопечный</Price>
               {box.cost ? <Price style={{marginBottom: 4}}>
                 Стоимость подарка:

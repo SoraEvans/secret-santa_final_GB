@@ -38,11 +38,11 @@ const PublicBox = ({ boxes, publicBoxes: startedPublicBoxes }) => {
         <PublicLeftTitle>Мои публичные коробки</PublicLeftTitle>
         <PublicLeftItem>
           {alignedBoxes?.publicBoxes.map(box =>
-            <StyledBoxElement style={{ textAlign: 'center', margin: '0 0 19px' }}>
+            <StyledBoxElement style={{ textAlign: 'center', margin: '0 0 19px', width: 'min-content' }}>
               <StyledBoxItem onClick={() => navigate(`/box/${box.id}`)}>
                 <img src={box.cover} alt="Обложка" />
               </StyledBoxItem>
-              <StyledName size={14}>{box.title}</StyledName>
+              <StyledName size={14}>{box.title} {+box.creator_id === +userId && `(Ваша)`}</StyledName>
             </StyledBoxElement>
           )}
           <AddPrBox onClick={() => navigate('/create-box')}>Добавить коробку</AddPrBox>
