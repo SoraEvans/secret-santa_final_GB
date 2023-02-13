@@ -24,7 +24,7 @@ import { ModalTitle } from '../../../../components/modal/style'
 import { CancelButton, DeleteButton, ModalButtons } from '../MyBoxSettings/style'
 import { CoverDiv } from '../../../box-create/style'
 import Cover from '../../../../components/CoverCarousel/Cover'
-import USER_CREATE_IMG from "../../../../constants/user-create-img";
+import USER_CREATE_IMG from "../../../../constants/user-create-img"
 import getBoxInfo from "../../../../API/boxInfo";
 
 const TransitionLeft = (props) => <Slide {...props} direction="right" />
@@ -37,7 +37,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
   const { secret_santas_ward, box, secret_santas, card } = userData
   const choosenUser = JSON.parse(localStorage.getItem('chosenUser'))
   const {
-    register,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -83,7 +82,7 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
   }
 
   const deleteCard = async () => {
-    await fetch(`https://backsecsanta.alwaysdata.net/api/card/delete/${card?.id}`, {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/card/delete/${choosenUser?.card_id || card?.id}`, {
       method: 'DELETE',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -96,7 +95,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
   }
 
   const updateCard = async () => {
-    console.log('userValues?.cover || choosenUser.image, UPDATE', userValues?.cover || choosenUser.image,)
     await fetch('https://backsecsanta.alwaysdata.net/api/card/update', {
       method: 'PATCH',
       header: {
@@ -180,7 +178,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
               label="Ваше имя или никнейм"
               value={userValues.name}
               margin="16px 0"
-              {...register('name', { required: true })}
               onChange={(e) => {
                 setUserValues(prevState => ({ ...prevState, name: e.target.value }))
               }}
@@ -190,7 +187,6 @@ const MyCardCreate = ({ userData, isAdmin, setUserData }) => {
               type="text"
               label="Ваш e-mail"
               value={userValues.email}
-              {...register('email', { required: true })}
               onChange={(e) => {
                 setUserValues(prevState => ({ ...prevState, email: e.target.value }))
               }}

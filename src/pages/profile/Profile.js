@@ -106,8 +106,6 @@ function Profile() {
                 label="Ваше имя или никнейм"
                 margin="0 0 24px"
                 value={state.name}
-                error={state.name === '' ? 'Заполните поле' : false}
-                helperText={state.name === '' ? 'Заполните поле' : null}
                 onChange={event =>
                   setState({
                     ...state,
@@ -122,8 +120,6 @@ function Profile() {
                 label="Ваш e-mail"
                 margin="0 0 24px"
                 value={state.email}
-                error={state.email === '' ? 'Заполните поле' : false}
-                helperText={state.email === '' ? 'Заполните поле' : null}
                 onChange={event =>
                   setState({
                     ...state,

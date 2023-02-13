@@ -38,6 +38,7 @@ export const ModalCloseButton = styled.img`
   height: 33.5px;
   position: absolute;
   top: 5px;
+  cursor: pointer;
   right: 5px;
 `
 

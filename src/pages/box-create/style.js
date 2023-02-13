@@ -146,11 +146,11 @@ export const CreateButton = styled.button`
   font-size: 22px;
   line-height: 28px;
   color: #ffffff;
+  cursor: pointer;
 
   &:hover {
-    background: #ffffff;
-    color: #ff5539;
-    border: 2px solid #ff5539;
+    background: #f53e20;
+    color: #ffffff;
     transition: 300ms;
   }
 `
@@ -161,7 +161,7 @@ export const CancellButton = styled(CreateButton)`
   color: #ff5539;
 
   &:hover {
-    background: #ff5539;
+    background: #f53e20;
     color: #ffffff;
     transition: all 300ms;
   }
@@ -222,6 +222,12 @@ export const Button = styled.button`
   color: #fff;
   border: 0;
   border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: #f53e20;
+    color: #ffffff;
+  }
 `
 
 export const AntSwitch = st(Switch)(() => ({

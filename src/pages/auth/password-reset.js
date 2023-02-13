@@ -80,6 +80,9 @@ const PasswordResetPage = () => {
         <StyledRemBtn
           variant="outlined"
           type="submit"
+          onClick={() => {
+            onSubmit(form)
+          }}
         >
           Отправить
         </StyledRemBtn>

@@ -53,6 +53,12 @@ export const CancelButton = styled.button`
   border: 1px solid #FF5539;
   cursor: pointer;
   border-radius: 3px;
+
+  &:hover {
+    background: #f53e20;
+    color: #ffffff;
+    transition: 300ms;
+  }
 `
 
 export const DeleteButton = styled(CancelButton)`

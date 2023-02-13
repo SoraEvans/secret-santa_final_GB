@@ -22,6 +22,14 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
     }
   }
 
+  const getUserName = (user) => {
+    if (box?.isAnonym && !secret_santas_ward?.length) {
+      return currentUserId === user.id ? `${user?.name} (Вы)` : ''
+    } if (box?.isAnonym && secret_santas_ward?.length) {
+      return (currentUserId === user?.id || wardId === user?.id) ? `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}` : ''
+    } return `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}`
+  }
+
   const { id } = useParams()
   const userItem = secret_santas?.map(user => (
     <UserBox outline onClick={() => clickOnUser(user)}>
@@ -37,8 +45,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
         </UserItem>
       }
       {/* eslint-disable-next-line no-nested-ternary */}
-      {!secret_santas_ward.length ? (currentUserId === user.id ? `${user.name} ${currentUserId === user.id ? '(Вы)' : ''}` : '')
-        : (currentUserId === user.id || wardId === user.id ? `${user.name} ${currentUserId === user.id ? '(Вы)' : ''}` : '')}
+      {getUserName(user)}
     </UserBox>
   ))
 

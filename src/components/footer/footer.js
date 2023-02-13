@@ -53,7 +53,7 @@ const Footer = () => {
                 <ModalInput multiline rows={5} label="Ваше сообщение" />
               </ModalForm>
               <div style={{ position: 'relative' }}>
-                <img className="reg-branch" src={btnBranch} alt="" />
+                <img className="reg-branch" src={btnBranch} alt="" style={{right: 117}} />
                 <ModalSend type="button">Отправить</ModalSend>
               </div>
               <ModalCredits>
