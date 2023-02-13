@@ -19,7 +19,7 @@ const PublicBox = ({ boxes, publicBoxes: startedPublicBoxes }) => {
   const [nonAlignedBoxes, setNonAlignedBoxes] = useState(startedPublicBoxes)
   const userId = localStorage.getItem('userId')
   const onSubscribe = async box_id => {
-    await fetch(`https://backsecsanta.alwaysdata.net/api/box/join/?user_id=${userId}&id=${box_id}`, {
+    await fetch(`https://backsecsanta.alwaysdata.net/api/box/join?user_id=${userId}&id=${box_id}`, {
       method: 'POST',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
