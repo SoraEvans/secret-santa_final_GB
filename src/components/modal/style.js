@@ -57,7 +57,7 @@ export const ModalSubTitle = styled.p`
   font-family: Raleway;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 150.02%;
   text-align: center;
   color: #979797;
@@ -70,7 +70,7 @@ export const ModalLink = styled.div`
   display: initial;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 150.02%;
-  color: #fd9797;
+  color: #FF5539;
 `

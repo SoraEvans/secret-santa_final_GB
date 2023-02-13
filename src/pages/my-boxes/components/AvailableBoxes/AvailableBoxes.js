@@ -15,7 +15,7 @@ const AvailableBoxes = ({ title, start, max_people, now_people, onClick, id, cov
     <BoxItemText>
       <div>
         <BoxTextHeading>{title}</BoxTextHeading>
-        <p>Колличиство участников: {now_people}/{max_people}</p>
+        <p>Количество участников: {now_people}/{max_people}</p>
         <BoxTextDate>Дата жеребьевки: {moment(start).format('DD.MM.YY')}</BoxTextDate>
       </div>
       <StyledLink

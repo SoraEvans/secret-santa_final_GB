@@ -24,9 +24,9 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
   }
 
   const getUserName = (user) => {
-    if (box?.isAnonym && !secret_santas_ward?.length) {
+    if (!isAdmin && box?.isAnonym && !secret_santas_ward?.length) {
       return currentUserId === user.id ? `${user?.name} (Вы)` : ''
-    } if (box?.isAnonym && secret_santas_ward?.length) {
+    } if (!isAdmin && box?.isAnonym && secret_santas_ward?.length) {
       return (currentUserId === user?.id || wardId === user?.id) ? `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}` : ''
     } return `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}`
   }
@@ -93,6 +93,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
     })
       .then(() => {
         setShowModal(prev => !prev)
+        getBoxInfo(setUserData, id)
       })
   }
 
@@ -140,7 +141,10 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
           Проведена круговая жеребьевка, которая исключает ситуации,
           <br /> когда два участника дарят подарки друг другу.
           <br /> Теперь вы можете посмотреть{' '}
-          <ModalLink to="/boxes">Кто чей Санта.</ModalLink>
+          <ModalLink onClick={() => {
+            setShowModal(false)
+            setActiveIdx(4)
+          }}>Кто чей Санта.</ModalLink>
           <br /> Или <ModalLink onClick={reverseDraw}>сбросить</ModalLink> результаты
           жеребьевки.
         </ModalSubTitle>
