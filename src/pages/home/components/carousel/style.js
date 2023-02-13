@@ -43,13 +43,13 @@ export const CarouselButton = styled.button`
   margin: 0 auto 136px auto;
   height: 81px;
   width: 291px;
-  background-color: #FF5539;
+  background-color: ${({ offBtn }) => offBtn ? '#D9D2CD' : '#FF5539'};
   border: none;
   cursor: pointer;
   border-radius: 4px;
 
   &:hover {
-    background-color: #f53e20;
+    background-color: ${({ offBtn }) => offBtn ? '#D9D2CD' : '#f53e20'};
   }
 `
 

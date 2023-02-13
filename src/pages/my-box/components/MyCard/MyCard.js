@@ -36,6 +36,7 @@ const MyCard = ({
                   }
                 }) => {
   const [formValues, setFormValues] = useState({})
+  const [disabled, setDisabled] = useState(false)
   const { wishlist, phone, address, image, name } = card || {}
   useEffect(() => {
     setFormValues({
@@ -49,12 +50,15 @@ const MyCard = ({
     handleSubmit
   } = useForm({
     mode: 'all',
-    defaultValues: {
-      wishlist: '',
-      address: '',
-      phone: ''
-    }
   })
+
+  useEffect(() => {
+    if (formValues.address === address
+      && formValues.wishlist === wishlist
+      && formValues.phone === phone) {
+      setDisabled(true)
+    } else (setDisabled(false))
+  }, [formValues.address, formValues.wishlist, formValues.phone])
 
   const onUpdateInfo = async () => {
     await fetch('https://backsecsanta.alwaysdata.net/api/card/addAdditionalInfo', {
@@ -146,6 +150,8 @@ const MyCard = ({
               }}
             />
             <CarouselButton
+              disabled={disabled}
+              offBtn={disabled}
               type="submit"
               style={{
                 margin: '22px 0',
@@ -205,7 +211,7 @@ const MyCard = ({
       right: 0,
       margin: 'auto',
     }}>
-      <ButtonBlock style={{marginTop: 180}}>
+      <ButtonBlock style={{ marginTop: 180 }}>
         Ваша карточка участника будет доступна после проведения жеревьевки!
       </ButtonBlock>
       <img src={wait_image} alt="img" style={{ width: 350 }} />

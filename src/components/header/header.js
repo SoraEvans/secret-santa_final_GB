@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Popover } from '@mui/material'
+import { Badge, Popover } from '@mui/material'
 import Container from '../style_cont'
 import logo from '../../assets/images/logo.svg'
 import { AuthorisedWrapper, HeaderEl, Logo, StyledLink, Wrapper } from './style'
@@ -12,7 +12,6 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-  const [difference, setDifference] = useState([]);
   const isLogged = localStorage.getItem('isLoggedIn');
   const [color, setColor] = useState('transparent');
   const [notification, setNotification] = useState([]);
@@ -23,10 +22,14 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    const oldNotificationIds = JSON.parse(localStorage.getItem('notification'));
-    const newNotificationIds = notification?.map(item => item.id)
-    setDifference(oldNotificationIds?.filter(x => !newNotificationIds?.includes(x)));
-  }, [localStorage.getItem('notification'), anchorEl]);
+    getNotification(setNotification, id)
+    const handle = setInterval(() => {
+      getNotification(setNotification, id)
+    }, 10000);
+    return () => {
+      clearInterval(handle);
+    };
+  }, []);
 
   const delNotification = async (notificationId) => {
     await deleteNotification(setNotification, id, notificationId)
@@ -70,15 +73,17 @@ function Header() {
               <StyledLink disableRipple colorState={color} onClick={() => navigate('/boxes')} active={location.pathname === '/boxes'}>
                 <div>Коробки</div>
               </StyledLink>
-              <StyledLink
-                margin="0 0 0 15px"
-                colorState={color}
-                onClick={handleClick}
-                disableRipple
-                active={anchorEl}
-              >
-                Уведомления {difference?.length ? `(${difference?.length})` : null}
-              </StyledLink>
+              <Badge sx={{ span: { background: '#FF5539' } }} color="primary" badgeContent={notification.length}>
+                <StyledLink
+                  margin="0 0 0 15px"
+                  colorState={color}
+                  onClick={handleClick}
+                  disableRipple
+                  active={anchorEl}
+                >
+                  Уведомления
+                </StyledLink>
+              </Badge>
               <Popover
                 anchorEl={anchorEl}
                 onClose={handleClose}
