@@ -32,7 +32,7 @@ const RegisterPage = () => {
         password: form.password
       })
     })
-      .then(response => response.json())
+      .then(response => response.json())  // Парсинг данных ответа перед проверкой на успешную регистрацию
       .then(response => {
         if (response.status === 'success') {
           localStorage.setItem('isLoggedIn', true)

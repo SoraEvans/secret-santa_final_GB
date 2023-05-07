@@ -31,11 +31,11 @@ const MyBoxTabs = () => {
     } else {
       setIsAdmin(false)
     }
-    setCardId(userData?.card?.id);
+    setCardId(userData?.card?.id);  // Записываем в стейт id карточки текущего юзера
     userData?.secret_santas?.forEach((item) => {
       if (currentUserId === item.id) {
-        setSantaId(item.your_secret_santa_id);
-        setWardId(item.secret_santa_to_id);
+        setSantaId(item.your_secret_santa_id); // Записываем в стейт секретного Санту текущего юзера
+        setWardId(item.secret_santa_to_id); // Записываем в стейт подопечного текущего юзера
       }
     });
   }, [userData]);
@@ -43,7 +43,7 @@ const MyBoxTabs = () => {
   return (
     <>
       <TabsWrapper>
-        {isAdmin && <MyBoxSettings
+        {isAdmin && <MyBoxSettings // Если организатор, отображает настройки коробки
           setUserData={setUserData}
           setActiveIdx={setActiveIdx}
           isAdmin={isAdmin}

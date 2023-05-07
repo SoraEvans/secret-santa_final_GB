@@ -18,8 +18,8 @@ const Chat = ({ receiverId, cardId }) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: JSON.stringify({
-        first_chatter: userId,
-        second_chatter: receiverId,
+        first_chatter: userId, // id текущего пользователя
+        second_chatter: receiverId, // id второго собеседника
         card_id: cardId
       })
     })
@@ -52,7 +52,7 @@ const Chat = ({ receiverId, cardId }) => {
       })
   }
 
-  useEffect(() => {
+  useEffect(() => { // Получение сообщений по интервалу
     getMessages()
     const handle = setInterval(() => {
       getMessages()
@@ -104,6 +104,7 @@ const Chat = ({ receiverId, cardId }) => {
             <>
               {isNeedPrintDay && <Date>{day}</Date>}
               <MessageDiv key={message.id} props={message.writer_id === userId}>
+                {/* TODO метка для системных сообщений у BackEnd */}
                 <MessageText bold={message.text?.toLowerCase().includes('подопечн')
                 || message.text?.toLowerCase().includes('санта')}>{message.text}</MessageText>
               </MessageDiv>

@@ -89,7 +89,7 @@ const InviteUsers = ({ id, setUserData }) => {
         overflowY: 'auto',
         paddingTop: '15px'
       }}>
-        {formDetails.map((item, index) => (
+        {formDetails.map((item, index) => ( // количество отправляемых приглашений
           // eslint-disable-next-line react/no-array-index-key
           <InputWrapper key={index}>
             <CustomInput
@@ -113,15 +113,17 @@ const InviteUsers = ({ id, setUserData }) => {
               error={!!errors.email}
               helperText={errors?.email?.message}
             />
-            {index === formDetails.length - 1 ? (
-              <AddBtn onClick={handleAddInputs}>
-                <AddSharp fontSize="large" />
-              </AddBtn>
-            ) : (
-              <RemoveBtn onClick={() => handleRemoveInputs(index)}>
-                <RemoveSharp fontSize="large" />
-              </RemoveBtn>
-            )}
+            {index === formDetails.length - 1
+              ? (
+                <AddBtn onClick={handleAddInputs}>
+                  <AddSharp fontSize="large" />
+                </AddBtn>
+              )
+              : (
+                <RemoveBtn onClick={() => handleRemoveInputs(index)}>
+                  <RemoveSharp fontSize="large" />
+                </RemoveBtn>
+              )}
           </InputWrapper>
         ))}
       </div>

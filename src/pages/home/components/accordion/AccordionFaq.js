@@ -27,7 +27,7 @@ const AccordionFaq = () => {
         <AccordionWrapper>
           {DATA_FAQ.map((item, n) => (
             <StyledAccordion
-              expanded={expanded === `panel${n + 1}`}
+              expanded={expanded === `panel${n + 1}`} // Отслеживание открытого элемента аккордеона
               onChange={(_, isExpanded) => handleChange(isExpanded, `panel${n + 1}`)}
               style={{ borderRadius: '4px', boxShadow: "none" }}
             >

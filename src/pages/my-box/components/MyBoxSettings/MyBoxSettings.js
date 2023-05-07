@@ -17,8 +17,8 @@ import getBoxInfo from "../../../../API/boxInfo";
 
 // eslint-disable-next-line react/prop-types
 const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData, wardId }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null); // отслеживание состояния шестеренки настроек (открыто\закрыто)
+  const [showModal, setShowModal] = useState(false); // модалка на удаление коробки
   const navigate = useNavigate();
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -62,12 +62,12 @@ const MyBoxSettings = ({ setActiveIdx, isAdmin, currentUserId, card, setUserData
     <SettingsContainer>
       <SettingsTrigger
         onClick={handleClick}
-        active={anchorEl}
+        active={anchorEl} // состояние настроек
       >
-        <SettingsIcon active={anchorEl} />
+        <SettingsIcon active={anchorEl} /> {/* состояние настроек */}
       </SettingsTrigger>
       <Popover
-        anchorEl={anchorEl}
+        anchorEl={anchorEl} // состояние настроек
         onClose={handleClose}
         open={anchorEl}
         anchorOrigin={{

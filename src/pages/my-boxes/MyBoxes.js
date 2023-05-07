@@ -7,7 +7,7 @@ import CustomBoxesHook from '../../helpers/CustomBoxesHook'
 
 const MyBoxes = () => {
   const [tabIdx, setTabIdx] = useState(0)
-  const { boxes, publicBoxes } = CustomBoxesHook()
+  const { boxes, publicBoxes } = CustomBoxesHook() // кастомный хук для получения коробок
 
   const handlerChangeTab = (event, newTabIdx) => {
     setTabIdx(newTabIdx)

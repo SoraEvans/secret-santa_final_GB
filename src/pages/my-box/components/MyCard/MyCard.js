@@ -37,7 +37,7 @@ const MyCard = ({
                 }) => {
   const [formValues, setFormValues] = useState({})
   const [disabled, setDisabled] = useState(false)
-  const { wishlist, phone, address, image, name } = card || {}
+  const { wishlist, phone, address, image, name } = card || {} // деструктурируем card
   useEffect(() => {
     setFormValues({
       wishlist,
@@ -52,7 +52,7 @@ const MyCard = ({
     mode: 'all',
   })
 
-  useEffect(() => {
+  useEffect(() => { // проверка на изменения информации в карточке для disable кнопки Submit
     if (formValues.address === address
       && formValues.wishlist === wishlist
       && formValues.phone === phone) {
@@ -105,16 +105,19 @@ const MyCard = ({
                   cursor: 'default'
                 }}
               >
-                {image ?
+                {image
+                  ?
                   <img src={image} alt="avatar" style={{ height: 53 }} />
                   : name[0]?.toUpperCase()}
               </UserItem>
               <UserInfo>
                 <UserName>{name}</UserName>
-                {cost ? <Price style={{ marginBottom: 4 }}>
-                  Стоимость подарка:
-                  <PriceAmount>до {cost} руб.</PriceAmount>
-                </Price> : null}
+                {cost
+                  ? <Price style={{ marginBottom: 4 }}>
+                    Стоимость подарка:
+                    <PriceAmount>до {cost} руб.</PriceAmount>
+                  </Price>
+                  : null}
               </UserInfo>
             </div>
           </UserInfoBlock>

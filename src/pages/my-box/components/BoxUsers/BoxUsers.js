@@ -24,17 +24,20 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
   }
 
   const getUserName = (user) => {
-    if (!isAdmin && box?.isAnonym && !secret_santas_ward?.length) {
+    if (!isAdmin && box?.isAnonym && !secret_santas_ward?.length) { // Проверка на организатора, анонимность внутри коробки и проведенную жеребьевку для отображения имен
       return currentUserId === user.id ? `${user?.name} (Вы)` : ''
-    } if (!isAdmin && box?.isAnonym && secret_santas_ward?.length) {
+    }
+    if (!isAdmin && box?.isAnonym && secret_santas_ward?.length) {
       return (currentUserId === user?.id || wardId === user?.id) ? `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}` : ''
-    } return `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}`
+    }
+    return `${user?.name} ${currentUserId === user?.id ? '(Вы)' : ''}`
   }
 
   const { id } = useParams()
   const userItem = secret_santas?.map(user => (
     <UserBox outline={isAdmin || currentUserId === user.id} onClick={() => clickOnUser(user)}>
-      {user?.image ?
+      {user?.image
+        ? // Отображение либо аватарки (если она выбрана), либо первой буквы имени на карточке
         <UserItem key={user.id} outline={isAdmin || currentUserId === user.id}>
           <img src={user.image} alt="avatar" style={{ height: 110, cursor: 'pointer' }} />
         </UserItem>
@@ -65,7 +68,7 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
     </UserBox>
   ))
 
-  const draw = async () => {
+  const draw = async () => { // ЖЕРЕБЬЕВКА (логика на бэке)
     await fetch('https://backsecsanta.alwaysdata.net/api/box/draw', {
       method: 'POST',
       header: {
@@ -99,42 +102,48 @@ const BoxUsers = ({ setActiveIdx, userData, setUserData, currentUserId, isAdmin,
 
   return (
     <BoxUsersWrapper>
-      {userData && box && box.title ? (
-        <BoxInfo
+      {userData && box && box.title
+        ? (<BoxInfo
           title={box.title}
           cover={box.cover}
           userCount={secret_santas.length}
           isAdmin={isAdmin}
-        />
-      ) : (
-        <p>Моя коробка</p>
-      )}
-      {userData ? (
-        <UsersList>
-          {userItem}
-          {invitedItem}
-          {secret_santas_ward?.length || !isAdmin ? null : (
-            <BtnAdd
-              type="submit"
-              onClick={() => setShowModalUsers(prevState => !prevState)}
-            >
-              Добавить участника
-            </BtnAdd>
-          )}
-        </UsersList>
-      ) : (
-        <NoBoxUsers />
-      )}
-      {secret_santas_ward?.length || !isAdmin ? null : (
-        <DrawButton
-          onClick={draw}
-          userCount={
-            secret_santas && secret_santas.length
-              ? secret_santas.length
-              : 0
-          }
-        />
-      )}
+        />)
+        : (
+          <p>Моя коробка</p>
+        )}
+      {userData // проверка на наличие участников в коробке
+        ? (
+          <UsersList>
+            {userItem}
+            {invitedItem}
+            {secret_santas_ward?.length || !isAdmin
+              ? null
+              : (
+                <BtnAdd
+                  type="submit"
+                  onClick={() => setShowModalUsers(prevState => !prevState)}
+                >
+                  Добавить участника
+                </BtnAdd>
+              )}
+          </UsersList>
+        )
+        : (
+          <NoBoxUsers />
+        )}
+      {secret_santas_ward?.length || !isAdmin
+        ? null
+        : (
+          <DrawButton
+            onClick={draw}
+            userCount={
+              secret_santas && secret_santas.length
+                ? secret_santas.length
+                : 0
+            }
+          />
+        )}
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ModalTitle>Жеребьевка проведена!</ModalTitle>
         <ModalSubTitle>

@@ -93,7 +93,7 @@ const Settings = () => {
       .then(response => {
         if (response.status === 'success') {
           localStorage.setItem('isBoxCreated', true)
-          navigate(`/box/${id}`)
+          navigate(`/box/${id}`) // id коробки
         }
       })
   }

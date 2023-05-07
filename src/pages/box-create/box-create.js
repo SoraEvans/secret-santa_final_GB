@@ -11,7 +11,6 @@ import {
   Div,
   Label,
   P,
-  // CoverButton,
   DivInput,
   CoverDiv,
   SmallInput,

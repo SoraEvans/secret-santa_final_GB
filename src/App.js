@@ -20,7 +20,7 @@ const App = () => {
   const [showHeadFoot, setShowHeadFoot] = useState(true)
   const location = useLocation()
 
-  useEffect(() => {
+  useEffect(() => {                           // отслеживание location для отображения header-а
     setShowHeadFoot(
       location.pathname !== '/register' &&
         location.pathname !== '/login' &&
@@ -30,7 +30,6 @@ const App = () => {
 
   return (
     <>
-      <nav />
       {showHeadFoot ? <Header /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,6 +39,12 @@ const App = () => {
         <Route path="/create-box" element={<BoxCreate />} />
         <Route path="/box-created" element={<BoxDone />} />
         <Route path="/support-us" element={<SupportPage />} />
+
+        <Route path="/boxes" element={<MyBoxes />}>
+          <Route index element={<h1>Коробки</h1>} />
+          <Route path="mine" element={<h1>Мои коробки</h1>} />
+          <Route path="public" element={<h1>Публичные коробки</h1>} />
+        </Route>
 
         <Route path="/box/:id">
           <Route index element={<MyBox />} />
@@ -51,12 +56,6 @@ const App = () => {
 
         <Route path="/whose-santa" element={<h1>Кто чей Санта?</h1>} />
         <Route path="/profile" element={<Profile />} />
-
-        <Route path="/boxes" element={<MyBoxes />}>
-          <Route index element={<h1>Коробки</h1>} />
-          <Route path="mine" element={<h1>Мои коробки</h1>} />
-          <Route path="public" element={<h1>Публичные коробки</h1>} />
-        </Route>
 
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

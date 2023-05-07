@@ -4,7 +4,8 @@ import moment from 'moment'
 import { BoxInner, BoxWrapper, CircularProgressStyle, TimerItem, TimerTitle, TimerWrapper } from './style'
 
 const interval = 1000
-const eventTime = moment("2023-12-31T23:59:59")
+const actualYear = moment().year()
+const eventTime = moment(`${actualYear}-12-31T23:59:59`)
 
 const CountdownTimer = () => {
   const [duration, setDuration] = useState(moment())

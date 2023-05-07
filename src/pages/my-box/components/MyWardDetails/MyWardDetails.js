@@ -58,14 +58,14 @@ const MyWardDetails = ({ wardId, id, userData: { secret_santas_ward, secret_sant
                 cursor: 'default'
               }}
             >
-              {currentWardAvatar ?
-                <img src={currentWardAvatar} alt="avatar" style={{ height: 53 }} />
+              {currentWardAvatar
+                ? <img src={currentWardAvatar} alt="avatar" style={{ height: 53 }} />
                 : currentWard?.name[0]?.toUpperCase()}
             </UserItem>
             <UserInfo>
               <UserName>{currentWard?.name}</UserName>
               <Price style={{ flex: 1, marginTop: 4 }}>Ваш подопечный</Price>
-              {box.cost ? <Price style={{marginBottom: 4}}>
+              {box.cost ? <Price style={{ marginBottom: 4 }}>
                 Стоимость подарка:
                 <PriceAmount>до {price} руб.</PriceAmount>
               </Price> : null}
@@ -82,8 +82,10 @@ const MyWardDetails = ({ wardId, id, userData: { secret_santas_ward, secret_sant
               value={activeIndex}
               onChange={handlerChangeTab}
             >
-              <TabItem disableRipple style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Чат с подопечным</div>} />
-              <TabItem disableRipple style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Досье подопечного</div>} />
+              <TabItem disableRipple style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Чат с
+                подопечным</div>} />
+              <TabItem disableRipple style={{ minHeight: "233px", alignSelf: "flex-start" }} label={<div>Досье
+                подопечного</div>} />
             </TabsInner>
           </TabsWrapper>
           <BodyWrapper>

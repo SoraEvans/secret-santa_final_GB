@@ -22,10 +22,11 @@ const PrivateBox = ({ boxes }) => {
   )
 }
 
+// Дефолтное значение для props
 PrivateBox.defaultProps = {
   boxes: []
 }
-
+// Типизация для props
 PrivateBox.propTypes = {
   boxes: PropTypes.array
 }
