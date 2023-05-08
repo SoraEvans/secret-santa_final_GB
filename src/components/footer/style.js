@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { styled as st } from '@mui/material'
-import { Credits, StyledRegBtn } from '../../pages/auth/auth-styles'
-import { AuthInput } from '../Inputs/Inputs'
+import { Credits, StyledRegBtn } from '../../pages/auth/styles'
+import { AuthInput } from '../inputs/Inputs'
 
 export const FooterEl = styled.footer`
   background: #212121;

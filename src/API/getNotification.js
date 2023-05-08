@@ -1,4 +1,4 @@
-import API_URL from '../constants/base-api-url';
+import API_URL from '../constants/baseApiUrl';
 
 const getNotification = async (setNotification, id) => {
 	await fetch(`${API_URL}/user/notifications/${id}`, {

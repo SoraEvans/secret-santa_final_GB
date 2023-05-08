@@ -10,7 +10,7 @@ import {
   DropdownMenu,
 } from './style';
 import boxImg from '../../../../assets/images/box.svg';
-import Modal from '../../../../components/modal/modal';
+import Modal from '../../../../components/modal/Modal';
 import { ModalTitle } from '../../../../components/modal/style';
 import SettingsIcon from './components/SettingsIcon';
 import getBoxInfo from "../../../../API/boxInfo";

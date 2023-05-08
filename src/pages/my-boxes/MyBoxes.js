@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { TabBox, TabItem, BoxWrapper, BoxItem } from './style'
-import PrivateBox from './components/PrivateBox/PrivateBox'
-import Container from '../../components/style_cont'
-import PublicBox from './components/PublicBox/PublicBox'
+import PrivateBox from './components/privateBox/PrivateBox'
+import Container from '../../components/styleContainer'
+import PublicBox from './components/publicBox/PublicBox'
 import CustomBoxesHook from '../../helpers/CustomBoxesHook'
 
 const MyBoxes = () => {

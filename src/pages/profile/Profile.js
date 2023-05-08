@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Divider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import Container from '../../components/style_cont'
+import Container from '../../components/styleContainer'
 import {
   PageBackground,
   StyledLink,
@@ -15,7 +15,7 @@ import {
   SwitchText,
   RemoveDesc
 } from './styles'
-import { CustomInput } from '../../components/Inputs/Inputs'
+import { CustomInput } from '../../components/inputs/Inputs'
 
 function Profile() {
   const [state, setState] = useState({

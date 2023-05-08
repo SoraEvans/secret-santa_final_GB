@@ -1,4 +1,4 @@
-import API_URL from '../constants/base-api-url';
+import API_URL from '../constants/baseApiUrl';
 import getNotification from "./getNotification";
 
 const deleteNotification = async (setNotification, userId, notificationId) => {
