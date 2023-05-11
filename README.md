@@ -1,7 +1,10 @@
 # Secret Santa
 
-### Суть проекта: 
-Тайный Санта — это популярная новогодняя активность с простыми правилами: каждый участник примеряет на себя роль “Тайного Санты” и анонимно готовит подарок для другого, случайно выбранного участника.
-C учетом преимуществ и недостатков уже существующих подобных сервисов, мы создали собственную уникальную удобную онлайн-платформу для анонимного обмена новогодними подарками в рамках данной игры. 
+### Point of the project: 
+Secret Santa is a popular New Year's activity with simple rules: each participant tries on the role of a “Secret Santa” and anonymously prepares a gift for another randomly selected participant.
+Taking into account the advantages and disadvantages of existing similar services, we have created our own unique convenient online platform for the anonymous exchange of New Year's gifts within the framework of this game.
 
-### Посмотреть это приложение можно на сайте https://secret-santa-1.netlify.app/
+#### Stack: React, react-router-dom, Styled-components, MUI, MomentJS, REST API
+#### Project: https://secret-santa-1.netlify.app
+
+![image](https://github.com/SoraEvans/secret-santa_final_GB/assets/96630749/441248a0-3c2d-42ec-ab10-d543a1d8f98e)
